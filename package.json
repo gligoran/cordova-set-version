@@ -28,7 +28,7 @@
     "url": "git+https://github.com/gligoran/cordova-set-version.git"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "commit": "git-cz"
   },
   "version": "0.0.0"
 }
