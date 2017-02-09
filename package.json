@@ -11,8 +11,10 @@
   "dependencies": {},
   "description": "CLI and JavaScript API for setting the version in Apache Cordova config.xml",
   "devDependencies": {
+    "chai": "3.5.0",
     "commitizen": "2.9.5",
-    "cz-conventional-changelog": "1.2.0"
+    "cz-conventional-changelog": "1.2.0",
+    "mocha": "3.2.0"
   },
   "homepage": "https://github.com/gligoran/cordova-set-version#readme",
   "keywords": [
@@ -28,7 +30,9 @@
     "url": "git+https://github.com/gligoran/cordova-set-version.git"
   },
   "scripts": {
-    "commit": "git-cz"
+    "commit": "git-cz",
+    "test": "mocha tests/*.test.js",
+    "test:watch": "npm test -- --watch"
   },
   "version": "0.0.0"
 }
