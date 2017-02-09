@@ -10,7 +10,9 @@ branches:
 
 notifications:
   email: false
-
+  slack:
+    secure: BV+27FfjSdZcsWBm+w5Ndjww4QHOjw3ukHuJzg9qZkcv0VdHjIUvcRP7wu6fDFxl8QNamT+31mNlvgf0wG2ZiSzOFqDmXGdJmmXLHHQLIiVrPsCvEUEO6Q1rA2V0IkJUYNRbZs7tAWXcDLmbhsI4Lzpi0Q0+nJhuOMW/on87u2raVvQ3czIwoM5HT0318X42nDFtR7GlkxnL3/Zmku2x6TR6FgyLjYnZsdyF7KibcnSR7Ro6tjYkmLH42BM8PujXEDc+aIq/iQEqIK6goSEkDJN0Kvnm12nJWjlmGe5WzZvShW7NB4Pa8q1+zKY79BwWlXw6pT4WNflCJipiI89NXQ+PAWNMJuLej/KFIWfr/UuYa5qSKfRFG4oAsmVy97UL6qfrimMlT3ixOwr/xzF/e0mEUV00yIgxpbrG38PdUTWLfzZOBQcxqRCKlRJqcU0qF6l6MVzd+FX+JP4d8jTp85uvVcW3pXdtcf37AEN6PZBWtuMKi5UbArr1Y8dWpdBulYmsPAtPCcOsIL1lqoxhxMLN57uflm/LIe+4sRQUv2N5z4WVr0z/tC/g8g/ateonO/slwzDb+h8TrGHKg7lvtfjOJ2UyHibpu7xEXBqICW8v3fktnIzbCcxAdQTVlDttXYjHuPrZqpUKnGqbqAQ4PdCdfLx2E5NzrcV8oPIsu1I=
+    
 node_js:
   - '7'
   - '6'
