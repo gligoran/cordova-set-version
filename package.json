@@ -14,7 +14,8 @@
     "chai": "3.5.0",
     "commitizen": "2.9.5",
     "cz-conventional-changelog": "1.2.0",
-    "mocha": "3.2.0"
+    "mocha": "3.2.0",
+    "semantic-release": "^6.3.2"
   },
   "homepage": "https://github.com/gligoran/cordova-set-version#readme",
   "keywords": [
@@ -27,12 +28,13 @@
   "name": "cordova-set-version",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gligoran/cordova-set-version.git"
+    "url": "https://github.com/gligoran/cordova-set-version.git"
   },
   "scripts": {
     "commit": "git-cz",
     "test": "mocha tests/*.test.js",
-    "test:watch": "npm test -- --watch"
+    "test:watch": "npm test -- --watch",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
-  "version": "0.0.0"
+  "version": "0.0.0-development"
 }

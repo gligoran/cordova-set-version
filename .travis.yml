@@ -3,6 +3,10 @@ language: node_js
 cache:
   directories:
     - node_modules
+  
+branches:
+  except:
+    - /^v\d+\.\d+\.\d+$/
 
 notifications:
   email: false
@@ -17,3 +21,6 @@ before_script:
 
 script:
   - npm test
+
+after_success:
+  - npm run semantic-release
