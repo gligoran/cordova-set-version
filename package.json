@@ -32,7 +32,7 @@
   },
   "scripts": {
     "commit": "git-cz",
-    "test": "mocha tests/*.test.js",
+    "test": "mocha",
     "test:watch": "npm test -- --watch",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
