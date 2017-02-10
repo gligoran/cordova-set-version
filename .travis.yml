@@ -23,6 +23,8 @@ before_script:
 
 script:
   - npm test
+  - npm run coverage
+  - npm run coverage-upload
 
 after_success:
   - npm run semantic-release

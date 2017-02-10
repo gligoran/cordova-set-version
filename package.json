@@ -12,8 +12,10 @@
   "description": "CLI and JavaScript API for setting the version in Apache Cordova config.xml",
   "devDependencies": {
     "chai": "3.5.0",
+    "codecov": "1.0.1",
     "commitizen": "2.9.5",
     "cz-conventional-changelog": "1.2.0",
+    "istanbul": "0.4.5",
     "mocha": "3.2.0",
     "semantic-release": "^6.3.2"
   },
@@ -32,9 +34,11 @@
   },
   "scripts": {
     "commit": "git-cz",
+    "coverage": "istanbul cover _mocha --report lcovonly -- -R spec",
+    "coverage-upload": "codecov",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post",
     "test": "mocha",
-    "test:watch": "npm test -- --watch",
-    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+    "test:watch": "npm test -- --watch"
   },
   "version": "0.0.0-development"
 }
