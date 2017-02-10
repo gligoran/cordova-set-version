@@ -1,4 +1,4 @@
-# CordovaSetName
+# cordova-set-version
 
 [![ISC License](https://img.shields.io/npm/l/cordova-set-version.svg)](http://opensource.org/licenses/ISC)
 [![npm version](https://img.shields.io/npm/v/cordova-set-version.svg)](http://npm.im/cordova-set-version)
