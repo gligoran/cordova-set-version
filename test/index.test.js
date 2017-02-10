@@ -1,7 +1,8 @@
 var expect = require('chai').expect;
+var cordovaSetVersion = require('../src/index');
 
 describe('cordova-set-version', function() {
     it('should work!', function() {
-        expect(true).to.be.true;
+        expect(cordovaSetVersion).to.exist;
     });
 });
