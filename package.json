@@ -12,7 +12,7 @@
   "description": "CLI and JavaScript API for setting the version in Apache Cordova config.xml",
   "devDependencies": {
     "chai": "3.5.0",
-    "codecov": "2.0.1",
+    "codecov": "2.0.2",
     "commitizen": "2.9.6",
     "cz-conventional-changelog": "2.0.0",
     "istanbul": "0.4.5",
