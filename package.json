@@ -8,16 +8,19 @@
       "path": "cz-conventional-changelog"
     }
   },
-  "dependencies": {},
+  "dependencies": {
+    "xml2js": "0.4.17"
+  },
   "description": "CLI and JavaScript API for setting the version in Apache Cordova config.xml",
   "devDependencies": {
     "chai": "3.5.0",
     "codecov": "2.1.0",
     "commitizen": "2.9.6",
     "cz-conventional-changelog": "2.0.0",
+    "fs-extra": "2.1.2",
     "istanbul": "0.4.5",
     "mocha": "3.2.0",
-    "semantic-release": "^6.3.2"
+    "semantic-release": "6.3.2"
   },
   "homepage": "https://github.com/gligoran/cordova-set-version#readme",
   "keywords": [
