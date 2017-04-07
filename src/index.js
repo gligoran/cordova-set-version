@@ -13,11 +13,13 @@ function setVersion(configPath, version, callback) {
     fs.readFile(configPath, { encoding: 'UTF-8' }, function (readError, configData) {
         if (readError) {
             callback(readError);
+            return;
         }
 
         xmlParser.parseString(configData, function (parseError, configXml) {
             if (parseError) {
                 callback(parseError);
+                return;
             }
 
             configXml.widget.$.version = version;
