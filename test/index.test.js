@@ -1,15 +1,15 @@
 'use strict';
 
-var expect = require('chai').expect;
-var cordovaSetVersion = require('../src/index');
-var fs = require('fs-extra');
+const expect = require('chai').expect;
+const cordovaSetVersion = require('../src/index');
+const fs = require('fs-extra');
 
-var goodPath = './test/config.good.xml';
-var badPath = './test/config.bad.xml';
-var missingPath = './test/config.missing.xml';
-var configPath = './test/config.xml';
-var expectedConfigPath = './test/config.expected.xml';
-var fileParams = { encoding: 'UTF-8' };
+const goodPath = './test/config.good.xml';
+const badPath = './test/config.bad.xml';
+const missingPath = './test/config.missing.xml';
+const configPath = './test/config.xml';
+const expectedConfigPath = './test/config.expected.xml';
+const fileParams = { encoding: 'UTF-8' };
 
 describe('cordova-set-version', () => {
     it('should exist', () => {
