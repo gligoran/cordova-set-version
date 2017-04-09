@@ -14,6 +14,7 @@
     }
   },
   "dependencies": {
+    "read-pkg": "2.0.0",
     "xml2js": "0.4.17"
   },
   "description": "CLI and JavaScript API for setting the version in Apache Cordova config.xml",
