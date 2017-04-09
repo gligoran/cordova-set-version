@@ -1,9 +1,9 @@
 'use strict';
 
-var fs = require('fs');
-var xml2js = require('xml2js');
-var xmlParser = new xml2js.Parser();
-var xmlBuilder = new xml2js.Builder();
+const fs = require('fs');
+const xml2js = require('xml2js');
+const xmlParser = new xml2js.Parser();
+const xmlBuilder = new xml2js.Builder();
 
 module.exports = {
     setVersion: setVersion
@@ -49,6 +49,6 @@ function handleSetVersionParseXml(configPath, version, callback,parseError, conf
     }
 
     configXml.widget.$.version = version;
-    var newConfigData = xmlBuilder.buildObject(configXml);
+    let newConfigData = xmlBuilder.buildObject(configXml);
     fs.writeFile(configPath, newConfigData, {encoding: 'UTF-8'}, callback);
 }
