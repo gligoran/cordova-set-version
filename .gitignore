@@ -1,6 +1,8 @@
 node_modules
 .vscode
 .idea/
+dist/
 npm-debug*.log
 coverage
 test/config.xml
+.nyc_output/

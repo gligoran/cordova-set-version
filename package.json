@@ -1,5 +1,10 @@
 {
   "author": "Goran Gligorin <goran@gligorin.com> (http://gorangligorin.com/)",
+  "babel": {
+    "presets": [
+      "latest"
+    ]
+  },
   "bugs": {
     "url": "https://github.com/gligoran/cordova-set-version/issues"
   },
@@ -13,17 +18,24 @@
   },
   "description": "CLI and JavaScript API for setting the version in Apache Cordova config.xml",
   "devDependencies": {
+    "babel-cli": "6.24.1",
+    "babel-preset-latest": "6.24.1",
     "chai": "3.5.0",
     "codecov": "2.1.0",
     "commitizen": "2.9.6",
     "cz-conventional-changelog": "2.0.0",
     "fs-extra": "2.1.2",
     "husky": "0.13.3",
-    "istanbul": "0.4.5",
     "mocha": "3.2.0",
     "mocha-better-spec-reporter": "3.1.0",
+    "nyc": "10.2.0",
+    "rimraf": "2.6.1",
     "semantic-release": "6.3.2"
   },
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "homepage": "https://github.com/gligoran/cordova-set-version#readme",
   "keywords": [
     "apache",
@@ -31,20 +43,22 @@
     "version"
   ],
   "license": "ISC",
-  "main": "src/index.js",
+  "main": "dist/index.js",
   "name": "cordova-set-version",
   "repository": {
     "type": "git",
     "url": "https://github.com/gligoran/cordova-set-version.git"
   },
   "scripts": {
+    "prebuild": "rimraf build",
+    "build": "babel --out-dir dist src",
     "commit": "git-cz",
-    "coverage": "istanbul cover _mocha --report lcovonly -- -R spec",
-    "postcoverage": "istanbul check-coverage --statement 100 --branch 100 --function 100 --lines 100",
+    "coverage": "nyc npm test",
+    "postcoverage": "nyc check-coverage --statement 100 --branch 100 --function 100 --lines 100",
     "coverage-upload": "codecov",
     "precommit": "npm test && npm run coverage",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post",
-    "test": "mocha",
+    "test": "mocha --compilers js:babel-register",
     "test:watch": "npm test -- --watch --reporter mocha-better-spec-reporter --reporter-options clear-screen=true"
   },
   "version": "0.0.0-development"

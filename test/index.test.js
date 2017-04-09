@@ -1,8 +1,9 @@
 'use strict';
 
-const expect = require('chai').expect;
-const cordovaSetVersion = require('../src/index');
-const fs = require('fs-extra');
+import { expect } from 'chai';
+import fs from 'fs-extra';
+
+import cordovaSetVersion from '../src/index';
 
 const fileParams = {encoding: 'UTF-8'};
 const configPaths = {
