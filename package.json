@@ -20,6 +20,7 @@
     "fs-extra": "2.1.2",
     "istanbul": "0.4.5",
     "mocha": "3.2.0",
+    "mocha-better-spec-reporter": "3.1.0",
     "semantic-release": "6.3.2"
   },
   "homepage": "https://github.com/gligoran/cordova-set-version#readme",
@@ -41,7 +42,7 @@
     "coverage-upload": "codecov",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post",
     "test": "mocha",
-    "test:watch": "npm test -- --watch"
+    "test:watch": "npm test -- --watch --reporter mocha-better-spec-reporter --reporter-options clear-screen=true"
   },
   "version": "0.0.0-development"
 }
