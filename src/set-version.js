@@ -39,7 +39,7 @@ function storeVersion(configPath, version) {
 }
 
 function writeVersion(configPath, version, xml) {
-    xml.widget.$.version = version
+    xml.widget.$.version = version;
     let newConfigData = xmlBuilder.buildObject(xml);
     return fs.writeFile(configPath, newConfigData, { encoding: 'UTF-8' });
 }
