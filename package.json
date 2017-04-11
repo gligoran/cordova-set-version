@@ -5,6 +5,9 @@
       "latest"
     ]
   },
+  "bin": {
+    "cordova-set-version": "dist/cli.js"
+  },
   "bugs": {
     "url": "https://github.com/gligoran/cordova-set-version/issues"
   },
@@ -14,6 +17,7 @@
     }
   },
   "dependencies": {
+    "meow": "3.7.0",
     "mz": "2.6.0",
     "read-pkg": "2.0.0",
     "xml2js": "0.4.17",
