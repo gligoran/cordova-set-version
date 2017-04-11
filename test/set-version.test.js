@@ -9,18 +9,18 @@ import cordovaSetVersion from '../src/index';
 const fileParams = { encoding: 'UTF-8' };
 const configPaths = {
     COPY: './config.xml',
-    GOOD: './configs/config.good.xml',
-    MALFORMED: './configs/config.malformed.xml',
-    MISSING: './configs/config.missing.xml',
-    EXPECTED: './configs/config.expected.xml',
-    EXPECTED_JSON: './configs/config.expected-json.xml'
+    GOOD: './set-version/configs/config.good.xml',
+    MALFORMED: './set-version/configs/config.malformed.xml',
+    MISSING: './set-version/configs/config.missing.xml',
+    EXPECTED: './set-version/configs/config.expected.xml',
+    EXPECTED_JSON: './set-version/configs/config.expected-json.xml'
 };
 const packagePaths = {
     COPY: './package.json',
-    GOOD: './packages/package.good.json',
-    MALFORMED: './packages/package.malformed.json',
-    NO_VERSION: './packages/package.no-version.json',
-    MISSING: './packages/package.missing.json'
+    GOOD: './set-version/packages/package.good.json',
+    MALFORMED: './set-version/packages/package.malformed.json',
+    NO_VERSION: './set-version/packages/package.no-version.json',
+    MISSING: './set-version/packages/package.missing.json'
 };
 
 chai.use(chaiAsPromised);
