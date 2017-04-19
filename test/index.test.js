@@ -35,7 +35,7 @@ describe('cordova-set-version', () => {
     });
 
     it('should be a functon', () => {
-        expect(typeof cordovaSetVersion).to.equal('function');
+        expect(cordovaSetVersion).to.be.a('function');
     });
 
     configPathVersionBuildNumberCallbackTest();
