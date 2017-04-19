@@ -1,11 +1,16 @@
 'use strict';
 
-import { expect } from 'chai';
+import chai from 'chai';
+import chaiFiles from 'chai-files';
 import fs from 'fs-extra';
 
 import cordovaSetVersion from '../src/index';
 import { tempConfigFile, tempProvidedConfigFile, entryConfigFiles, expectedXmlFiles } from './configs';
 import { tempPackageFile, entryPackageFiles } from './packages';
+
+chai.use(chaiFiles);
+const expect = chai.expect;
+const file = chaiFiles.file;
 
 export default () => {
     describe('(version, buildNumber, callback)', () => {
@@ -14,10 +19,7 @@ export default () => {
 
             cordovaSetVersion('2.4.9', 86, (error) => {
                 expect(error).to.not.exist;
-
-                let xml = fs.readFileSync(tempConfigFile, 'UTF-8');
-                let expectedXml = fs.readFileSync(expectedXmlFiles.VERSION_AND_BUILD_TO_VERSION_AND_BUILD, 'UTF-8');
-                expect(xml).to.equal(expectedXml);
+                expect(file(tempConfigFile)).to.equal(file(expectedXmlFiles.VERSION_AND_BUILD_TO_VERSION_AND_BUILD));
 
                 done();
             });
@@ -28,10 +30,7 @@ export default () => {
 
             cordovaSetVersion('2.4.9', 86, (error) => {
                 expect(error).to.not.exist;
-
-                let xml = fs.readFileSync(tempConfigFile, 'UTF-8');
-                let expectedXml = fs.readFileSync(expectedXmlFiles.VERSION_AND_BUILD_TO_VERSION_AND_NO_BUILD, 'UTF-8');
-                expect(xml).to.equal(expectedXml);
+                expect(file(tempConfigFile)).to.equal(file(expectedXmlFiles.VERSION_AND_BUILD_TO_VERSION_AND_NO_BUILD));
 
                 done();
             });
@@ -42,10 +41,7 @@ export default () => {
 
             cordovaSetVersion('2.4.9', 86, (error) => {
                 expect(error).to.not.exist;
-
-                let xml = fs.readFileSync(tempConfigFile, 'UTF-8');
-                let expectedXml = fs.readFileSync(expectedXmlFiles.VERSION_AND_BUILD_TO_NO_VERSION_AND_BUILD, 'UTF-8');
-                expect(xml).to.equal(expectedXml);
+                expect(file(tempConfigFile)).to.equal(file(expectedXmlFiles.VERSION_AND_BUILD_TO_NO_VERSION_AND_BUILD));
 
                 done();
             });
@@ -56,10 +52,7 @@ export default () => {
 
             cordovaSetVersion('2.4.9', 86, (error) => {
                 expect(error).to.not.exist;
-
-                let xml = fs.readFileSync(tempConfigFile, 'UTF-8');
-                let expectedXml = fs.readFileSync(expectedXmlFiles.VERSION_AND_BUILD_TO_NO_VERSION_AND_NO_BUILD, 'UTF-8');
-                expect(xml).to.equal(expectedXml);
+                expect(file(tempConfigFile)).to.equal(file(expectedXmlFiles.VERSION_AND_BUILD_TO_NO_VERSION_AND_NO_BUILD));
 
                 done();
             });
