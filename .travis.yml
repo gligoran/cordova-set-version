@@ -23,7 +23,7 @@ before_script:
 
 script:
   - npm run coverage # runs tests as well
-  - npm run coverage-upload
+  - npm run report-coverage
   - npm run build
 
 after_success:
