@@ -10,16 +10,13 @@ import { tempPackageFile, entryPackageFiles } from './packages';
 export default () => {
     describe('(version, buildNumber)', () => {
         it('should return an error about callback type', () => {
-            fs.copySync(entryConfigFiles.VERSION_AND_BUILD, tempProvidedConfigFile);
+            fs.copySync(entryConfigFiles.VERSION_AND_BUILD, tempConfigFile);
 
-            try {
-                cordovaSetVersion('2.4.9', 86);
-            } catch (error) {
-                expect(error).to.exist;
-                expect(error).to.be.instanceOf(TypeError);
-                expect(error.message).to.contain('callback');
-                expect(error.message).to.contain('must be');
-            }
+            expect(cordovaSetVersion.bind(null, '2.4.9', 86))
+                .to.throw(TypeError)
+                .that.has.property('message')
+                .that.contains('callback')
+                .that.contains('must be');
         });
     });
 }

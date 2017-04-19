@@ -13,14 +13,11 @@ export default () => {
             fs.copySync(entryConfigFiles.VERSION_AND_BUILD, tempConfigFile);
             fs.copySync(entryPackageFiles.GOOD, tempPackageFile);
 
-            try {
-                cordovaSetVersion();
-            } catch (error) {
-                expect(error).to.exist;
-                expect(error).to.be.instanceOf(TypeError);
-                expect(error.message).to.contain('callback');
-                expect(error.message).to.contain('must be a');
-            }
+            expect(cordovaSetVersion.bind(null))
+                .to.throw(TypeError)
+                .that.has.property('message')
+                .that.contains('callback')
+                .that.contains('must be');
         });
     });
 }

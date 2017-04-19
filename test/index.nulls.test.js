@@ -17,14 +17,11 @@ export default () => {
         it('(configPath, version, buildNumber, null)', () => {
             fs.copySync(entryConfigFiles.VERSION_AND_BUILD, tempProvidedConfigFile);
 
-            try {
-                cordovaSetVersion(tempProvidedConfigFile, '2.4.9', 86, null);
-            } catch (error) {
-                expect(error).to.exist;
-                expect(error).to.be.instanceOf(TypeError);
-                expect(error.message).to.contain('callback');
-                expect(error.message).to.contain('must be');
-            }
+            expect(cordovaSetVersion.bind(null, tempProvidedConfigFile, '2.4.9', 86, null))
+                .to.throw(TypeError)
+                .that.has.property('message')
+                .that.contains('callback')
+                .that.contains('must be');
         });
 
         it('(configPath, version, null, callback)', (done) => {
@@ -41,27 +38,21 @@ export default () => {
         it('(configPath, version, null, null)', () => {
             fs.copySync(entryConfigFiles.VERSION_AND_BUILD, tempProvidedConfigFile);
 
-            try {
-                cordovaSetVersion(tempProvidedConfigFile, '2.4.9', null, null);
-            } catch (error) {
-                expect(error).to.exist;
-                expect(error).to.be.instanceOf(TypeError);
-                expect(error.message).to.contain('callback');
-                expect(error.message).to.contain('must be');
-            }
+            expect(cordovaSetVersion.bind(null, tempProvidedConfigFile, '2.4.9', null, null))
+                .to.throw(TypeError)
+                .that.has.property('message')
+                .that.contains('callback')
+                .that.contains('must be');
         });
 
         it('(configPath, version, null)', () => {
             fs.copySync(entryConfigFiles.VERSION_AND_BUILD, tempProvidedConfigFile);
 
-            try {
-                cordovaSetVersion(tempProvidedConfigFile, '2.4.9', null);
-            } catch (error) {
-                expect(error).to.exist;
-                expect(error).to.be.instanceOf(TypeError);
-                expect(error.message).to.contain('callback');
-                expect(error.message).to.contain('must be');
-            }
+            expect(cordovaSetVersion.bind(null, tempProvidedConfigFile, '2.4.9', null))
+                .to.throw(TypeError)
+                .that.has.property('message')
+                .that.contains('callback')
+                .that.contains('must be');
         });
 
         it('(configPath, null, buildNumber, callback)', (done) => {
@@ -78,27 +69,21 @@ export default () => {
         it('(configPath, null, buildNumber, null)', () => {
             fs.copySync(entryConfigFiles.VERSION_AND_BUILD, tempProvidedConfigFile);
 
-            try {
-                cordovaSetVersion(tempProvidedConfigFile, null, 86, null);
-            } catch (error) {
-                expect(error).to.exist;
-                expect(error).to.be.instanceOf(TypeError);
-                expect(error.message).to.contain('callback');
-                expect(error.message).to.contain('must be');
-            }
+            expect(cordovaSetVersion.bind(null, tempProvidedConfigFile, null, 86, null))
+                .to.throw(TypeError)
+                .that.has.property('message')
+                .that.contains('callback')
+                .that.contains('must be');
         });
 
         it('(configPath, null, buildNumber)', () => {
             fs.copySync(entryConfigFiles.VERSION_AND_BUILD, tempProvidedConfigFile);
 
-            try {
-                cordovaSetVersion(tempProvidedConfigFile, null, 86);
-            } catch (error) {
-                expect(error).to.exist;
-                expect(error).to.be.instanceOf(TypeError);
-                expect(error.message).to.contain('callback');
-                expect(error.message).to.contain('must be');
-            }
+            expect(cordovaSetVersion.bind(null, tempProvidedConfigFile, null, 86))
+                .to.throw(TypeError)
+                .that.has.property('message')
+                .that.contains('callback')
+                .that.contains('must be');
         });
 
         it('(configPath, null, null, callback)', (done) => {
@@ -116,27 +101,21 @@ export default () => {
         it('(configPath, null, null, null)', () => {
             fs.copySync(entryConfigFiles.VERSION_AND_BUILD, tempProvidedConfigFile);
 
-            try {
-                cordovaSetVersion(tempProvidedConfigFile, null, null, null);
-            } catch (error) {
-                expect(error).to.exist;
-                expect(error).to.be.instanceOf(TypeError);
-                expect(error.message).to.contain('callback');
-                expect(error.message).to.contain('must be');
-            }
+            expect(cordovaSetVersion.bind(null, tempProvidedConfigFile, null, null, null))
+                .to.throw(TypeError)
+                .that.has.property('message')
+                .that.contains('callback')
+                .that.contains('must be');
         });
 
         it('(configPath, null, null)', () => {
             fs.copySync(entryConfigFiles.VERSION_AND_BUILD, tempProvidedConfigFile);
 
-            try {
-                cordovaSetVersion(tempProvidedConfigFile, null, null);
-            } catch (error) {
-                expect(error).to.exist;
-                expect(error).to.be.instanceOf(TypeError);
-                expect(error.message).to.contain('callback');
-                expect(error.message).to.contain('must be');
-            }
+            expect(cordovaSetVersion.bind(null, tempProvidedConfigFile, null, null))
+                .to.throw(TypeError)
+                .that.has.property('message')
+                .that.contains('callback')
+                .that.contains('must be');
         });
 
         it('(configPath, null, callback)', (done) => {
@@ -154,27 +133,21 @@ export default () => {
         it('(configPath, null)', () => {
             fs.copySync(entryConfigFiles.VERSION_AND_BUILD, tempProvidedConfigFile);
 
-            try {
-                cordovaSetVersion(tempProvidedConfigFile, null);
-            } catch (error) {
-                expect(error).to.exist;
-                expect(error).to.be.instanceOf(TypeError);
-                expect(error.message).to.contain('callback');
-                expect(error.message).to.contain('must be');
-            }
+            expect(cordovaSetVersion.bind(null, tempProvidedConfigFile, null))
+                .to.throw(TypeError)
+                .that.has.property('message')
+                .that.contains('callback')
+                .that.contains('must be');
         });
 
         it('(configPath, buildNumber, null)', () => {
             fs.copySync(entryConfigFiles.VERSION_AND_BUILD, tempProvidedConfigFile);
 
-            try {
-                cordovaSetVersion(tempProvidedConfigFile, 86, null);
-            } catch (error) {
-                expect(error).to.exist;
-                expect(error).to.be.instanceOf(TypeError);
-                expect(error.message).to.contain('callback');
-                expect(error.message).to.contain('must be');
-            }
+            expect(cordovaSetVersion.bind(null, tempProvidedConfigFile, 86, null))
+                .to.throw(TypeError)
+                .that.has.property('message')
+                .that.contains('callback')
+                .that.contains('must be');
         });
 
         it('(null, version, buildNumber, callback)', (done) => {
@@ -191,27 +164,21 @@ export default () => {
         it('(null, version, buildNumber, null)', () => {
             fs.copySync(entryConfigFiles.VERSION_AND_BUILD, tempConfigFile);
 
-            try {
-                cordovaSetVersion(null, '2.4.9', 86, null);
-            } catch (error) {
-                expect(error).to.exist;
-                expect(error).to.be.instanceOf(TypeError);
-                expect(error.message).to.contain('callback');
-                expect(error.message).to.contain('must be');
-            }
+            expect(cordovaSetVersion.bind(null, null, '2.4.9', 86, null))
+                .to.throw(TypeError)
+                .that.has.property('message')
+                .that.contains('callback')
+                .that.contains('must be');
         });
 
         it('(null, version, buildNumber)', () => {
             fs.copySync(entryConfigFiles.VERSION_AND_BUILD, tempConfigFile);
 
-            try {
-                cordovaSetVersion(null, '2.4.9', 86);
-            } catch (error) {
-                expect(error).to.exist;
-                expect(error).to.be.instanceOf(TypeError);
-                expect(error.message).to.contain('callback');
-                expect(error.message).to.contain('must be');
-            }
+            expect(cordovaSetVersion.bind(null, null, '2.4.9', 86))
+                .to.throw(TypeError)
+                .that.has.property('message')
+                .that.contains('callback')
+                .that.contains('must be');
         });
 
         it('(null, version, null, callback)', (done) => {
@@ -228,27 +195,21 @@ export default () => {
         it('(null, version, null, null)', () => {
             fs.copySync(entryConfigFiles.VERSION_AND_BUILD, tempConfigFile);
 
-            try {
-                cordovaSetVersion(null, '2.4.9', null, null);
-            } catch (error) {
-                expect(error).to.exist;
-                expect(error).to.be.instanceOf(TypeError);
-                expect(error.message).to.contain('callback');
-                expect(error.message).to.contain('must be');
-            }
+            expect(cordovaSetVersion.bind(null, null, '2.4.9', null, null))
+                .to.throw(TypeError)
+                .that.has.property('message')
+                .that.contains('callback')
+                .that.contains('must be');
         });
 
         it('(null, version, null)', () => {
             fs.copySync(entryConfigFiles.VERSION_AND_BUILD, tempConfigFile);
 
-            try {
-                cordovaSetVersion(null, '2.4.9', null);
-            } catch (error) {
-                expect(error).to.exist;
-                expect(error).to.be.instanceOf(TypeError);
-                expect(error.message).to.contain('callback');
-                expect(error.message).to.contain('must be');
-            }
+            expect(cordovaSetVersion.bind(null, null, '2.4.9', null))
+                .to.throw(TypeError)
+                .that.has.property('message')
+                .that.contains('callback')
+                .that.contains('must be');
         });
 
         it('(null, version, callback)', (done) => {
@@ -265,14 +226,11 @@ export default () => {
         it('(null, version)', () => {
             fs.copySync(entryConfigFiles.VERSION_AND_BUILD, tempConfigFile);
 
-            try {
-                cordovaSetVersion(null, '2.4.9');
-            } catch (error) {
-                expect(error).to.exist;
-                expect(error).to.be.instanceOf(TypeError);
-                expect(error.message).to.contain('callback');
-                expect(error.message).to.contain('must be');
-            }
+            expect(cordovaSetVersion.bind(null, null, '2.4.9'))
+                .to.throw(TypeError)
+                .that.has.property('message')
+                .that.contains('callback')
+                .that.contains('must be');
         });
 
         it('(null, null, buildNumber, callback)', (done) => {
@@ -289,27 +247,21 @@ export default () => {
         it('(null, null, buildNumber, null)', () => {
             fs.copySync(entryConfigFiles.VERSION_AND_BUILD, tempConfigFile);
 
-            try {
-                cordovaSetVersion(null, null, 86, null);
-            } catch (error) {
-                expect(error).to.exist;
-                expect(error).to.be.instanceOf(TypeError);
-                expect(error.message).to.contain('callback');
-                expect(error.message).to.contain('must be');
-            }
+            expect(cordovaSetVersion.bind(null, null, null, 86, null))
+                .to.throw(TypeError)
+                .that.has.property('message')
+                .that.contains('callback')
+                .that.contains('must be');
         });
 
         it('(null, null, buildNumber)', () => {
             fs.copySync(entryConfigFiles.VERSION_AND_BUILD, tempConfigFile);
 
-            try {
-                cordovaSetVersion(null, null, 86);
-            } catch (error) {
-                expect(error).to.exist;
-                expect(error).to.be.instanceOf(TypeError);
-                expect(error.message).to.contain('callback');
-                expect(error.message).to.contain('must be');
-            }
+            expect(cordovaSetVersion.bind(null, null, null, 86))
+                .to.throw(TypeError)
+                .that.has.property('message')
+                .that.contains('callback')
+                .that.contains('must be');
         });
 
         it('(null, null, null, callback)', (done) => {
@@ -327,27 +279,21 @@ export default () => {
         it('(null, null, null, null)', () => {
             fs.copySync(entryConfigFiles.VERSION_AND_BUILD, tempConfigFile);
 
-            try {
-                cordovaSetVersion(null, null, null, null);
-            } catch (error) {
-                expect(error).to.exist;
-                expect(error).to.be.instanceOf(TypeError);
-                expect(error.message).to.contain('callback');
-                expect(error.message).to.contain('must be');
-            }
+            expect(cordovaSetVersion.bind(null, null, null, null, null))
+                .to.throw(TypeError)
+                .that.has.property('message')
+                .that.contains('callback')
+                .that.contains('must be');
         });
 
         it('(null, null, null)', () => {
             fs.copySync(entryConfigFiles.VERSION_AND_BUILD, tempConfigFile);
 
-            try {
-                cordovaSetVersion(null, null, null);
-            } catch (error) {
-                expect(error).to.exist;
-                expect(error).to.be.instanceOf(TypeError);
-                expect(error.message).to.contain('callback');
-                expect(error.message).to.contain('must be');
-            }
+            expect(cordovaSetVersion.bind(null, null, null, null))
+                .to.throw(TypeError)
+                .that.has.property('message')
+                .that.contains('callback')
+                .that.contains('must be');
         });
 
         it('(null, null, callback)', (done) => {
@@ -365,14 +311,11 @@ export default () => {
         it('(null, null)', () => {
             fs.copySync(entryConfigFiles.VERSION_AND_BUILD, tempConfigFile);
 
-            try {
-                cordovaSetVersion(null, null, null, null);
-            } catch (error) {
-                expect(error).to.exist;
-                expect(error).to.be.instanceOf(TypeError);
-                expect(error.message).to.contain('callback');
-                expect(error.message).to.contain('must be');
-            }
+            expect(cordovaSetVersion.bind(null, null, null, null, null))
+                .to.throw(TypeError)
+                .that.has.property('message')
+                .that.contains('callback')
+                .that.contains('must be');
         });
 
         it('(null, buildNumber, callback)', (done) => {
@@ -389,27 +332,21 @@ export default () => {
         it('(null, buildNumber, null)', () => {
             fs.copySync(entryConfigFiles.VERSION_AND_BUILD, tempConfigFile);
 
-            try {
-                cordovaSetVersion(null, 86, null);
-            } catch (error) {
-                expect(error).to.exist;
-                expect(error).to.be.instanceOf(TypeError);
-                expect(error.message).to.contain('callback');
-                expect(error.message).to.contain('must be');
-            }
+            expect(cordovaSetVersion.bind(null, null, 86, null))
+                .to.throw(TypeError)
+                .that.has.property('message')
+                .that.contains('callback')
+                .that.contains('must be');
         });
 
         it('(null, buildNumber)', () => {
             fs.copySync(entryConfigFiles.VERSION_AND_BUILD, tempConfigFile);
 
-            try {
-                cordovaSetVersion(null, 86);
-            } catch (error) {
-                expect(error).to.exist;
-                expect(error).to.be.instanceOf(TypeError);
-                expect(error.message).to.contain('callback');
-                expect(error.message).to.contain('must be');
-            }
+            expect(cordovaSetVersion.bind(null, null, 86))
+                .to.throw(TypeError)
+                .that.has.property('message')
+                .that.contains('callback')
+                .that.contains('must be');
         });
 
         it('(null, callback)', (done) => {
@@ -427,27 +364,21 @@ export default () => {
         it('(null)', () => {
             fs.copySync(entryConfigFiles.VERSION_AND_BUILD, tempConfigFile);
 
-            try {
-                cordovaSetVersion(null, null, null, null);
-            } catch (error) {
-                expect(error).to.exist;
-                expect(error).to.be.instanceOf(TypeError);
-                expect(error.message).to.contain('callback');
-                expect(error.message).to.contain('must be');
-            }
+            expect(cordovaSetVersion.bind(null, null, null, null, null))
+                .to.throw(TypeError)
+                .that.has.property('message')
+                .that.contains('callback')
+                .that.contains('must be');
         });
 
         it('(version, buildNumber, null)', () => {
             fs.copySync(entryConfigFiles.VERSION_AND_BUILD, tempConfigFile);
 
-            try {
-                cordovaSetVersion('2.4.9', 86, null);
-            } catch (error) {
-                expect(error).to.exist;
-                expect(error).to.be.instanceOf(TypeError);
-                expect(error.message).to.contain('callback');
-                expect(error.message).to.contain('must be');
-            }
+            expect(cordovaSetVersion.bind(null, '2.4.9', 86, null))
+                .to.throw(TypeError)
+                .that.has.property('message')
+                .that.contains('callback')
+                .that.contains('must be');
         });
 
         it('(version, null, callback)', (done) => {
@@ -464,40 +395,31 @@ export default () => {
         it('(version, null, null)', () => {
             fs.copySync(entryConfigFiles.VERSION_AND_BUILD, tempConfigFile);
 
-            try {
-                cordovaSetVersion('2.4.9', null, null);
-            } catch (error) {
-                expect(error).to.exist;
-                expect(error).to.be.instanceOf(TypeError);
-                expect(error.message).to.contain('callback');
-                expect(error.message).to.contain('must be');
-            }
+            expect(cordovaSetVersion.bind(null, '2.4.9', null, null))
+                .to.throw(TypeError)
+                .that.has.property('message')
+                .that.contains('callback')
+                .that.contains('must be');
         });
 
         it('(version, null)', () => {
             fs.copySync(entryConfigFiles.VERSION_AND_BUILD, tempConfigFile);
 
-            try {
-                cordovaSetVersion('2.4.9', null);
-            } catch (error) {
-                expect(error).to.exist;
-                expect(error).to.be.instanceOf(TypeError);
-                expect(error.message).to.contain('callback');
-                expect(error.message).to.contain('must be');
-            }
+            expect(cordovaSetVersion.bind(null, '2.4.9', null))
+                .to.throw(TypeError)
+                .that.has.property('message')
+                .that.contains('callback')
+                .that.contains('must be');
         });
 
         it('(buildNumber, null)', () => {
             fs.copySync(entryConfigFiles.VERSION_AND_BUILD, tempConfigFile);
 
-            try {
-                cordovaSetVersion(86, null);
-            } catch (error) {
-                expect(error).to.exist;
-                expect(error).to.be.instanceOf(TypeError);
-                expect(error.message).to.contain('callback');
-                expect(error.message).to.contain('must be');
-            }
+            expect(cordovaSetVersion.bind(null, 86, null))
+                .to.throw(TypeError)
+                .that.has.property('message')
+                .that.contains('callback')
+                .that.contains('must be');
         });
     });
 }

@@ -12,14 +12,11 @@ export default () => {
         it('should return an error about callback type', () => {
             fs.copySync(entryConfigFiles.VERSION_AND_BUILD, tempProvidedConfigFile);
 
-            try {
-                cordovaSetVersion(tempProvidedConfigFile, '2.4.9', 86);
-            } catch (error) {
-                expect(error).to.exist;
-                expect(error).to.be.instanceOf(TypeError);
-                expect(error.message).to.contain('callback');
-                expect(error.message).to.contain('must be');
-            }
+            expect(cordovaSetVersion.bind(null, tempProvidedConfigFile, '2.4.9', 86))
+                .to.throw(TypeError)
+                .that.has.property('message')
+                .that.contains('callback')
+                .that.contains('must be');
         });
     });
 }
