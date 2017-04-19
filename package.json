@@ -27,6 +27,7 @@
   "devDependencies": {
     "babel-cli": "6.24.1",
     "babel-preset-latest": "6.24.1",
+    "babel-register": "^6.24.1",
     "chai": "3.5.0",
     "chai-as-promised": "6.0.0",
     "chai-files": "^1.4.0",
