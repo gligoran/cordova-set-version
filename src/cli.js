@@ -30,13 +30,12 @@ const cli = meow(
     }
 );
 
-const filename = cli.input[0] || 'config.xml';
-let promise = Promise.resolve();
+const filename = cli.input[0] || null;
+const version = cli.flags.version || null;
+const buildNumber = +cli.flags.buildNumber || null;
 
-if (cli.flags.version) {
-    promise = promise.then(() => setCordovaVersion.setVersion(filename, cli.flags.version));
-}
-
-if (cli.flags.buildNumber) {
-    promise = promise.then(() => setCordovaVersion.setBuildNumber(filename, cli.flags.buildNumber));
-}
+setCordovaVersion(filename, version, buildNumber, (error) => {
+    if (error) {
+        console.error(error);
+    }
+});
