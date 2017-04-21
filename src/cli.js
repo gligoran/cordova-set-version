@@ -34,8 +34,4 @@ const filename = cli.input[0] || null;
 const version = cli.flags.version || null;
 const buildNumber = +cli.flags.buildNumber || null;
 
-setCordovaVersion(filename, version, buildNumber, (error) => {
-    if (error) {
-        console.error(error);
-    }
-});
+setCordovaVersion(filename, version, buildNumber);

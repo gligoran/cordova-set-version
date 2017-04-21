@@ -38,8 +38,11 @@
     "mocha": "3.2.0",
     "mocha-better-spec-reporter": "3.1.0",
     "nyc": "10.2.0",
+    "proxyquire": "1.7.11",
     "rimraf": "2.6.1",
-    "semantic-release": "6.3.2"
+    "semantic-release": "6.3.2",
+    "sinon": "2.1.0",
+    "sinon-chai": "2.9.0"
   },
   "files": [
     "dist",
@@ -64,7 +67,8 @@
     "commit": "git-cz",
     "coverage": "nyc npm test",
     "postcoverage": "nyc check-coverage --statement 100 --branch 100 --function 100 --lines 100",
-    "report-coverage": "nyc report --reporter=lcov | codecov",
+    "report-coverage": "nyc report --reporter=lcov",
+    "upload-coverage": "codecov",
     "precommit": "npm run coverage",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post",
     "test": "mocha --compilers js:babel-register",

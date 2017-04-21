@@ -37,4 +37,5 @@ script:
 
 after_success:
   - npm run report-coverage
+  - npm run upload-coverage
   - npm run semantic-release

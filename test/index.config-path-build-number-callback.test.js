@@ -12,7 +12,7 @@ chai.use(chaiFiles);
 const expect = chai.expect;
 const file = chaiFiles.file;
 
-export default () => {
+function configPathBuildNumberCallbackTest() {
     describe('(configPath, buildNumber, callback)', () => {
         it('should override existing buildNumber and preserve existing version', (done) => {
             fs.copySync(entryConfigFiles.VERSION_AND_BUILD, tempProvidedConfigFile);
@@ -92,3 +92,5 @@ export default () => {
         });
     });
 }
+
+export default configPathBuildNumberCallbackTest;

@@ -3,20 +3,21 @@
 import { expect } from 'chai';
 import fs from 'fs-extra';
 
-import cordovaSetVersion from '../src/index';
+import useFakeRethrow from './use-fake-rethrow';
 import { tempConfigFile, tempProvidedConfigFile, entryConfigFiles, expectedXmlFiles } from './configs';
 import { tempPackageFile, entryPackageFiles } from './packages';
 
-export default () => {
+function versionBuildNumberTest() {
     describe('(version, buildNumber)', () => {
-        it('should return an error about callback type', () => {
+        it('should not throw an error', (done) => {
             fs.copySync(entryConfigFiles.VERSION_AND_BUILD, tempConfigFile);
 
+            let cordovaSetVersion = useFakeRethrow(done);
+
             expect(cordovaSetVersion.bind(null, '2.4.9', 86))
-                .to.throw(TypeError)
-                .that.has.property('message')
-                .that.contains('callback')
-                .that.contains('must be');
+                .to.not.throw();
         });
     });
 }
+
+export default versionBuildNumberTest;

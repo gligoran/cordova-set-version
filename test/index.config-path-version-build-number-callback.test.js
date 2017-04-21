@@ -5,6 +5,7 @@ import chaiFiles from 'chai-files';
 import fs from 'fs-extra';
 
 import cordovaSetVersion from '../src/index';
+import useFakeRethrow from './use-fake-rethrow';
 import { tempConfigFile, tempProvidedConfigFile, entryConfigFiles, expectedXmlFiles } from './configs';
 import { tempPackageFile, entryPackageFiles } from './packages';
 
@@ -12,7 +13,7 @@ chai.use(chaiFiles);
 const expect = chai.expect;
 const file = chaiFiles.file;
 
-export default () => {
+function configPathVersionBuildNumberCallbackTest() {
     describe('(configPath, version, buildNumber, callback)', () => {
         it('should override both existing version and buildNumber', (done) => {
             fs.copySync(entryConfigFiles.VERSION_AND_BUILD, tempProvidedConfigFile);
@@ -70,6 +71,16 @@ export default () => {
             });
         });
 
+        it('should return an error about callback type', () => {
+            fs.copySync(entryConfigFiles.VERSION_AND_BUILD, tempProvidedConfigFile);
+
+            expect(cordovaSetVersion.bind(null, tempProvidedConfigFile, '2.4.9', 86, {}))
+                .to.throw(TypeError)
+                .to.have.property('message')
+                .that.contains('callback')
+                .that.contains('must be a');
+        });
+
         it('should return an error about version type', (done) => {
             fs.copySync(entryConfigFiles.VERSION_AND_BUILD, tempProvidedConfigFile);
 
@@ -116,3 +127,5 @@ export default () => {
         });
     });
 }
+
+export default configPathVersionBuildNumberCallbackTest;

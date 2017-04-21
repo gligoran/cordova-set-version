@@ -24,6 +24,7 @@ import buildNumberTest from './index.build-number.test';
 import callbackTest from './index.callback.test';
 import noArgumentsTest from './index.no-arguments.test';
 import nullsTest from './index.nulls.test';
+import rethrowTest from './index.rethrow.test';
 
 describe('cordova-set-version', () => {
     before(() => {
@@ -34,7 +35,7 @@ describe('cordova-set-version', () => {
         expect(cordovaSetVersion).to.exist;
     });
 
-    it('should be a functon', () => {
+    it('should be a function', () => {
         expect(cordovaSetVersion).to.be.a('function');
     });
 
@@ -55,6 +56,7 @@ describe('cordova-set-version', () => {
     callbackTest();
     noArgumentsTest();
     nullsTest();
+    rethrowTest();
 
     afterEach(() => {
         if (fs.existsSync(tempConfigFile)) {

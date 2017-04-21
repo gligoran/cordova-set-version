@@ -3,6 +3,8 @@
 import fs from 'fs';
 import { Parser, Builder } from 'xml2js';
 
+import rethrow from './rethrow';
+
 const xmlParser = new Parser();
 const xmlBuilder = new Builder();
 const DefaultConfigPath = './config.xml';
@@ -14,63 +16,16 @@ const DefaultConfigPath = './config.xml';
  * @param {number} [buildNumber]
  * @param {function} callback 
  */
-export default (configPath, version, buildNumber, callback) => {
-    if (typeof configPath === 'function') {                 // (callback)
-        callback = configPath;
-        configPath = DefaultConfigPath;
-        version = null;
-        buildNumber = null;
-    } else if (typeof version === 'function') {
-        callback = version;
-
-        if (typeof configPath === 'number') {               // (buildNumber, callback)
-            buildNumber = configPath;
-            configPath = DefaultConfigPath;
-            version = null;
-        } else if (typeof configPath === 'string') {
-            if (configPath.indexOf('.xml') >= 0) {          // (configPath, callback)
-                version = null;
-            } else {                                        // (version, callback)
-                version = configPath;
-                configPath = DefaultConfigPath;
-            }
-
-            buildNumber = null;
-        } else {                                            // (?, callback)
-            version = null;
-            buildNumber = null;
-        }
-    } else if (typeof buildNumber === 'function') {
-        callback = buildNumber;
-
-        if (typeof configPath === 'string') {
-            if (configPath.indexOf('.xml') >= 0) {
-                if (typeof version === 'number') {          // (configPath, buildNumber, callback)
-                    buildNumber = version;
-                    version = null;
-                } else {                                    // (configPath, version, callback)
-                    buildNumber = null;
-                }
-            } else {                                        // (verion, buildNumber, callback)
-                buildNumber = version;
-                version = configPath;
-                configPath = DefaultConfigPath;
-            }
-        } else if (typeof version === 'number') {
-            buildNumber = version;
-            version = null;
-        } else {                                            // (?, version, callback)
-            buildNumber = null;
-        }
-    }                                                       // (configPath, version, buildNumber, callback)
+function cordovaSetVersion(...args) {
+    let [configPath, version, buildNumber, callback] = parseArguments(...args);
 
     configPath = configPath || DefaultConfigPath;
     version = version || null;
     buildNumber = buildNumber || null;
-    callback = callback || null;
+    callback = callback || rethrow();
 
     if (typeof callback !== 'function') {
-        throw new TypeError('"callback" argument must be a callback');
+        throw new TypeError('"callback" argument must be a function');
     }
 
     if (typeof configPath !== 'string') {
@@ -135,3 +90,79 @@ export default (configPath, version, buildNumber, callback) => {
         }
     });
 }
+
+function parseArguments(...args) {
+    if (args.length === 0) {
+        return [null, null, null, null];
+    }
+
+    if (args.length === 1) {
+        if (typeof args[0] === 'string') {
+            if (args[0].indexOf('.xml') >= 0) {
+                return [args[0], null, null, null];
+            } else {
+                return [null, args[0], null, null];
+            }
+        } else if (typeof args[0] === 'number') {
+            return [null, null, args[0], null];
+        } else if (typeof args[0] === 'function') {
+            return [null, null, null, args[0]];
+        }
+
+        return [args[0], null, null, null];
+    }
+
+    if (args.length === 2) {
+        if (typeof args[0] === 'string') {
+            if (args[0].indexOf('.xml') >= 0) {
+                if (typeof args[1] === 'number') {
+                    return [args[0], null, args[1], null];
+                } else if (typeof args[1] === 'function') {
+                    return [args[0], null, null, args[1]];
+                } else {
+                    return [args[0], args[1], null, null];
+                }
+            } else {
+                if (typeof args[1] === 'function') {
+                    return [null, args[0], null, args[1]];
+                }
+
+                return [null, args[0], args[1], null];
+            }
+        } else if (typeof args[0] === 'number') {
+            return [null, null, args[0], args[1]];
+        } else if (typeof args[1] === 'number') {
+            return [args[0], null, args[1], null];
+        } else if (typeof args[1] === 'function') {
+            return [args[0], null, null, args[1]];
+        }
+
+        return [args[0], args[1], null, null];
+    }
+
+    if (args.length === 3) {
+        if (typeof args[0] === 'string') {
+            if (args[0].indexOf('.xml') >= 0) {
+                if (typeof args[1] === 'number') {
+                    return [args[0], null, args[1], args[2]];
+                } else if (typeof args[2] === 'function') {
+                    return [args[0], args[1], null, args[2]];
+                }
+
+                return [args[0], args[1], args[2], null];
+            }
+
+            return [null, args[0], args[1], args[2]];
+        } else if (typeof args[1] === 'number') {
+            return [args[0], null, args[1], args[2]];
+        } else if (typeof args[2] === 'function') {
+            return [args[0], args[1], null, args[2]];
+        }
+
+        return args;
+    }
+
+    return args;
+}
+
+export default cordovaSetVersion;
