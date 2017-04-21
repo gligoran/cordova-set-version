@@ -74,5 +74,5 @@
     "test": "mocha --compilers js:babel-register",
     "test:watch": "npm test -- --watch --reporter mocha-better-spec-reporter --reporter-options clear-screen=true"
   },
-  "version": "0.0.0-development"
+  "version": "4.0.1"
 }
