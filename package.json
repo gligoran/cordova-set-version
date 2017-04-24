@@ -35,7 +35,7 @@
     "fs-extra": "2.1.2",
     "fs-promise": "2.0.2",
     "husky": "0.13.3",
-    "mocha": "3.2.0",
+    "mocha": "3.3.0",
     "mocha-better-spec-reporter": "3.1.0",
     "nyc": "10.2.0",
     "proxyquire": "1.7.11",
