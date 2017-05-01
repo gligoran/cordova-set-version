@@ -42,7 +42,7 @@
     "rimraf": "2.6.1",
     "semantic-release": "6.3.2",
     "sinon": "2.1.0",
-    "sinon-chai": "2.9.0"
+    "sinon-chai": "2.10.0"
   },
   "files": [
     "dist",
