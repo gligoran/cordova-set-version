@@ -1,15 +1,15 @@
-'use strict';
+'use strict'
 
-import proxyquire from 'proxyquire';
+import proxyquire from 'proxyquire'
 
-function useFakeRethrow(done) {
-    return proxyquire.noCallThru().load('../src/index', { './rethrow': fakeRethrow }).default;
+function useFakeRethrow (done) {
+  return proxyquire.noCallThru().load('../src/index', { './rethrow': fakeRethrow }).default
 
-    function fakeRethrow() {
-        return (error) => {
-            done();
-        }
+  function fakeRethrow () {
+    return (error) => { // eslint-disable-line handle-callback-err
+      done()
     }
+  }
 }
 
-export default useFakeRethrow;
+export default useFakeRethrow

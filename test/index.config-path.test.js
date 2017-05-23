@@ -1,29 +1,25 @@
-'use strict';
+'use strict'
 
-import chai from 'chai';
-import chaiFiles from 'chai-files';
-import fs from 'fs-extra';
+import { describe, it } from 'mocha'
+import { expect } from 'chai'
+import fs from 'fs-extra'
 
-import useFakeRethrow from './use-fake-rethrow';
-import { tempConfigFile, tempProvidedConfigFile, entryConfigFiles, expectedXmlFiles } from './configs';
-import { tempPackageFile, entryPackageFiles } from './packages';
+import useFakeRethrow from './use-fake-rethrow'
+import { tempProvidedConfigFile, entryConfigFiles } from './configs'
+import { tempPackageFile, entryPackageFiles } from './packages'
 
-chai.use(chaiFiles);
-const expect = chai.expect;
-const file = chaiFiles.file;
+function configPathTest () {
+  describe('(configPath)', () => {
+    it('should not throw an error', (done) => {
+      fs.copySync(entryConfigFiles.VERSION_AND_BUILD, tempProvidedConfigFile)
+      fs.copySync(entryPackageFiles.GOOD, tempPackageFile)
 
-function configPathTest() {
-    describe('(configPath)', () => {
-        it('should not throw an error', (done) => {
-            fs.copySync(entryConfigFiles.VERSION_AND_BUILD, tempProvidedConfigFile);
-            fs.copySync(entryPackageFiles.GOOD, tempPackageFile);
+      let cordovaSetVersion = useFakeRethrow(done)
 
-            let cordovaSetVersion = useFakeRethrow(done);
-
-            expect(cordovaSetVersion.bind(null, tempProvidedConfigFile))
-                .to.not.throw();
-        });
-    });
+      expect(cordovaSetVersion.bind(null, tempProvidedConfigFile))
+                .to.not.throw()
+    })
+  })
 }
 
-export default configPathTest;
+export default configPathTest
