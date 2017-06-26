@@ -36,7 +36,7 @@
     "husky": "0.14.1",
     "mocha": "3.4.1",
     "mocha-better-spec-reporter": "3.1.0",
-    "nyc": "11.0.2",
+    "nyc": "11.0.3",
     "proxyquire": "1.8.0",
     "rimraf": "2.6.1",
     "semantic-release": "6.3.6",
