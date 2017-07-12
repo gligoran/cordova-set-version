@@ -26,7 +26,7 @@
     "babel-cli": "6.24.1",
     "babel-preset-latest": "6.24.1",
     "babel-register": "6.24.1",
-    "chai": "4.0.2",
+    "chai": "4.1.0",
     "chai-files": "1.4.0",
     "codecov": "2.2.0",
     "commitizen": "2.9.6",
