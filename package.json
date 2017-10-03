@@ -1,78 +1,78 @@
 {
-  "author": "Goran Gligorin <goran@gligorin.com> (http://gorangligorin.com/)",
-  "babel": {
-    "presets": [
-      "latest"
-    ]
-  },
-  "bin": {
-    "cordova-set-version": "dist/cli.js"
-  },
-  "bugs": {
-    "url": "https://github.com/gligoran/cordova-set-version/issues"
-  },
-  "config": {
-    "commitizen": {
-      "path": "cz-conventional-changelog"
-    }
-  },
-  "dependencies": {
-    "meow": "^3.7.0",
-    "read-pkg": "^2.0.0",
-    "xml2js": "^0.4.17"
-  },
-  "description": "CLI and JavaScript API for setting the version in Apache Cordova config.xml",
-  "devDependencies": {
-    "babel-cli": "^6.24.1",
-    "babel-preset-latest": "^6.24.1",
-    "babel-register": "^6.24.1",
-    "chai": "^4.1.0",
-    "chai-files": "^1.4.0",
-    "codecov": "^2.2.0",
-    "commitizen": "^2.9.6",
-    "cz-conventional-changelog": "^2.0.0",
-    "dirty-chai": "^2.0.1",
-    "fs-extra": "^4.0.0",
-    "husky": "^0.14.3",
-    "mocha": "^4.0.0",
-    "mocha-better-spec-reporter": "^3.1.0",
-    "nyc": "^11.1.0",
-    "proxyquire": "^1.8.0",
-    "rimraf": "^2.6.1",
-    "semantic-release": "^8.0.0",
-    "standard": "^10.0.2"
-  },
-  "files": [
-    "dist",
-    "README.md"
-  ],
-  "homepage": "https://github.com/gligoran/cordova-set-version#readme",
-  "keywords": [
-    "apache",
-    "cordova",
-    "version"
-  ],
-  "license": "ISC",
-  "main": "dist/index.js",
-  "name": "cordova-set-version",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/gligoran/cordova-set-version.git"
-  },
-  "scripts": {
-    "build": "babel --out-dir dist src",
-    "commit": "git-cz",
-    "coverage": "nyc npm test",
-    "lint": "standard",
-    "lint:fix": "standard --fix",
-    "postcoverage": "nyc check-coverage --statement 100 --branch 100 --function 100 --lines 100",
-    "prebuild": "rimraf build",
-    "precommit": "npm run coverage",
-    "report-coverage": "nyc report --reporter=lcov",
-    "semantic-release": "semantic-release pre && npm publish && semantic-release post",
-    "test": "npm run lint && mocha --compilers js:babel-register",
-    "test:watch": "npm test -- --watch --reporter mocha-better-spec-reporter --reporter-options clear-screen=true",
-    "upload-coverage": "codecov"
-  },
-  "version": "4.0.1"
+    "author": "Goran Gligorin <goran@gligorin.com> (http://gorangligorin.com/)",
+    "babel": {
+        "presets": [
+            "latest"
+        ]
+    },
+    "bin": {
+        "cordova-set-version": "dist/cli.js"
+    },
+    "bugs": {
+        "url": "https://github.com/gligoran/cordova-set-version/issues"
+    },
+    "config": {
+        "commitizen": {
+            "path": "cz-conventional-changelog"
+        }
+    },
+    "dependencies": {
+        "meow": "^3.7.0",
+        "read-pkg": "^2.0.0",
+        "xml2js": "^0.4.19"
+    },
+    "description": "CLI and JavaScript API for setting the version in Apache Cordova config.xml",
+    "devDependencies": {
+        "babel-cli": "^6.26.0",
+        "babel-preset-latest": "^6.24.1",
+        "babel-register": "^6.26.0",
+        "chai": "^4.1.2",
+        "chai-files": "^1.4.0",
+        "codecov": "^2.3.0",
+        "commitizen": "^2.9.6",
+        "cz-conventional-changelog": "^2.0.0",
+        "dirty-chai": "^2.0.1",
+        "fs-extra": "^4.0.2",
+        "husky": "^0.14.3",
+        "mocha": "^4.0.0",
+        "mocha-better-spec-reporter": "^3.1.0",
+        "nyc": "^11.2.1",
+        "proxyquire": "^1.8.0",
+        "rimraf": "^2.6.2",
+        "semantic-release": "^8.0.3",
+        "standard": "^10.0.3"
+    },
+    "files": [
+        "dist",
+        "README.md"
+    ],
+    "homepage": "https://github.com/gligoran/cordova-set-version#readme",
+    "keywords": [
+        "apache",
+        "cordova",
+        "version"
+    ],
+    "license": "ISC",
+    "main": "dist/index.js",
+    "name": "cordova-set-version",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/gligoran/cordova-set-version.git"
+    },
+    "scripts": {
+        "build": "babel --out-dir dist src",
+        "commit": "git-cz",
+        "coverage": "nyc npm test",
+        "lint": "standard",
+        "lint:fix": "standard --fix",
+        "postcoverage": "nyc check-coverage --statement 100 --branch 100 --function 100 --lines 100",
+        "prebuild": "rimraf build",
+        "precommit": "npm run coverage",
+        "report-coverage": "nyc report --reporter=lcov",
+        "semantic-release": "semantic-release pre && npm publish && semantic-release post",
+        "test": "npm run lint && mocha --compilers js:babel-register",
+        "test:watch": "npm test -- --watch --reporter mocha-better-spec-reporter --reporter-options clear-screen=true",
+        "upload-coverage": "codecov"
+    },
+    "version": "4.0.1"
 }
