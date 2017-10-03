@@ -131,6 +131,7 @@ function nullsTest() {
 
         it('(configPath, null)', done => {
             fs.copySync(entryConfigFiles.VERSION_AND_BUILD, tempProvidedConfigFile);
+            fs.copySync(entryPackageFiles.GOOD, tempPackageFile);
 
             const csv = useFakeRethrow(done);
 

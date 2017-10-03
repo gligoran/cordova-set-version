@@ -12,8 +12,7 @@ function configPathVersionTest() {
 
             const cordovaSetVersion = useFakeRethrow(done);
 
-            expect(cordovaSetVersion.bind(null, tempProvidedConfigFile, '2.4.9'))
-                .to.not.throw();
+            expect(cordovaSetVersion.bind(null, tempProvidedConfigFile, '2.4.9')).to.not.throw();
         });
     });
 }

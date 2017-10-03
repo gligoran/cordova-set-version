@@ -72,7 +72,7 @@
         "precommit": "npm run coverage",
         "report-coverage": "nyc report --reporter=lcov",
         "semantic-release": "semantic-release pre && npm publish && semantic-release post",
-        "test": "npm run lint && mocha --compilers js:babel-register",
+        "test": "npm run lint && mocha --require babel-register",
         "test:watch": "npm test -- --watch --reporter mocha-better-spec-reporter --reporter-options clear-screen=true",
         "upload-coverage": "codecov"
     },

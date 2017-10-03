@@ -1,8 +1,5 @@
 import fs from 'fs';
-import {
-    Parser,
-    Builder
-} from 'xml2js';
+import { Parser, Builder } from 'xml2js';
 
 import rethrow from './rethrow';
 
@@ -40,6 +37,11 @@ function cordovaSetVersion(...args) {
     }
 
     if (buildNumber && typeof buildNumber !== 'number') {
+        callback(new TypeError('"buildNumber" argument must be an integer'));
+        return;
+    }
+
+    if (buildNumber && buildNumber !== parseInt(buildNumber, 10)) {
         callback(new TypeError('"buildNumber" argument must be an integer'));
         return;
     }

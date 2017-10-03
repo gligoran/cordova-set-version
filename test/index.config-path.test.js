@@ -14,8 +14,7 @@ function configPathTest() {
 
             const cordovaSetVersion = useFakeRethrow(done);
 
-            expect(cordovaSetVersion.bind(null, tempProvidedConfigFile))
-                .to.not.throw();
+            expect(cordovaSetVersion.bind(null, tempProvidedConfigFile)).to.not.throw();
         });
     });
 }

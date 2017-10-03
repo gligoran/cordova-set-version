@@ -5,7 +5,12 @@ function useFakeRethrow(done) {
 
     function fakeRethrow() {
         return error => { // eslint-disable-line no-unused-vars
-            done();
+            if (error) {
+                done(error);
+                throw error;
+            } else {
+                done();
+            }
         };
     }
 }

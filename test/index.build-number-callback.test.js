@@ -96,6 +96,18 @@ function buildNumberCallbackTest() {
                 done();
             });
         });
+
+        it('should return an error about buildNumber type', done => {
+            fs.copySync(entryConfigFiles.MALFORMED, tempConfigFile);
+
+            cordovaSetVersion(86.2, error => {
+                expect(error).to.exist();
+                expect(error.message).to.contain('buildNumber');
+                expect(error.message).to.contain('must be an');
+
+                done();
+            });
+        });
     });
 }
 

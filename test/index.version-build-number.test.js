@@ -12,8 +12,7 @@ function versionBuildNumberTest() {
 
             const cordovaSetVersion = useFakeRethrow(done);
 
-            expect(cordovaSetVersion.bind(null, '2.4.9', 86))
-                .to.not.throw();
+            expect(cordovaSetVersion.bind(null, '2.4.9', 86)).to.not.throw();
         });
     });
 }

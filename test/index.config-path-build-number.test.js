@@ -12,8 +12,7 @@ function configPathBuildNumberTest() {
 
             const cordovaSetVersion = useFakeRethrow(done);
 
-            expect(cordovaSetVersion.bind(null, tempProvidedConfigFile, 86))
-                .to.not.throw();
+            expect(cordovaSetVersion.bind(null, tempProvidedConfigFile, 86)).to.not.throw();
         });
     });
 }

@@ -14,8 +14,7 @@ function noArgumentsTest() {
 
             const cordovaSetVersion = useFakeRethrow(done);
 
-            expect(cordovaSetVersion.bind(null))
-                .to.not.throw();
+            expect(cordovaSetVersion.bind(null)).to.not.throw();
         });
     });
 }
