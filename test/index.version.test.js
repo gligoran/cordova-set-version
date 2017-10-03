@@ -1,25 +1,23 @@
-'use strict'
+import { describe, it } from 'mocha';
+import { expect } from 'chai';
+import fs from 'fs-extra';
 
-import { describe, it } from 'mocha'
-import { expect } from 'chai'
-import fs from 'fs-extra'
+import useFakeRethrow from './use-fake-rethrow';
+import { tempProvidedConfigFile, entryConfigFiles } from './configs';
+import { tempPackageFile, entryPackageFiles } from './packages';
 
-import useFakeRethrow from './use-fake-rethrow'
-import { tempProvidedConfigFile, entryConfigFiles } from './configs'
-import { tempPackageFile, entryPackageFiles } from './packages'
+function versionTest() {
+    describe('(version)', () => {
+        it('should not throw an error', done => {
+            fs.copySync(entryConfigFiles.VERSION_AND_BUILD, tempProvidedConfigFile);
+            fs.copySync(entryPackageFiles.GOOD, tempPackageFile);
 
-function versionTest () {
-  describe('(version)', () => {
-    it('should not throw an error', (done) => {
-      fs.copySync(entryConfigFiles.VERSION_AND_BUILD, tempProvidedConfigFile)
-      fs.copySync(entryPackageFiles.GOOD, tempPackageFile)
+            const cordovaSetVersion = useFakeRethrow(done);
 
-      let cordovaSetVersion = useFakeRethrow(done)
-
-      expect(cordovaSetVersion.bind(null, '2.4.9'))
-                .to.not.throw()
-    })
-  })
+            expect(cordovaSetVersion.bind(null, '2.4.9'))
+                .to.not.throw();
+        });
+    });
 }
 
-export default versionTest
+export default versionTest;

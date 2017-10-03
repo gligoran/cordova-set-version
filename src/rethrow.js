@@ -1,9 +1,9 @@
-function rethrow () {
-  return (error) => {
-    if (error) {
-      throw error
-    }
-  }
+function rethrow() {
+    return error => {
+        if (error) {
+            throw error;
+        }
+    };
 }
 
-export default rethrow
+export default rethrow;

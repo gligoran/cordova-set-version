@@ -1,0 +1,33 @@
+{
+    "extends": "airbnb-base",
+    "rules": {
+        "arrow-parens": [
+            "error",
+            "as-needed"
+        ],
+        "comma-dangle": [
+            "error",
+            "never"
+        ],
+        "eol-last": [
+            "error",
+            "always"
+        ],
+        "indent": [
+            "error",
+            4
+        ],
+        "no-multiple-empty-lines": [
+            "error",
+            {
+                "max": 1,
+                "maxBOF": 0,
+                "maxEOF": 1
+            }
+        ],
+        "no-use-before-define": [
+            "error",
+            "nofunc"
+        ]
+    }
+}
