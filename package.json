@@ -18,7 +18,7 @@
     },
     "dependencies": {
         "meow": "^3.7.0",
-        "read-pkg": "^2.0.0",
+        "read-pkg": "^3.0.0",
         "xml2js": "^0.4.19"
     },
     "description": "CLI and JavaScript API for setting the version in Apache Cordova config.xml",
