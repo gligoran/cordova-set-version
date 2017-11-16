@@ -27,8 +27,8 @@ export const expectedXmlFiles = {
     BUILD_TO_NO_VERSION_AND_BUILD: './configs/expected/config.build.to.no-version-and-build.xml',
     BUILD_TO_NO_VERSION_AND_NO_BUILD: './configs/expected/config.build.to.no-version-and-no-build.xml',
 
-    PACKAGE_VERSION_TO_VERSION_AND_BUILD: './configs/expected/config.package-verison.to.version-and-build.xml',
-    PACKAGE_VERSION_TO_VERSION_AND_NO_BUILD: './configs/expected/config.package-verison.to.version-and-no-build.xml',
-    PACKAGE_VERSION_TO_NO_VERSION_AND_BUILD: './configs/expected/config.package-verison.to.no-version-and-build.xml',
-    PACKAGE_VERSION_TO_NO_VERSION_AND_NO_BUILD: './configs/expected/config.package-verison.to.no-version-and-no-build.xml'
+    PACKAGE_VERSION_TO_VERSION_AND_BUILD: './configs/expected/config.package-version.to.version-and-build.xml',
+    PACKAGE_VERSION_TO_VERSION_AND_NO_BUILD: './configs/expected/config.package-version.to.version-and-no-build.xml',
+    PACKAGE_VERSION_TO_NO_VERSION_AND_BUILD: './configs/expected/config.package-version.to.no-version-and-build.xml',
+    PACKAGE_VERSION_TO_NO_VERSION_AND_NO_BUILD: './configs/expected/config.package-version.to.no-version-and-no-build.xml'
 };

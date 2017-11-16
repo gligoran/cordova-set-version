@@ -30,25 +30,20 @@ $ npm install cordova-set-version
 ```js
 const cordovaSetVersion = require('cordova-set-version');
 
-function cb(error) {
-    // called when finished or error
-}
-
 cordovaSetVersion('2.4.9');
 cordovaSetVersion('./config.alt.xml', '2.4.9');
 cordovaSetVersion('./config.alt.xml', 86);
-cordovaSetVersion('./config.alt.xml', '2.4.9', 86);
-cordovaSetVersion('./config.alt.xml', '2.4.9', cb);
+cordovaSetVersion('./config.alt.xml', '2.4.9', 86)
+    .catch(error => { ... });
 ```
 
 ## API
 
-### cordovaSetVersion([configPath], [version], [buildNumber], [callback])
+### cordovaSetVersion([configPath], [version], [buildNumber]): Promise
 
 - `configPath` *(string)* - path to your `config.xml`
 - `version` *(string)* - version to be written
 - `buildNumber` *(number)* - build number to be written
-- `callback` *(Function)* - function to be called when finished or an error happens
 
 ## CLI
 

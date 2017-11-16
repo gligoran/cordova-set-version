@@ -2,7 +2,14 @@
     "author": "Goran Gligorin <goran@gligorin.com> (http://gorangligorin.com/)",
     "babel": {
         "presets": [
-            "latest"
+            [
+                "env",
+                {
+                    "targets": {
+                        "node": "4"
+                    }
+                }
+            ]
         ]
     },
     "bin": {
@@ -19,14 +26,18 @@
     "dependencies": {
         "meow": "^3.7.0",
         "read-pkg": "^3.0.0",
-        "xml2js": "^0.4.19"
+        "util-promisify": "^2.1.0",
+        "xml2js": "^0.4.19",
+        "xml2js-es6-promise": "^1.1.1"
     },
     "description": "CLI and JavaScript API for setting the version in Apache Cordova config.xml",
     "devDependencies": {
         "babel-cli": "^6.26.0",
-        "babel-preset-latest": "^6.24.1",
+        "babel-polyfill": "^6.26.0",
+        "babel-preset-env": "^1.6.1",
         "babel-register": "^6.26.0",
         "chai": "^4.1.2",
+        "chai-as-promised": "^7.1.1",
         "chai-files": "^1.4.0",
         "codecov": "^3.0.0",
         "commitizen": "^2.9.6",
@@ -72,7 +83,7 @@
         "precommit": "npm run coverage",
         "report-coverage": "nyc report --reporter=lcov",
         "semantic-release": "semantic-release pre && npm publish && semantic-release post",
-        "test": "npm run lint && mocha --require babel-register",
+        "test": "npm run lint && mocha --require babel-register --require babel-polyfill",
         "test:watch": "npm test -- --watch --reporter mocha-better-spec-reporter --reporter-options clear-screen=true",
         "upload-coverage": "codecov"
     },

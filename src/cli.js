@@ -18,15 +18,17 @@ const help = `
       $ cordova-set-version -v 2.4.9 -b 86
 `;
 
-const cli = meow({
+const options = {
     version: false,
     help
-}, {
-    alias: {
-        v: 'version',
-        b: 'buildNumber'
-    }
-});
+};
+
+const alias = {
+    v: 'version',
+    b: 'buildNumber'
+};
+
+const cli = meow(options, { alias });
 
 const filename = cli.input[0] || null;
 const version = cli.flags.version || null;
