@@ -2,7 +2,7 @@
 
 import meow from 'meow';
 
-import setCordovaVersion from './index';
+import cordovaSetVersion from './index';
 
 const help = `
     Usage
@@ -39,4 +39,4 @@ const filename = cli.input[0] || null;
 const version = cli.flags.version || null;
 const buildNumber = +cli.flags.buildNumber || null;
 
-setCordovaVersion(filename, version, buildNumber);
+cordovaSetVersion(filename, version, buildNumber);
