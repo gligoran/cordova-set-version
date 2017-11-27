@@ -10,6 +10,9 @@
                     }
                 }
             ]
+        ],
+        "plugins": [
+            "transform-runtime"
         ]
     },
     "bin": {
@@ -33,9 +36,11 @@
     "description": "CLI and JavaScript API for setting the version in Apache Cordova config.xml",
     "devDependencies": {
         "babel-cli": "^6.26.0",
+        "babel-plugin-transform-runtime": "^6.23.0",
         "babel-polyfill": "^6.26.0",
         "babel-preset-env": "^1.6.1",
         "babel-register": "^6.26.0",
+        "babel-runtime": "^6.26.0",
         "chai": "^4.1.2",
         "chai-as-promised": "^7.1.1",
         "chai-files": "^1.4.0",
