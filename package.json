@@ -1,6 +1,9 @@
 {
     "author": "Goran Gligorin <goran@gligorin.com> (http://gorangligorin.com/)",
     "babel": {
+        "plugins": [
+            "transform-runtime"
+        ],
         "presets": [
             [
                 "env",
@@ -10,9 +13,6 @@
                     }
                 }
             ]
-        ],
-        "plugins": [
-            "transform-runtime"
         ]
     },
     "bin": {
