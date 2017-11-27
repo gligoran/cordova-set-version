@@ -28,7 +28,7 @@
     },
     "dependencies": {
         "babel-runtime": "^6.26.0",
-        "meow": "^3.7.0",
+        "meow": "^4.0.0",
         "read-pkg": "^3.0.0",
         "util-promisify": "^2.1.0",
         "xml2js": "^0.4.19",
@@ -44,6 +44,7 @@
         "chai": "^4.1.2",
         "chai-as-promised": "^7.1.1",
         "chai-files": "^1.4.0",
+        "child-process-promise": "^2.2.1",
         "codecov": "^3.0.0",
         "commitizen": "^2.9.6",
         "cz-conventional-changelog": "^2.0.0",
@@ -73,6 +74,17 @@
     "license": "ISC",
     "main": "dist/index.js",
     "name": "cordova-set-version",
+    "nyc": {
+        "branches": 100,
+        "check-coverage": true,
+        "include": [
+            "src/**/*.js"
+        ],
+        "functions": 100,
+        "lines": 100,
+        "per-file": true,
+        "statements": 100
+    },
     "repository": {
         "type": "git",
         "url": "https://github.com/gligoran/cordova-set-version.git"
@@ -83,12 +95,12 @@
         "coverage": "nyc npm test",
         "lint": "eslint src test",
         "lint:fix": "npm run lint -- --fix",
-        "postcoverage": "nyc check-coverage --statement 100 --branch 100 --function 100 --lines 100",
+        "postcoverage": "nyc check-coverage",
         "prebuild": "rimraf build",
         "precommit": "npm run coverage",
         "report-coverage": "nyc report --reporter=lcov",
         "semantic-release": "semantic-release pre && npm publish && semantic-release post",
-        "test": "npm run lint && mocha --require babel-register --require babel-polyfill",
+        "test": "npm run lint && npm run build && chmod +x dist/cli.js && mocha --require babel-register --require babel-polyfill",
         "test:watch": "npm test -- --watch --reporter mocha-better-spec-reporter --reporter-options clear-screen=true",
         "upload-coverage": "codecov"
     },

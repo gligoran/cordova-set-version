@@ -19,16 +19,21 @@ const help = `
 `;
 
 const options = {
-    version: false,
-    help
+    flags: {
+        version: {
+            type: 'string',
+            alias: 'v'
+        },
+        buildNumber: {
+            type: 'number',
+            alias: 'b'
+        }
+    },
+    help,
+    autoVersion: false
 };
 
-const alias = {
-    v: 'version',
-    b: 'buildNumber'
-};
-
-const cli = meow(options, { alias });
+const cli = meow(options);
 
 const filename = cli.input[0] || null;
 const version = cli.flags.version || null;
