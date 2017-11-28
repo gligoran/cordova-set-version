@@ -3,7 +3,7 @@ import chai, { expect } from 'chai';
 import dirtyChai from 'dirty-chai';
 import fs from 'fs-extra';
 
-import cordovaSetVersion from '../src/index';
+import cordovaSetVersion from '../src/';
 import { tempConfigFile, tempProvidedConfigFile } from './configs';
 import { tempPackageFile } from './packages';
 

@@ -4,7 +4,7 @@ import dirtyChai from 'dirty-chai';
 import chaiFiles, { file } from 'chai-files';
 import fs from 'fs-extra';
 
-import cordovaSetVersion from '../src/index';
+import cordovaSetVersion from '../src/';
 import { tempConfigFile, entryConfigFiles, expectedXmlFiles } from './configs';
 
 chai.use(chaiFiles);
