@@ -30,6 +30,7 @@ $ npm install cordova-set-version
 ```js
 const cordovaSetVersion = require('cordova-set-version');
 
+cordovaSetVersion(); // reads version from package.json
 cordovaSetVersion('2.4.9');
 cordovaSetVersion('./config.alt.xml', '2.4.9');
 cordovaSetVersion('./config.alt.xml', 86);
@@ -58,6 +59,7 @@ Options:
 Examples
 
 ```
+$ cordova-set-version
 $ cordova-set-version -v 2.4.9
 $ cordova-set-version -b 86
 $ cordova-set-version -v 2.4.9 -b 86
