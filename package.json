@@ -61,7 +61,7 @@
         "nyc": "^11.2.1",
         "proxyquire": "^1.8.0",
         "rimraf": "^2.6.2",
-        "semantic-release": "^8.2.0"
+        "semantic-release": "^11.0.2"
     },
     "files": [
         "dist",
