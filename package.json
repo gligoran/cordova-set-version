@@ -93,6 +93,7 @@
     },
     "scripts": {
         "build": "babel --out-dir dist src",
+        "clean": "rm -rf node_modules .nyc_output coverage dist",
         "commit": "git-cz",
         "coverage": "nyc npm test",
         "lint": "eslint src test",
