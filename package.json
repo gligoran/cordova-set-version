@@ -102,10 +102,10 @@
         "prebuild": "rimraf build",
         "precommit": "npm run coverage",
         "report-coverage": "nyc report --reporter=lcov",
-        "semantic-release": "semantic-release pre && npm publish && semantic-release post",
+        "semantic-release": "semantic-release",
         "test": "npm run lint && npm run build && chmod +x dist/cli.js && mocha --require babel-register --require babel-polyfill",
         "test:watch": "npm test -- --watch --reporter mocha-better-spec-reporter --reporter-options clear-screen=true",
         "upload-coverage": "codecov"
     },
-    "version": "4.0.1"
+    "version": "0.0.0"
 }
