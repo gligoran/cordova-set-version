@@ -79,10 +79,10 @@
     "nyc": {
         "branches": 100,
         "check-coverage": true,
+        "functions": 100,
         "include": [
             "src/**/*.js"
         ],
-        "functions": 100,
         "lines": 100,
         "per-file": true,
         "statements": 100
