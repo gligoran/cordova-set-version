@@ -55,6 +55,7 @@ async function cordovaSetVersion(...args) {
         xml.widget.$['android-versionCode'] = buildNumber;
         xml.widget.$['ios-CFBundleVersion'] = buildNumber;
         xml.widget.$['osx-CFBundleVersion'] = buildNumber;
+        xml.widget.$['windows-packageVersion'] = buildNumber;      
     }
 
     const newData = xmlBuilder.buildObject(xml);
