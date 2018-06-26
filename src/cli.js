@@ -2,7 +2,7 @@
 
 import meow from 'meow';
 
-import cordovaSetVersion from './';
+import cordovaSetVersion from '.';
 
 const help = `
     Usage

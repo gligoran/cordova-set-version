@@ -1,4 +1,6 @@
-import { afterEach, before, describe, it } from 'mocha';
+import {
+    afterEach, before, describe, it
+} from 'mocha';
 import chai, { expect } from 'chai';
 import dirtyChai from 'dirty-chai';
 import chaiFiles, { file } from 'chai-files';

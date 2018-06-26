@@ -70,7 +70,9 @@ function parseArguments(...args) {
     if (args.length === 1) {
         if (typeof args[0] === 'string' && args[0].indexOf('.xml') < 0) {
             return [null, args[0], null];
-        } else if (typeof args[0] === 'number') {
+        }
+
+        if (typeof args[0] === 'number') {
             return [null, null, ...args];
         }
 
@@ -88,7 +90,9 @@ function parseArguments(...args) {
             }
 
             return [null, ...args];
-        } else if (typeof args[1] === 'number') {
+        }
+
+        if (typeof args[1] === 'number') {
             return [args[0], null, args[1]];
         }
 

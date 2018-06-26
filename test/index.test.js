@@ -1,9 +1,11 @@
-import { afterEach, before, describe, it } from 'mocha';
+import {
+    afterEach, before, describe, it
+} from 'mocha';
 import chai, { expect } from 'chai';
 import dirtyChai from 'dirty-chai';
 import fs from 'fs-extra';
 
-import cordovaSetVersion from '../src/';
+import cordovaSetVersion from '../src';
 import { tempConfigFile, tempProvidedConfigFile } from './configs';
 import { tempPackageFile } from './packages';
 
