@@ -22,6 +22,62 @@ async function cordovaSetVersion(...args) {
     version = version || null;
     buildNumber = buildNumber || null;
 
+    checkTypeErrors(configPath, version, buildNumber);
+
+    let xml = await getXml(configPath);
+
+    if (!version && !buildNumber) {
+        version = await getVersionFromPackage(version);
+    }
+
+    xml = setAttributes(xml, version, buildNumber);
+
+    const newData = xmlBuilder.buildObject(xml);
+    return writeFile(configPath, newData, { encoding: 'UTF-8' });
+}
+
+function parseArguments(...args) {
+    switch (args.length) {
+        case 0:
+            return [null, null, null];
+        case 1:
+            return parse1Argument(args[0]);
+        case 2:
+            return parse2Arguments(args[0], args[1]);
+        default:
+            return args;
+    }
+}
+
+function parse1Argument(arg) {
+    if (typeof arg === 'string' && arg.indexOf('.xml') < 0) {
+        return [null, arg, null];
+    }
+
+    if (typeof arg === 'number') {
+        return [null, null, arg];
+    }
+
+    return [arg, null, null];
+}
+
+function parse2Arguments(arg1, arg2) {
+    const arg1IsString = typeof arg1 === 'string';
+    const arg1IsStringXml = arg1IsString && arg1.indexOf('.xml') >= 0;
+    const arg2IsNumber = typeof arg2 === 'number';
+
+    if (arg2IsNumber && (arg1IsStringXml || !arg1IsString)) {
+        return [arg1, null, arg2];
+    }
+
+    if (arg1IsString && !arg1IsStringXml) {
+        return [null, arg1, arg2];
+    }
+
+    return [arg1, arg2, null];
+}
+
+function checkTypeErrors(configPath, version, buildNumber) {
     if (typeof configPath !== 'string') {
         throw TypeError('"configPath" argument must be a string');
     }
@@ -37,69 +93,36 @@ async function cordovaSetVersion(...args) {
     if (buildNumber && buildNumber !== parseInt(buildNumber, 10)) {
         throw TypeError('"buildNumber" argument must be an integer');
     }
+}
 
+async function getXml(configPath) {
     const configFile = await readFile(configPath, 'UTF-8');
-    const xml = await xml2js(configFile);
 
-    if (!version && !buildNumber) {
-        const packageFile = await readFile('./package.json', 'UTF-8');
-        const pkg = JSON.parse(packageFile);
-        ({ version } = pkg);
-    }
+    return xml2js(configFile);
+}
+
+async function getVersionFromPackage() {
+    const packageFile = await readFile('./package.json', 'UTF-8');
+    const pkg = JSON.parse(packageFile);
+    const { version } = pkg;
+
+    return version;
+}
+
+function setAttributes(xml, version, buildNumber) {
+    const newXml = xml;
 
     if (version) {
-        xml.widget.$.version = version;
+        newXml.widget.$.version = version;
     }
 
     if (buildNumber) {
-        xml.widget.$['android-versionCode'] = buildNumber;
-        xml.widget.$['ios-CFBundleVersion'] = buildNumber;
-        xml.widget.$['osx-CFBundleVersion'] = buildNumber;
+        newXml.widget.$['android-versionCode'] = buildNumber;
+        newXml.widget.$['ios-CFBundleVersion'] = buildNumber;
+        newXml.widget.$['osx-CFBundleVersion'] = buildNumber;
     }
 
-    const newData = xmlBuilder.buildObject(xml);
-
-    await writeFile(configPath, newData, { encoding: 'UTF-8' });
-}
-
-function parseArguments(...args) {
-    if (args.length === 0) {
-        return [null, null, null];
-    }
-
-    if (args.length === 1) {
-        if (typeof args[0] === 'string' && args[0].indexOf('.xml') < 0) {
-            return [null, args[0], null];
-        }
-
-        if (typeof args[0] === 'number') {
-            return [null, null, ...args];
-        }
-
-        return [...args, null, null];
-    }
-
-    if (args.length === 2) {
-        if (typeof args[0] === 'string') {
-            if (args[0].indexOf('.xml') >= 0) {
-                if (typeof args[1] === 'number') {
-                    return [args[0], null, args[1]];
-                }
-
-                return [...args, null];
-            }
-
-            return [null, ...args];
-        }
-
-        if (typeof args[1] === 'number') {
-            return [args[0], null, args[1]];
-        }
-
-        return [...args, null];
-    }
-
-    return args;
+    return newXml;
 }
 
 export default cordovaSetVersion;

@@ -15,7 +15,14 @@
         ],
         "indent": [
             "error",
-            4
+            4,
+            {
+                "SwitchCase": 1
+            }
+        ],
+        "max-len": [
+            "error",
+            120
         ],
         "no-multiple-empty-lines": [
             "error",

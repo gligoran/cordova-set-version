@@ -13,9 +13,12 @@ export const entryConfigFiles = {
 
 export const expectedXmlFiles = {
     VERSION_AND_BUILD_TO_VERSION_AND_BUILD: './configs/expected/config.version-and-build.to.version-and-build.xml',
-    VERSION_AND_BUILD_TO_VERSION_AND_NO_BUILD: './configs/expected/config.version-and-build.to.version-and-no-build.xml',
-    VERSION_AND_BUILD_TO_NO_VERSION_AND_BUILD: './configs/expected/config.version-and-build.to.no-version-and-build.xml',
-    VERSION_AND_BUILD_TO_NO_VERSION_AND_NO_BUILD: './configs/expected/config.version-and-build.to.no-version-and-no-build.xml',
+    VERSION_AND_BUILD_TO_VERSION_AND_NO_BUILD:
+        './configs/expected/config.version-and-build.to.version-and-no-build.xml',
+    VERSION_AND_BUILD_TO_NO_VERSION_AND_BUILD:
+        './configs/expected/config.version-and-build.to.no-version-and-build.xml',
+    VERSION_AND_BUILD_TO_NO_VERSION_AND_NO_BUILD:
+        './configs/expected/config.version-and-build.to.no-version-and-no-build.xml',
 
     VERSION_TO_VERSION_AND_BUILD: './configs/expected/config.version.to.version-and-build.xml',
     VERSION_TO_VERSION_AND_NO_BUILD: './configs/expected/config.version.to.version-and-no-build.xml',
@@ -30,5 +33,6 @@ export const expectedXmlFiles = {
     PACKAGE_VERSION_TO_VERSION_AND_BUILD: './configs/expected/config.package-version.to.version-and-build.xml',
     PACKAGE_VERSION_TO_VERSION_AND_NO_BUILD: './configs/expected/config.package-version.to.version-and-no-build.xml',
     PACKAGE_VERSION_TO_NO_VERSION_AND_BUILD: './configs/expected/config.package-version.to.no-version-and-build.xml',
-    PACKAGE_VERSION_TO_NO_VERSION_AND_NO_BUILD: './configs/expected/config.package-version.to.no-version-and-no-build.xml'
+    PACKAGE_VERSION_TO_NO_VERSION_AND_NO_BUILD:
+        './configs/expected/config.package-version.to.no-version-and-no-build.xml'
 };
