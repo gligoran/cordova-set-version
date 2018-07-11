@@ -47,11 +47,11 @@
         "chai-as-promised": "^7.1.1",
         "chai-files": "^1.4.0",
         "child-process-promise": "^2.2.1",
-        "codecov": "^3.0.0",
+        "codecov": "^3.0.4",
         "commitizen": "^2.9.6",
         "cz-conventional-changelog": "^2.1.0",
         "dirty-chai": "^2.0.1",
-        "eslint": "^5.0.1",
+        "eslint": "^5.1.0",
         "eslint-config-airbnb-base": "^13.0.0",
         "eslint-plugin-import": "^2.13.0",
         "fs-extra": "^6.0.1",
@@ -61,7 +61,7 @@
         "nyc": "^12.0.1",
         "proxyquire": "^2.0.1",
         "rimraf": "^2.6.2",
-        "semantic-release": "^15.6.3"
+        "semantic-release": "^15.7.1"
     },
     "files": [
         "dist",
