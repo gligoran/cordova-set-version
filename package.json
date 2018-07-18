@@ -38,7 +38,7 @@
     "description": "CLI and JavaScript API for setting the version in Apache Cordova config.xml",
     "devDependencies": {
         "babel-cli": "^6.26.0",
-        "babel-plugin-add-module-exports": "^0.3.1",
+        "babel-plugin-add-module-exports": "^0.3.2",
         "babel-plugin-transform-runtime": "^6.23.0",
         "babel-polyfill": "^6.26.0",
         "babel-preset-env": "^1.6.1",
@@ -54,14 +54,14 @@
         "eslint": "^5.1.0",
         "eslint-config-airbnb-base": "^13.0.0",
         "eslint-plugin-import": "^2.13.0",
-        "fs-extra": "^6.0.1",
+        "fs-extra": "^7.0.0",
         "husky": "^0.14.3",
         "mocha": "^5.1.1",
         "mocha-better-spec-reporter": "^3.1.0",
         "nyc": "^12.0.1",
         "proxyquire": "^2.0.1",
         "rimraf": "^2.6.2",
-        "semantic-release": "^15.7.1"
+        "semantic-release": "^15.8.0"
     },
     "files": [
         "dist",
