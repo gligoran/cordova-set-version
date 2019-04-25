@@ -28,12 +28,12 @@
         }
     },
     "dependencies": {
-        "babel-runtime": "^6.26.0",
-        "meow": "^5.0.0",
-        "read-pkg": "^5.0.0",
-        "util-promisify": "^2.1.0",
-        "xml2js": "^0.4.19",
-        "xml2js-es6-promise": "^1.1.1"
+        "babel-runtime": "6.26.0",
+        "meow": "5.0.0",
+        "read-pkg": "5.0.0",
+        "util-promisify": "2.1.0",
+        "xml2js": "0.4.19",
+        "xml2js-es6-promise": "1.1.1"
     },
     "description": "CLI and JavaScript API for setting the version in Apache Cordova config.xml",
     "devDependencies": {
