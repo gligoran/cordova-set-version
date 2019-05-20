@@ -113,10 +113,15 @@ function setAttributes(xml, version, buildNumber) {
     const newXml = xml;
 
     if (version) {
-        newXml.widget.$.version = version;
+        if (newXml.widget) {
+            newXml.widget.$.version = version;
+        }
+        if (newXml.plugin) {
+            newXml.plugin.$.version = version;
+        }
     }
 
-    if (buildNumber) {
+    if (newXml.widget && buildNumber) {
         newXml.widget.$['android-versionCode'] = buildNumber;
         newXml.widget.$['ios-CFBundleVersion'] = buildNumber;
         newXml.widget.$['osx-CFBundleVersion'] = buildNumber;
