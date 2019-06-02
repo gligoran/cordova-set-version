@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<plugin id="com.ionicframework.ionic2" version="2.4.9" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+  <name>ionic2-rc6</name>
+  <description>An awesome Ionic/Cordova plugin.</description>
+  <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
+  <keywords>ionic,cordova</keywords>
+</plugin>

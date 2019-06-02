@@ -5,7 +5,14 @@ import chaiFiles, { file } from 'chai-files';
 import fs from 'fs-extra';
 
 import cordovaSetVersion from '../src';
-import { tempProvidedConfigFile, entryConfigFiles, expectedXmlFiles } from './configs';
+import {
+    tempProvidedConfigFile,
+    entryConfigFiles,
+    expectedXmlFiles,
+    tempProvidedPluginConfigFile,
+    entryPluginConfigFiles,
+    expectedPluginXmlFiles
+} from './configs';
 import { tempPackageFile, entryPackageFiles } from './packages';
 
 chai.use(chaiFiles);
@@ -108,6 +115,87 @@ function configPathTest() {
 
             try {
                 await cordovaSetVersion(tempProvidedConfigFile);
+            } catch (error) {
+                expect(error).to.exist();
+                expect(error.message).to.not.contain('no such file or directory');
+            }
+        });
+    });
+
+    describe('(pluginConfigPath)', () => {
+        it('should override existing version', async () => {
+            fs.copySync(entryPluginConfigFiles.VERSION, tempProvidedPluginConfigFile);
+            fs.copySync(entryPackageFiles.GOOD, tempPackageFile);
+
+            await cordovaSetVersion(tempProvidedPluginConfigFile);
+
+            expect(file(tempProvidedPluginConfigFile))
+                .to
+                .equal(file(expectedPluginXmlFiles.PACKAGE_VERSION_TO_VERSION));
+        });
+
+        it('should add version', async () => {
+            fs.copySync(entryPluginConfigFiles.NO_VERSION, tempProvidedPluginConfigFile);
+            fs.copySync(entryPackageFiles.GOOD, tempPackageFile);
+
+            await cordovaSetVersion(tempProvidedPluginConfigFile);
+
+            expect(file(tempProvidedPluginConfigFile))
+                .to
+                .equal(file(expectedPluginXmlFiles.PACKAGE_VERSION_TO_NO_VERSION));
+        });
+
+        it('should return an error about pluginConfigPath type', async () => {
+            fs.copySync(entryPluginConfigFiles.VERSION, tempProvidedPluginConfigFile);
+
+            try {
+                await cordovaSetVersion({});
+            } catch (error) {
+                expect(error).to.exist();
+                expect(error.message).to.contain('configPath');
+                expect(error.message).to.contain('must be a');
+            }
+        });
+
+        it('should return an error about missing config file', async () => {
+            try {
+                await cordovaSetVersion(tempProvidedPluginConfigFile);
+            } catch (error) {
+                expect(error).to.exist();
+                expect(error.message).to.contain('no such file or directory');
+                expect(error.message).to.contain('plugin.provided.xml');
+            }
+        });
+
+        it('should return an error about malformed config file', async () => {
+            fs.copySync(entryPluginConfigFiles.MALFORMED, tempProvidedPluginConfigFile);
+            fs.copySync(entryPackageFiles.GOOD, tempPackageFile);
+
+            try {
+                await cordovaSetVersion(tempProvidedPluginConfigFile);
+            } catch (error) {
+                expect(error).to.exist();
+                expect(error.message).to.not.contain('no such file or directory');
+            }
+        });
+
+        it('should return an error about missing package file', async () => {
+            fs.copySync(entryPluginConfigFiles.VERSION, tempProvidedPluginConfigFile);
+            try {
+                await cordovaSetVersion(tempProvidedPluginConfigFile);
+            } catch (error) {
+                expect(error).to.exist();
+                expect(error.message).to.contain('no such file or directory');
+                expect(error.message).to.contain('package.json');
+            }
+        });
+
+        it('should return an error about malformed package file', async () => {
+            fs.copySync(entryPluginConfigFiles.VERSION, tempProvidedPluginConfigFile);
+            fs.copySync(entryPackageFiles.MALFORMED, tempPackageFile);
+
+            try {
+                await cordovaSetVersion(tempProvidedPluginConfigFile);
             } catch (error) {
                 expect(error).to.exist();
                 expect(error.message).to.not.contain('no such file or directory');

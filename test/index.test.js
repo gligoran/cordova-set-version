@@ -6,7 +6,11 @@ import dirtyChai from 'dirty-chai';
 import fs from 'fs-extra';
 
 import cordovaSetVersion from '../src';
-import { tempConfigFile, tempProvidedConfigFile } from './configs';
+import {
+    tempConfigFile,
+    tempProvidedConfigFile,
+    tempProvidedPluginConfigFile
+} from './configs';
 import { tempPackageFile } from './packages';
 
 import configPathVersionBuildNumberTest from './index.config-path-version-build-number.test';
@@ -51,6 +55,10 @@ describe('cordova-set-version', () => {
 
         if (fs.existsSync(tempProvidedConfigFile)) {
             fs.removeSync(tempProvidedConfigFile);
+        }
+
+        if (fs.existsSync(tempProvidedPluginConfigFile)) {
+            fs.removeSync(tempProvidedPluginConfigFile);
         }
 
         if (fs.existsSync(tempPackageFile)) {

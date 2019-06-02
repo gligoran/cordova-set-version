@@ -111,12 +111,13 @@ async function getVersionFromPackage() {
 
 function setAttributes(xml, version, buildNumber) {
     const newXml = xml;
+    const el = newXml.plugin ? 'plugin' : 'widget';
 
     if (version) {
-        newXml.widget.$.version = version;
+        newXml[el].$.version = version;
     }
 
-    if (buildNumber) {
+    if (el === 'widget' && buildNumber) {
         newXml.widget.$['android-versionCode'] = buildNumber;
         newXml.widget.$['ios-CFBundleVersion'] = buildNumber;
         newXml.widget.$['osx-CFBundleVersion'] = buildNumber;
