@@ -55,7 +55,7 @@
         "eslint-config-airbnb-base": "13.1.0",
         "eslint-plugin-import": "2.17.3",
         "fs-extra": "8.0.1",
-        "husky": "2.4.1",
+        "husky": "2.5.0",
         "mocha": "6.1.4",
         "mocha-better-spec-reporter": "3.1.0",
         "nyc": "14.1.1",
