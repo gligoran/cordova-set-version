@@ -99,6 +99,7 @@
         "lint": "eslint src test",
         "lint:fix": "npm run lint -- --fix",
         "postcoverage": "nyc check-coverage",
+        "postpublish": "npm publish --ignore-scripts --@gligoran:registry='https://npm.pkg.github.com/@gligoran'",
         "prebuild": "rimraf build",
         "precommit": "npm run coverage",
         "report-coverage": "nyc report --reporter=lcov",
