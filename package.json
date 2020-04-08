@@ -93,7 +93,7 @@
     },
     "scripts": {
         "build": "babel --out-dir dist src",
-        "clean": "rm -rf node_modules .nyc_output coverage dist",
+        "clean": "rm -rf .nyc_output coverage dist",
         "commit": "git-cz",
         "coverage": "nyc npm test",
         "lint": "eslint src test",
@@ -106,7 +106,8 @@
         "semantic-release": "semantic-release",
         "test": "npm run lint && npm run build && chmod +x dist/cli.js && mocha --require babel-register --require babel-polyfill",
         "test:watch": "npm test -- --watch --reporter mocha-better-spec-reporter --reporter-options clear-screen=true",
-        "upload-coverage": "codecov"
+        "upload-coverage": "codecov",
+        "wipe": "npm run clean && rm -rf node_modules"
     },
     "version": "0.0.0"
 }
