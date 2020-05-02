@@ -68,6 +68,11 @@
         "README.md"
     ],
     "homepage": "https://github.com/gligoran/cordova-set-version#readme",
+    "husky": {
+        "hooks": {
+            "pre-commit": "npm run coverage"
+        }
+    },
     "keywords": [
         "apache",
         "cordova",
