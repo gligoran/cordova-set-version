@@ -113,8 +113,5 @@
         "upload-coverage": "codecov",
         "wipe": "npm run clean && rm -rf node_modules"
     },
-    "version": "0.0.0",
-    "publishConfig": {
-        "registry": "https://npm.pkg.github.com/"
-    }
+    "version": "0.0.0"
 }
