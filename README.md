@@ -2,17 +2,16 @@
 
 [![NPM](https://nodei.co/npm/cordova-set-version.png?downloads=true&stars=true)](https://nodei.co/npm/cordova-set-version/)
 
-[![ISC License](https://img.shields.io/npm/l/cordova-set-version.svg?style=flat-square)](http://opensource.org/licenses/ISC)
-[![npm version](https://img.shields.io/npm/v/cordova-set-version.svg?style=flat-square)](http://npm.im/cordova-set-version)
-[![npm downloads](https://img.shields.io/npm/dt/cordova-set-version.svg?style=flat-square)](http://npm-stat.com/charts.html?package=cordova-set-version&from=2017-02-08)
-[![travis](https://img.shields.io/travis/gligoran/cordova-set-version.svg?style=flat-square)](https://travis-ci.org/gligoran/cordova-set-version)
-[![codecov](https://img.shields.io/codecov/c/github/gligoran/cordova-set-version.svg?style=flat-square)](https://codecov.io/gh/gligoran/cordova-set-version)
-[![maintainability](https://api.codeclimate.com/v1/badges/759c8b7f355f06f867a0/maintainability)](https://codeclimate.com/github/gligoran/cordova-set-version/maintainability)
-[![dependencies](https://img.shields.io/david/gligoran/cordova-set-version.svg?style=flat-square)](https://david-dm.org/gligoran/cordova-set-version)
-[![dependency status](https://tidelift.com/badges/github/gligoran/cordova-set-version)](https://tidelift.com/repo/github/gligoran/cordova-set-version)
-[![devDependencies](https://img.shields.io/david/dev/gligoran/cordova-set-version.svg?style=flat-square)](https://david-dm.org/gligoran/cordova-set-version?type=dev)
-[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=flat-square)](https://github.com/semantic-release/semantic-release)
-[![greenkeeper](https://badges.greenkeeper.io/gligoran/cordova-set-version.svg)](https://greenkeeper.io/)
+[![ISC License](https://img.shields.io/npm/l/cordova-set-version.svg?style=flat)](http://opensource.org/licenses/ISC)
+[![npm version](https://img.shields.io/npm/v/cordova-set-version.svg?style=flat)](http://npm.im/cordova-set-version)
+[![npm downloads](https://img.shields.io/npm/dt/cordova-set-version.svg?style=flat)](http://npm-stat.com/charts.html?package=cordova-set-version&from=2017-02-08)
+[![build](https://img.shields.io/github/workflow/status/gligoran/cordova-set-version/node/master?style=flat)](https://github.com/gligoran/cordova-set-version/actions?query=branch%3Amaster+workflow%3Anode)
+[![codecov](https://img.shields.io/codecov/c/github/gligoran/cordova-set-version.svg?style=flat)](https://codecov.io/gh/gligoran/cordova-set-version)
+[![maintainability](https://img.shields.io/codeclimate/maintainability/gligoran/cordova-set-version?style=flat)](https://codeclimate.com/github/gligoran/cordova-set-version/maintainability)
+[![dependencies](https://img.shields.io/david/gligoran/cordova-set-version.svg?style=flat)](https://david-dm.org/gligoran/cordova-set-version)
+[![devDependencies](https://img.shields.io/david/dev/gligoran/cordova-set-version.svg?style=flat)](https://david-dm.org/gligoran/cordova-set-version?type=dev)
+[![known vulnerabilities](https://snyk.io/test/github/gligoran/cordova-set-version/badge.svg?targetFile=package.json)](https://snyk.io/test/github/gligoran/cordova-set-version?targetFile=package.json)
+[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=flat)](https://github.com/semantic-release/semantic-release)
 
 ## Features
 

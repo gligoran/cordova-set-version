@@ -108,11 +108,13 @@
         "prebuild": "rimraf build",
         "precommit": "npm run coverage",
         "report-coverage": "nyc report --reporter=lcov",
-        "semantic-release": "semantic-release",
         "test": "npm run lint && npm run build && chmod +x dist/cli.js && mocha --require babel-register --require babel-polyfill",
         "test:watch": "npm test -- --watch --reporter mocha-better-spec-reporter --reporter-options clear-screen=true",
         "upload-coverage": "codecov",
         "wipe": "npm run clean && rm -rf node_modules"
     },
-    "version": "0.0.0"
+    "version": "0.0.0",
+    "publishConfig": {
+        "registry": "https://npm.pkg.github.com/"
+    }
 }

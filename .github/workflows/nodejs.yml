@@ -1,0 +1,52 @@
+name: node
+
+on: [push]
+
+jobs:
+  build-and-deploy:
+    name: build and deploy
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version:
+          - "10"
+          - "12"
+          - "13"
+          - "14"
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: use node ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - uses: actions/cache@v1
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ matrix.node-version }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-${{ matrix.node-version }}
+
+      - name: install dependencies
+        run: npm ci
+
+      - name: test
+        run: npm run coverage
+
+      - name: build
+        run: npm run build
+
+      - name: upload coverage
+        run: |
+          npm run report-coverage
+          npm run upload-coverage
+
+      - name: release to npm
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npx semantic-release
