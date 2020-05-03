@@ -41,6 +41,8 @@ jobs:
         run: npm run build
 
       - name: upload coverage
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
         run: |
           npm run report-coverage
           npm run upload-coverage
