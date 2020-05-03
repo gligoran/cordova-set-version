@@ -3,11 +3,11 @@
     "babel": {
         "plugins": [
             "add-module-exports",
-            "transform-runtime"
+            "@babel/plugin-transform-runtime"
         ],
         "presets": [
             [
-                "env",
+                "@babel/preset-env",
                 {
                     "targets": {
                         "node": "10"
@@ -28,7 +28,7 @@
         }
     },
     "dependencies": {
-        "babel-runtime": "6.26.0",
+        "@babel/runtime": "^7.9.6",
         "meow": "6.1.1",
         "read-pkg": "5.2.0",
         "util-promisify": "2.1.0",
@@ -37,12 +37,13 @@
     },
     "description": "CLI and JavaScript API for setting the version in Apache Cordova config.xml",
     "devDependencies": {
-        "babel-cli": "6.26.0",
+        "@babel/cli": "^7.8.4",
+        "@babel/core": "^7.9.6",
+        "@babel/plugin-transform-runtime": "^7.9.6",
+        "@babel/polyfill": "^7.8.7",
+        "@babel/preset-env": "^7.9.6",
+        "@babel/register": "^7.9.0",
         "babel-plugin-add-module-exports": "1.0.2",
-        "babel-plugin-transform-runtime": "6.23.0",
-        "babel-polyfill": "6.26.0",
-        "babel-preset-env": "1.7.0",
-        "babel-register": "6.26.0",
         "chai": "4.2.0",
         "chai-as-promised": "7.1.1",
         "chai-files": "1.4.0",
@@ -108,7 +109,7 @@
         "prebuild": "rimraf build",
         "precommit": "npm run coverage",
         "report-coverage": "nyc report --reporter=lcov",
-        "test": "npm run lint && npm run build && chmod +x dist/cli.js && mocha --require babel-register --require babel-polyfill",
+        "test": "npm run lint && npm run build && chmod +x dist/cli.js && mocha --require @babel/register --require @babel/polyfill",
         "test:watch": "npm test -- --watch --reporter mocha-better-spec-reporter --reporter-options clear-screen=true",
         "upload-coverage": "codecov",
         "wipe": "npm run clean && rm -rf node_modules"
