@@ -22,11 +22,6 @@
     "bugs": {
         "url": "https://github.com/gligoran/cordova-set-version/issues"
     },
-    "config": {
-        "commitizen": {
-            "path": "cz-conventional-changelog"
-        }
-    },
     "dependencies": {
         "@babel/runtime": "^7.9.6",
         "meow": "6.1.1",
@@ -49,8 +44,6 @@
         "chai-files": "1.4.0",
         "child-process-promise": "2.2.1",
         "codecov": "3.6.5",
-        "commitizen": "4.0.5",
-        "cz-conventional-changelog": "3.1.0",
         "dirty-chai": "2.0.1",
         "eslint": "6.8.0",
         "eslint-config-airbnb-base": "14.1.0",
@@ -100,14 +93,10 @@
     "scripts": {
         "build": "babel --out-dir dist src",
         "clean": "rm -rf .nyc_output coverage dist",
-        "commit": "git-cz",
         "coverage": "nyc npm test",
         "lint": "eslint src test",
         "lint:fix": "npm run lint -- --fix",
         "postcoverage": "nyc check-coverage",
-        "postpublish": "npm publish --ignore-scripts --@gligoran:registry='https://npm.pkg.github.com/@gligoran'",
-        "prebuild": "rimraf build",
-        "precommit": "npm run coverage",
         "report-coverage": "nyc report --reporter=lcov",
         "test": "npm run lint && npm run build && chmod +x dist/cli.js && mocha --require @babel/register --require @babel/polyfill",
         "test:watch": "npm test -- --watch --reporter mocha-better-spec-reporter --reporter-options clear-screen=true",
