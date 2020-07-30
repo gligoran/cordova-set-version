@@ -50,7 +50,7 @@
         "eslint-plugin-import": "2.22.0",
         "fs-extra": "9.0.1",
         "husky": "4.2.5",
-        "mocha": "8.0.1",
+        "mocha": "8.1.0",
         "mocha-better-spec-reporter": "3.1.0",
         "nyc": "15.1.0",
         "proxyquire": "2.1.3",
