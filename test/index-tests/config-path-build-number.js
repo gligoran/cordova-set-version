@@ -1,11 +1,8 @@
-import chai, { expect } from 'chai';
-import chaiFiles, { file } from 'chai-files';
 import fs from 'fs-extra';
 
-import cordovaSetVersion from '../src';
-import { tempProvidedConfigFile, entryConfigFiles, expectedXmlFiles } from './configs';
-
-chai.use(chaiFiles);
+import readFile from '../read-file';
+import cordovaSetVersion from '../../src';
+import { tempProvidedConfigFile, entryConfigFiles, expectedXmlFiles } from '../configs';
 
 function configPathBuildNumberTest() {
     describe('(configPath, buildNumber)', () => {
@@ -14,7 +11,7 @@ function configPathBuildNumberTest() {
 
             await cordovaSetVersion(tempProvidedConfigFile, 86);
 
-            expect(file(tempProvidedConfigFile)).to.equal(file(expectedXmlFiles.BUILD_TO_VERSION_AND_BUILD));
+            expect(readFile(tempProvidedConfigFile)).toBe(readFile(expectedXmlFiles.BUILD_TO_VERSION_AND_BUILD));
         });
 
         it('should add buildNumber and preserve existing version', async () => {
@@ -22,7 +19,7 @@ function configPathBuildNumberTest() {
 
             await cordovaSetVersion(tempProvidedConfigFile, 86);
 
-            expect(file(tempProvidedConfigFile)).to.equal(file(expectedXmlFiles.BUILD_TO_VERSION_AND_NO_BUILD));
+            expect(readFile(tempProvidedConfigFile)).toBe(readFile(expectedXmlFiles.BUILD_TO_VERSION_AND_NO_BUILD));
         });
 
         it('should override existing buildNumber and not add version', async () => {
@@ -30,7 +27,7 @@ function configPathBuildNumberTest() {
 
             await cordovaSetVersion(tempProvidedConfigFile, 86);
 
-            expect(file(tempProvidedConfigFile)).to.equal(file(expectedXmlFiles.BUILD_TO_NO_VERSION_AND_BUILD));
+            expect(readFile(tempProvidedConfigFile)).toBe(readFile(expectedXmlFiles.BUILD_TO_NO_VERSION_AND_BUILD));
         });
 
         it('should add buildNumber and not add version', async () => {
@@ -38,7 +35,7 @@ function configPathBuildNumberTest() {
 
             await cordovaSetVersion(tempProvidedConfigFile, 86);
 
-            expect(file(tempProvidedConfigFile)).to.equal(file(expectedXmlFiles.BUILD_TO_NO_VERSION_AND_NO_BUILD));
+            expect(readFile(tempProvidedConfigFile)).toBe(readFile(expectedXmlFiles.BUILD_TO_NO_VERSION_AND_NO_BUILD));
         });
 
         it('should return an error about configPath type', async () => {
@@ -47,9 +44,9 @@ function configPathBuildNumberTest() {
             try {
                 await cordovaSetVersion({}, 86);
             } catch (error) {
-                expect(error).to.exist;
-                expect(error.message).to.contain('configPath');
-                expect(error.message).to.contain('must be a');
+                expect(error).not.toBeNil();
+                expect(error.message).toContain('configPath');
+                expect(error.message).toContain('must be a');
             }
         });
 
@@ -57,9 +54,9 @@ function configPathBuildNumberTest() {
             try {
                 await cordovaSetVersion(tempProvidedConfigFile, 86);
             } catch (error) {
-                expect(error).to.exist;
-                expect(error.message).to.contain('no such file or directory');
-                expect(error.message).to.contain('config.provided.xml');
+                expect(error).not.toBeNil();
+                expect(error.message).toContain('no such file or directory');
+                expect(error.message).toContain('config.provided.xml');
             }
         });
 
@@ -69,8 +66,8 @@ function configPathBuildNumberTest() {
             try {
                 await cordovaSetVersion(tempProvidedConfigFile, 86);
             } catch (error) {
-                expect(error).to.exist;
-                expect(error.message).to.not.contain('no such file or directory');
+                expect(error).not.toBeNil();
+                expect(error.message).not.toContain('no such file or directory');
             }
         });
     });

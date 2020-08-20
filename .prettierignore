@@ -1,6 +1,6 @@
+.vscode/
 *.json
 *.yml
+coverage/
+dist/
 test/configs/**/*
-.vscode/
-.nyc_output
-dist

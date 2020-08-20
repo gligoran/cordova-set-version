@@ -1,8 +1,7 @@
-import chai, { expect } from 'chai';
-import chaiFiles, { file } from 'chai-files';
 import fs from 'fs-extra';
 
-import cordovaSetVersion from '../src';
+import readFile from '../read-file';
+import cordovaSetVersion from '../../src';
 import {
     tempProvidedConfigFile,
     entryConfigFiles,
@@ -10,10 +9,8 @@ import {
     tempProvidedPluginConfigFile,
     entryPluginConfigFiles,
     expectedPluginXmlFiles,
-} from './configs';
-import { tempPackageFile, entryPackageFiles } from './packages';
-
-chai.use(chaiFiles);
+} from '../configs';
+import { tempPackageFile, entryPackageFiles } from '../packages';
 
 function configPathTest() {
     describe('(configPath)', () => {
@@ -23,7 +20,9 @@ function configPathTest() {
 
             await cordovaSetVersion(tempProvidedConfigFile);
 
-            expect(file(tempProvidedConfigFile)).to.equal(file(expectedXmlFiles.PACKAGE_VERSION_TO_VERSION_AND_BUILD));
+            expect(readFile(tempProvidedConfigFile)).toBe(
+                readFile(expectedXmlFiles.PACKAGE_VERSION_TO_VERSION_AND_BUILD),
+            );
         });
 
         it('should override existing version and not add buildNumber', async () => {
@@ -32,8 +31,8 @@ function configPathTest() {
 
             await cordovaSetVersion(tempProvidedConfigFile);
 
-            expect(file(tempProvidedConfigFile)).to.equal(
-                file(expectedXmlFiles.PACKAGE_VERSION_TO_VERSION_AND_NO_BUILD),
+            expect(readFile(tempProvidedConfigFile)).toBe(
+                readFile(expectedXmlFiles.PACKAGE_VERSION_TO_VERSION_AND_NO_BUILD),
             );
         });
 
@@ -43,8 +42,8 @@ function configPathTest() {
 
             await cordovaSetVersion(tempProvidedConfigFile);
 
-            expect(file(tempProvidedConfigFile)).to.equal(
-                file(expectedXmlFiles.PACKAGE_VERSION_TO_NO_VERSION_AND_BUILD),
+            expect(readFile(tempProvidedConfigFile)).toBe(
+                readFile(expectedXmlFiles.PACKAGE_VERSION_TO_NO_VERSION_AND_BUILD),
             );
         });
 
@@ -54,8 +53,8 @@ function configPathTest() {
 
             await cordovaSetVersion(tempProvidedConfigFile);
 
-            expect(file(tempProvidedConfigFile)).to.equal(
-                file(expectedXmlFiles.PACKAGE_VERSION_TO_NO_VERSION_AND_NO_BUILD),
+            expect(readFile(tempProvidedConfigFile)).toBe(
+                readFile(expectedXmlFiles.PACKAGE_VERSION_TO_NO_VERSION_AND_NO_BUILD),
             );
         });
 
@@ -65,9 +64,9 @@ function configPathTest() {
             try {
                 await cordovaSetVersion({});
             } catch (error) {
-                expect(error).to.exist;
-                expect(error.message).to.contain('configPath');
-                expect(error.message).to.contain('must be a');
+                expect(error).not.toBeNil();
+                expect(error.message).toContain('configPath');
+                expect(error.message).toContain('must be a');
             }
         });
 
@@ -75,9 +74,9 @@ function configPathTest() {
             try {
                 await cordovaSetVersion(tempProvidedConfigFile);
             } catch (error) {
-                expect(error).to.exist;
-                expect(error.message).to.contain('no such file or directory');
-                expect(error.message).to.contain('config.provided.xml');
+                expect(error).not.toBeNil();
+                expect(error.message).toContain('no such file or directory');
+                expect(error.message).toContain('config.provided.xml');
             }
         });
 
@@ -88,8 +87,8 @@ function configPathTest() {
             try {
                 await cordovaSetVersion(tempProvidedConfigFile);
             } catch (error) {
-                expect(error).to.exist;
-                expect(error.message).to.not.contain('no such file or directory');
+                expect(error).not.toBeNil();
+                expect(error.message).not.toContain('no such file or directory');
             }
         });
 
@@ -98,9 +97,9 @@ function configPathTest() {
             try {
                 await cordovaSetVersion(tempProvidedConfigFile);
             } catch (error) {
-                expect(error).to.exist;
-                expect(error.message).to.contain('no such file or directory');
-                expect(error.message).to.contain('package.json');
+                expect(error).not.toBeNil();
+                expect(error.message).toContain('no such file or directory');
+                expect(error.message).toContain('package.json');
             }
         });
 
@@ -111,8 +110,8 @@ function configPathTest() {
             try {
                 await cordovaSetVersion(tempProvidedConfigFile);
             } catch (error) {
-                expect(error).to.exist;
-                expect(error.message).to.not.contain('no such file or directory');
+                expect(error).not.toBeNil();
+                expect(error.message).not.toContain('no such file or directory');
             }
         });
     });
@@ -124,8 +123,8 @@ function configPathTest() {
 
             await cordovaSetVersion(tempProvidedPluginConfigFile);
 
-            expect(file(tempProvidedPluginConfigFile)).to.equal(
-                file(expectedPluginXmlFiles.PACKAGE_VERSION_TO_VERSION),
+            expect(readFile(tempProvidedPluginConfigFile)).toBe(
+                readFile(expectedPluginXmlFiles.PACKAGE_VERSION_TO_VERSION),
             );
         });
 
@@ -135,8 +134,8 @@ function configPathTest() {
 
             await cordovaSetVersion(tempProvidedPluginConfigFile);
 
-            expect(file(tempProvidedPluginConfigFile)).to.equal(
-                file(expectedPluginXmlFiles.PACKAGE_VERSION_TO_NO_VERSION),
+            expect(readFile(tempProvidedPluginConfigFile)).toBe(
+                readFile(expectedPluginXmlFiles.PACKAGE_VERSION_TO_NO_VERSION),
             );
         });
 
@@ -146,9 +145,9 @@ function configPathTest() {
             try {
                 await cordovaSetVersion({});
             } catch (error) {
-                expect(error).to.exist;
-                expect(error.message).to.contain('configPath');
-                expect(error.message).to.contain('must be a');
+                expect(error).not.toBeNil();
+                expect(error.message).toContain('configPath');
+                expect(error.message).toContain('must be a');
             }
         });
 
@@ -156,9 +155,9 @@ function configPathTest() {
             try {
                 await cordovaSetVersion(tempProvidedPluginConfigFile);
             } catch (error) {
-                expect(error).to.exist;
-                expect(error.message).to.contain('no such file or directory');
-                expect(error.message).to.contain('plugin.provided.xml');
+                expect(error).not.toBeNil();
+                expect(error.message).toContain('no such file or directory');
+                expect(error.message).toContain('plugin.provided.xml');
             }
         });
 
@@ -169,8 +168,8 @@ function configPathTest() {
             try {
                 await cordovaSetVersion(tempProvidedPluginConfigFile);
             } catch (error) {
-                expect(error).to.exist;
-                expect(error.message).to.not.contain('no such file or directory');
+                expect(error).not.toBeNil();
+                expect(error.message).not.toContain('no such file or directory');
             }
         });
 
@@ -179,9 +178,9 @@ function configPathTest() {
             try {
                 await cordovaSetVersion(tempProvidedPluginConfigFile);
             } catch (error) {
-                expect(error).to.exist;
-                expect(error.message).to.contain('no such file or directory');
-                expect(error.message).to.contain('package.json');
+                expect(error).not.toBeNil();
+                expect(error.message).toContain('no such file or directory');
+                expect(error.message).toContain('package.json');
             }
         });
 
@@ -192,8 +191,8 @@ function configPathTest() {
             try {
                 await cordovaSetVersion(tempProvidedPluginConfigFile);
             } catch (error) {
-                expect(error).to.exist;
-                expect(error.message).to.not.contain('no such file or directory');
+                expect(error).not.toBeNil();
+                expect(error.message).not.toContain('no such file or directory');
             }
         });
     });

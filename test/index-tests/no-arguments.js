@@ -1,12 +1,9 @@
-import chai, { expect } from 'chai';
-import chaiFiles, { file } from 'chai-files';
 import fs from 'fs-extra';
 
-import cordovaSetVersion from '../src';
-import { tempConfigFile, entryConfigFiles, expectedXmlFiles } from './configs';
-import { tempPackageFile, entryPackageFiles } from './packages';
-
-chai.use(chaiFiles);
+import readFile from '../read-file';
+import cordovaSetVersion from '../../src';
+import { tempConfigFile, entryConfigFiles, expectedXmlFiles } from '../configs';
+import { tempPackageFile, entryPackageFiles } from '../packages';
 
 function noArgumentsTest() {
     describe('()', () => {
@@ -16,7 +13,7 @@ function noArgumentsTest() {
 
             await cordovaSetVersion();
 
-            expect(file(tempConfigFile)).to.equal(file(expectedXmlFiles.PACKAGE_VERSION_TO_VERSION_AND_BUILD));
+            expect(readFile(tempConfigFile)).toBe(readFile(expectedXmlFiles.PACKAGE_VERSION_TO_VERSION_AND_BUILD));
         });
 
         it('should override existing version and not add buildNumber', async () => {
@@ -25,7 +22,7 @@ function noArgumentsTest() {
 
             await cordovaSetVersion();
 
-            expect(file(tempConfigFile)).to.equal(file(expectedXmlFiles.PACKAGE_VERSION_TO_VERSION_AND_NO_BUILD));
+            expect(readFile(tempConfigFile)).toBe(readFile(expectedXmlFiles.PACKAGE_VERSION_TO_VERSION_AND_NO_BUILD));
         });
 
         it('should add version and preserve existing buildNumber', async () => {
@@ -34,7 +31,7 @@ function noArgumentsTest() {
 
             await cordovaSetVersion();
 
-            expect(file(tempConfigFile)).to.equal(file(expectedXmlFiles.PACKAGE_VERSION_TO_NO_VERSION_AND_BUILD));
+            expect(readFile(tempConfigFile)).toBe(readFile(expectedXmlFiles.PACKAGE_VERSION_TO_NO_VERSION_AND_BUILD));
         });
 
         it('should add version and not add buildNumber', async () => {
@@ -43,16 +40,18 @@ function noArgumentsTest() {
 
             await cordovaSetVersion();
 
-            expect(file(tempConfigFile)).to.equal(file(expectedXmlFiles.PACKAGE_VERSION_TO_NO_VERSION_AND_NO_BUILD));
+            expect(readFile(tempConfigFile)).toBe(
+                readFile(expectedXmlFiles.PACKAGE_VERSION_TO_NO_VERSION_AND_NO_BUILD),
+            );
         });
 
         it('should return an error about missing config file', async () => {
             try {
                 await cordovaSetVersion(tempConfigFile);
             } catch (error) {
-                expect(error).to.exist;
-                expect(error.message).to.contain('no such file or directory');
-                expect(error.message).to.contain('config.xml');
+                expect(error).not.toBeNil();
+                expect(error.message).toContain('no such file or directory');
+                expect(error.message).toContain('config.xml');
             }
         });
 
@@ -63,8 +62,8 @@ function noArgumentsTest() {
             try {
                 await cordovaSetVersion();
             } catch (error) {
-                expect(error).to.exist;
-                expect(error.message).to.not.contain('no such file or directory');
+                expect(error).not.toBeNil();
+                expect(error.message).not.toContain('no such file or directory');
             }
         });
 
@@ -74,9 +73,9 @@ function noArgumentsTest() {
             try {
                 await cordovaSetVersion();
             } catch (error) {
-                expect(error).to.exist;
-                expect(error.message).to.contain('no such file or directory');
-                expect(error.message).to.contain('package.json');
+                expect(error).not.toBeNil();
+                expect(error.message).toContain('no such file or directory');
+                expect(error.message).toContain('package.json');
             }
         });
 
@@ -87,8 +86,8 @@ function noArgumentsTest() {
             try {
                 await cordovaSetVersion();
             } catch (error) {
-                expect(error).to.exist;
-                expect(error.message).to.not.contain('no such file or directory');
+                expect(error).not.toBeNil();
+                expect(error.message).not.toContain('no such file or directory');
             }
         });
     });

@@ -1,11 +1,8 @@
-import chai, { expect } from 'chai';
-import chaiFiles, { file } from 'chai-files';
 import fs from 'fs-extra';
 
-import cordovaSetVersion from '../src';
-import { tempConfigFile, entryConfigFiles, expectedXmlFiles } from './configs';
-
-chai.use(chaiFiles);
+import readFile from '../read-file';
+import cordovaSetVersion from '../../src';
+import { tempConfigFile, entryConfigFiles, expectedXmlFiles } from '../configs';
 
 function versionBuildNumberTest() {
     describe('(version, buildNumber)', () => {
@@ -14,7 +11,7 @@ function versionBuildNumberTest() {
 
             await cordovaSetVersion('2.4.9', 86);
 
-            expect(file(tempConfigFile)).to.equal(file(expectedXmlFiles.VERSION_AND_BUILD_TO_VERSION_AND_BUILD));
+            expect(readFile(tempConfigFile)).toBe(readFile(expectedXmlFiles.VERSION_AND_BUILD_TO_VERSION_AND_BUILD));
         });
 
         it('should override existing version and add buildNumber', async () => {
@@ -22,7 +19,7 @@ function versionBuildNumberTest() {
 
             await cordovaSetVersion('2.4.9', 86);
 
-            expect(file(tempConfigFile)).to.equal(file(expectedXmlFiles.VERSION_AND_BUILD_TO_VERSION_AND_NO_BUILD));
+            expect(readFile(tempConfigFile)).toBe(readFile(expectedXmlFiles.VERSION_AND_BUILD_TO_VERSION_AND_NO_BUILD));
         });
 
         it('should add version and override existing buildNumber', async () => {
@@ -30,7 +27,7 @@ function versionBuildNumberTest() {
 
             await cordovaSetVersion('2.4.9', 86);
 
-            expect(file(tempConfigFile)).to.equal(file(expectedXmlFiles.VERSION_AND_BUILD_TO_NO_VERSION_AND_BUILD));
+            expect(readFile(tempConfigFile)).toBe(readFile(expectedXmlFiles.VERSION_AND_BUILD_TO_NO_VERSION_AND_BUILD));
         });
 
         it('should add version and buildNumber', async () => {
@@ -38,7 +35,9 @@ function versionBuildNumberTest() {
 
             await cordovaSetVersion('2.4.9', 86);
 
-            expect(file(tempConfigFile)).to.equal(file(expectedXmlFiles.VERSION_AND_BUILD_TO_NO_VERSION_AND_NO_BUILD));
+            expect(readFile(tempConfigFile)).toBe(
+                readFile(expectedXmlFiles.VERSION_AND_BUILD_TO_NO_VERSION_AND_NO_BUILD),
+            );
         });
 
         it('should return an error about configPath type', async () => {
@@ -47,9 +46,9 @@ function versionBuildNumberTest() {
             try {
                 await cordovaSetVersion({}, 86);
             } catch (error) {
-                expect(error).to.exist;
-                expect(error.message).to.contain('configPath');
-                expect(error.message).to.contain('must be a');
+                expect(error).not.toBeNil();
+                expect(error.message).toContain('configPath');
+                expect(error.message).toContain('must be a');
             }
         });
 
@@ -59,9 +58,9 @@ function versionBuildNumberTest() {
             try {
                 await cordovaSetVersion('2.4.9', {});
             } catch (error) {
-                expect(error).to.exist;
-                expect(error.message).to.contain('buildNumber');
-                expect(error.message).to.contain('must be a');
+                expect(error).not.toBeNil();
+                expect(error.message).toContain('buildNumber');
+                expect(error.message).toContain('must be a');
             }
         });
 
@@ -69,9 +68,9 @@ function versionBuildNumberTest() {
             try {
                 await cordovaSetVersion('2.4.9', 86);
             } catch (error) {
-                expect(error).to.exist;
-                expect(error.message).to.contain('no such file or directory');
-                expect(error.message).to.contain('config.xml');
+                expect(error).not.toBeNil();
+                expect(error.message).toContain('no such file or directory');
+                expect(error.message).toContain('config.xml');
             }
         });
 
@@ -81,8 +80,8 @@ function versionBuildNumberTest() {
             try {
                 await cordovaSetVersion('2.4.9', 86);
             } catch (error) {
-                expect(error).to.exist;
-                expect(error.message).to.not.contain('no such file or directory');
+                expect(error).not.toBeNil();
+                expect(error.message).not.toContain('no such file or directory');
             }
         });
     });
