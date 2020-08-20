@@ -1,34 +1,30 @@
-import chai, { expect } from 'chai';
-import dirtyChai from 'dirty-chai';
 import fs from 'fs-extra';
 
 import cordovaSetVersion from '../src';
 import { tempConfigFile, tempProvidedConfigFile, tempProvidedPluginConfigFile } from './configs';
 import { tempPackageFile } from './packages';
 
-import configPathVersionBuildNumberTest from './index.config-path-version-build-number.test';
-import configPathVersionTest from './index.config-path-version.test';
-import configPathBuildNumberTest from './index.config-path-build-number.test';
-import configPathTest from './index.config-path.test';
-import versionBuildNumberTest from './index.version-build-number.test';
-import versionTest from './index.version.test';
-import buildNumberTest from './index.build-number.test';
-import noArgumentsTest from './index.no-arguments.test';
-import nullsTest from './index.nulls.test';
-
-chai.use(dirtyChai);
+import configPathVersionBuildNumberTest from './index-tests/config-path-version-build-number';
+import configPathVersionTest from './index-tests/config-path-version';
+import configPathBuildNumberTest from './index-tests/config-path-build-number';
+import configPathTest from './index-tests/config-path';
+import versionBuildNumberTest from './index-tests/version-build-number';
+import versionTest from './index-tests/version';
+import buildNumberTest from './index-tests/build-number';
+import noArgumentsTest from './index-tests/no-arguments';
+import nullsTest from './index-tests/nulls';
 
 describe('cordova-set-version', () => {
-    before(() => {
+    beforeAll(() => {
         process.chdir(__dirname);
     });
 
     it('should exist', () => {
-        expect(cordovaSetVersion).to.exist();
+        expect(cordovaSetVersion).not.toBeNil();
     });
 
     it('should be a function', () => {
-        expect(cordovaSetVersion).to.be.a('function');
+        expect(cordovaSetVersion).toBeFunction();
     });
 
     configPathVersionBuildNumberTest();

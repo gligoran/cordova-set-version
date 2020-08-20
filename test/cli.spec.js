@@ -1,16 +1,11 @@
-import chai, { expect } from 'chai';
-import dirtyChai from 'dirty-chai';
-import chaiFiles, { file } from 'chai-files';
 import fs from 'fs-extra';
 import { exec } from 'child-process-promise';
 
+import readFile from './read-file';
 import { tempConfigFile, entryConfigFiles, expectedXmlFiles } from './configs';
 
-chai.use(chaiFiles);
-chai.use(dirtyChai);
-
 describe('cli', () => {
-    before(() => {
+    beforeAll(() => {
         process.chdir(__dirname);
     });
 
@@ -19,7 +14,7 @@ describe('cli', () => {
 
         await exec('../dist/cli.js -v 2.4.9 -b 86');
 
-        expect(file(tempConfigFile)).to.equal(file(expectedXmlFiles.VERSION_AND_BUILD_TO_VERSION_AND_BUILD));
+        expect(readFile(tempConfigFile)).toBe(readFile(expectedXmlFiles.VERSION_AND_BUILD_TO_VERSION_AND_BUILD));
     });
 
     afterEach(() => {

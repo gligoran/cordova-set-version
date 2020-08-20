@@ -1,12 +1,9 @@
-import chai, { expect } from 'chai';
-import chaiFiles, { file } from 'chai-files';
 import fs from 'fs-extra';
 
-import cordovaSetVersion from '../src';
-import { tempConfigFile, tempProvidedConfigFile, entryConfigFiles, expectedXmlFiles } from './configs';
-import { tempPackageFile, entryPackageFiles } from './packages';
-
-chai.use(chaiFiles);
+import readFile from '../read-file';
+import cordovaSetVersion from '../../src';
+import { tempConfigFile, tempProvidedConfigFile, entryConfigFiles, expectedXmlFiles } from '../configs';
+import { tempPackageFile, entryPackageFiles } from '../packages';
 
 function nullsTest() {
     describe('nulls', () => {
@@ -16,7 +13,9 @@ function nullsTest() {
 
             await cordovaSetVersion(tempProvidedConfigFile, null);
 
-            expect(file(tempProvidedConfigFile)).to.equal(file(expectedXmlFiles.PACKAGE_VERSION_TO_VERSION_AND_BUILD));
+            expect(readFile(tempProvidedConfigFile)).toBe(
+                readFile(expectedXmlFiles.PACKAGE_VERSION_TO_VERSION_AND_BUILD),
+            );
         });
 
         it('(configPath, null, null)', async () => {
@@ -25,7 +24,9 @@ function nullsTest() {
 
             await cordovaSetVersion(tempProvidedConfigFile, null, null);
 
-            expect(file(tempProvidedConfigFile)).to.equal(file(expectedXmlFiles.PACKAGE_VERSION_TO_VERSION_AND_BUILD));
+            expect(readFile(tempProvidedConfigFile)).toBe(
+                readFile(expectedXmlFiles.PACKAGE_VERSION_TO_VERSION_AND_BUILD),
+            );
         });
 
         it('(configPath, version, null)', async () => {
@@ -33,7 +34,7 @@ function nullsTest() {
 
             await cordovaSetVersion(tempProvidedConfigFile, '2.4.9', null);
 
-            expect(file(tempProvidedConfigFile)).to.equal(file(expectedXmlFiles.VERSION_TO_VERSION_AND_BUILD));
+            expect(readFile(tempProvidedConfigFile)).toBe(readFile(expectedXmlFiles.VERSION_TO_VERSION_AND_BUILD));
         });
 
         it('(configPath, null, buildNumber)', async () => {
@@ -41,7 +42,7 @@ function nullsTest() {
 
             await cordovaSetVersion(tempProvidedConfigFile, null, 86);
 
-            expect(file(tempProvidedConfigFile)).to.equal(file(expectedXmlFiles.BUILD_TO_VERSION_AND_BUILD));
+            expect(readFile(tempProvidedConfigFile)).toBe(readFile(expectedXmlFiles.BUILD_TO_VERSION_AND_BUILD));
         });
 
         it('(version, null)', async () => {
@@ -49,7 +50,7 @@ function nullsTest() {
 
             await cordovaSetVersion('2.4.9', null);
 
-            expect(file(tempConfigFile)).to.equal(file(expectedXmlFiles.VERSION_TO_VERSION_AND_BUILD));
+            expect(readFile(tempConfigFile)).toBe(readFile(expectedXmlFiles.VERSION_TO_VERSION_AND_BUILD));
         });
 
         it('(null, version)', async () => {
@@ -57,7 +58,7 @@ function nullsTest() {
 
             await cordovaSetVersion(null, '2.4.9');
 
-            expect(file(tempConfigFile)).to.equal(file(expectedXmlFiles.VERSION_TO_VERSION_AND_BUILD));
+            expect(readFile(tempConfigFile)).toBe(readFile(expectedXmlFiles.VERSION_TO_VERSION_AND_BUILD));
         });
 
         it('(null, version, null)', async () => {
@@ -65,7 +66,7 @@ function nullsTest() {
 
             await cordovaSetVersion(null, '2.4.9', null);
 
-            expect(file(tempConfigFile)).to.equal(file(expectedXmlFiles.VERSION_TO_VERSION_AND_BUILD));
+            expect(readFile(tempConfigFile)).toBe(readFile(expectedXmlFiles.VERSION_TO_VERSION_AND_BUILD));
         });
 
         it('(null, version, buildNumber)', async () => {
@@ -73,7 +74,7 @@ function nullsTest() {
 
             await cordovaSetVersion(null, '2.4.9', 86);
 
-            expect(file(tempConfigFile)).to.equal(file(expectedXmlFiles.VERSION_AND_BUILD_TO_VERSION_AND_BUILD));
+            expect(readFile(tempConfigFile)).toBe(readFile(expectedXmlFiles.VERSION_AND_BUILD_TO_VERSION_AND_BUILD));
         });
 
         it('(null, buildNumber)', async () => {
@@ -81,7 +82,7 @@ function nullsTest() {
 
             await cordovaSetVersion(null, 86);
 
-            expect(file(tempConfigFile)).to.equal(file(expectedXmlFiles.BUILD_TO_VERSION_AND_BUILD));
+            expect(readFile(tempConfigFile)).toBe(readFile(expectedXmlFiles.BUILD_TO_VERSION_AND_BUILD));
         });
 
         it('(null, null, buildNumber)', async () => {
@@ -89,7 +90,7 @@ function nullsTest() {
 
             await cordovaSetVersion(null, null, 86);
 
-            expect(file(tempConfigFile)).to.equal(file(expectedXmlFiles.BUILD_TO_VERSION_AND_BUILD));
+            expect(readFile(tempConfigFile)).toBe(readFile(expectedXmlFiles.BUILD_TO_VERSION_AND_BUILD));
         });
 
         it('(null)', async () => {
@@ -98,7 +99,7 @@ function nullsTest() {
 
             await cordovaSetVersion(null);
 
-            expect(file(tempConfigFile)).to.equal(file(expectedXmlFiles.PACKAGE_VERSION_TO_VERSION_AND_BUILD));
+            expect(readFile(tempConfigFile)).toBe(readFile(expectedXmlFiles.PACKAGE_VERSION_TO_VERSION_AND_BUILD));
         });
 
         it('(null, null)', async () => {
@@ -107,7 +108,7 @@ function nullsTest() {
 
             await cordovaSetVersion(null, null);
 
-            expect(file(tempConfigFile)).to.equal(file(expectedXmlFiles.PACKAGE_VERSION_TO_VERSION_AND_BUILD));
+            expect(readFile(tempConfigFile)).toBe(readFile(expectedXmlFiles.PACKAGE_VERSION_TO_VERSION_AND_BUILD));
         });
 
         it('(null, null, null)', async () => {
@@ -116,7 +117,7 @@ function nullsTest() {
 
             await cordovaSetVersion(null, null, null);
 
-            expect(file(tempConfigFile)).to.equal(file(expectedXmlFiles.PACKAGE_VERSION_TO_VERSION_AND_BUILD));
+            expect(readFile(tempConfigFile)).toBe(readFile(expectedXmlFiles.PACKAGE_VERSION_TO_VERSION_AND_BUILD));
         });
     });
 }
