@@ -1,5 +1,4 @@
 import chai, { expect } from 'chai';
-import dirtyChai from 'dirty-chai';
 import chaiFiles, { file } from 'chai-files';
 import fs from 'fs-extra';
 
@@ -15,7 +14,6 @@ import {
 import { tempPackageFile, entryPackageFiles } from './packages';
 
 chai.use(chaiFiles);
-chai.use(dirtyChai);
 
 function configPathTest() {
     describe('(configPath)', () => {
@@ -67,7 +65,7 @@ function configPathTest() {
             try {
                 await cordovaSetVersion({});
             } catch (error) {
-                expect(error).to.exist();
+                expect(error).to.exist;
                 expect(error.message).to.contain('configPath');
                 expect(error.message).to.contain('must be a');
             }
@@ -77,7 +75,7 @@ function configPathTest() {
             try {
                 await cordovaSetVersion(tempProvidedConfigFile);
             } catch (error) {
-                expect(error).to.exist();
+                expect(error).to.exist;
                 expect(error.message).to.contain('no such file or directory');
                 expect(error.message).to.contain('config.provided.xml');
             }
@@ -90,7 +88,7 @@ function configPathTest() {
             try {
                 await cordovaSetVersion(tempProvidedConfigFile);
             } catch (error) {
-                expect(error).to.exist();
+                expect(error).to.exist;
                 expect(error.message).to.not.contain('no such file or directory');
             }
         });
@@ -100,7 +98,7 @@ function configPathTest() {
             try {
                 await cordovaSetVersion(tempProvidedConfigFile);
             } catch (error) {
-                expect(error).to.exist();
+                expect(error).to.exist;
                 expect(error.message).to.contain('no such file or directory');
                 expect(error.message).to.contain('package.json');
             }
@@ -113,7 +111,7 @@ function configPathTest() {
             try {
                 await cordovaSetVersion(tempProvidedConfigFile);
             } catch (error) {
-                expect(error).to.exist();
+                expect(error).to.exist;
                 expect(error.message).to.not.contain('no such file or directory');
             }
         });
@@ -148,7 +146,7 @@ function configPathTest() {
             try {
                 await cordovaSetVersion({});
             } catch (error) {
-                expect(error).to.exist();
+                expect(error).to.exist;
                 expect(error.message).to.contain('configPath');
                 expect(error.message).to.contain('must be a');
             }
@@ -158,7 +156,7 @@ function configPathTest() {
             try {
                 await cordovaSetVersion(tempProvidedPluginConfigFile);
             } catch (error) {
-                expect(error).to.exist();
+                expect(error).to.exist;
                 expect(error.message).to.contain('no such file or directory');
                 expect(error.message).to.contain('plugin.provided.xml');
             }
@@ -171,7 +169,7 @@ function configPathTest() {
             try {
                 await cordovaSetVersion(tempProvidedPluginConfigFile);
             } catch (error) {
-                expect(error).to.exist();
+                expect(error).to.exist;
                 expect(error.message).to.not.contain('no such file or directory');
             }
         });
@@ -181,7 +179,7 @@ function configPathTest() {
             try {
                 await cordovaSetVersion(tempProvidedPluginConfigFile);
             } catch (error) {
-                expect(error).to.exist();
+                expect(error).to.exist;
                 expect(error.message).to.contain('no such file or directory');
                 expect(error.message).to.contain('package.json');
             }
@@ -194,7 +192,7 @@ function configPathTest() {
             try {
                 await cordovaSetVersion(tempProvidedPluginConfigFile);
             } catch (error) {
-                expect(error).to.exist();
+                expect(error).to.exist;
                 expect(error.message).to.not.contain('no such file or directory');
             }
         });

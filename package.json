@@ -44,7 +44,6 @@
         "chai-files": "1.4.0",
         "child-process-promise": "2.2.1",
         "codecov": "3.7.2",
-        "dirty-chai": "2.0.1",
         "eslint": "7.7.0",
         "eslint-config-airbnb-base": "14.2.0",
         "eslint-config-prettier": "6.11.0",

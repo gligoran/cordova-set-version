@@ -1,5 +1,4 @@
-import chai, { expect } from 'chai';
-import dirtyChai from 'dirty-chai';
+import { expect } from 'chai';
 import fs from 'fs-extra';
 
 import cordovaSetVersion from '../src';
@@ -16,15 +15,13 @@ import buildNumberTest from './index.build-number.test';
 import noArgumentsTest from './index.no-arguments.test';
 import nullsTest from './index.nulls.test';
 
-chai.use(dirtyChai);
-
 describe('cordova-set-version', () => {
     before(() => {
         process.chdir(__dirname);
     });
 
     it('should exist', () => {
-        expect(cordovaSetVersion).to.exist();
+        expect(cordovaSetVersion).to.exist;
     });
 
     it('should be a function', () => {

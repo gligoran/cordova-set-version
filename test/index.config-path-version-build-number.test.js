@@ -1,6 +1,5 @@
 import chai, { expect } from 'chai';
 
-import dirtyChai from 'dirty-chai';
 import chaiFiles, { file } from 'chai-files';
 import fs from 'fs-extra';
 
@@ -8,7 +7,6 @@ import cordovaSetVersion from '../src';
 import { tempProvidedConfigFile, entryConfigFiles, expectedXmlFiles } from './configs';
 
 chai.use(chaiFiles);
-chai.use(dirtyChai);
 
 function configPathVersionBuildNumberTest() {
     describe('(configPath, version, buildNumber)', () => {
@@ -58,7 +56,7 @@ function configPathVersionBuildNumberTest() {
             try {
                 await cordovaSetVersion({}, '2.4.9', 86);
             } catch (error) {
-                expect(error).to.exist();
+                expect(error).to.exist;
                 expect(error.message).to.contain('configPath');
                 expect(error.message).to.contain('must be a');
                 return;
@@ -73,7 +71,7 @@ function configPathVersionBuildNumberTest() {
             try {
                 await cordovaSetVersion(tempProvidedConfigFile, {}, 86);
             } catch (error) {
-                expect(error).to.exist();
+                expect(error).to.exist;
                 expect(error.message).to.contain('version');
                 expect(error.message).to.contain('must be a');
             }
@@ -85,7 +83,7 @@ function configPathVersionBuildNumberTest() {
             try {
                 await cordovaSetVersion(tempProvidedConfigFile, '2.4.9', {});
             } catch (error) {
-                expect(error).to.exist();
+                expect(error).to.exist;
                 expect(error.message).to.contain('buildNumber');
                 expect(error.message).to.contain('must be a');
             }
@@ -95,7 +93,7 @@ function configPathVersionBuildNumberTest() {
             try {
                 await cordovaSetVersion(tempProvidedConfigFile, '2.4.9', 86);
             } catch (error) {
-                expect(error).to.exist();
+                expect(error).to.exist;
                 expect(error.message).to.contain('no such file or directory');
                 expect(error.message).to.contain('config.provided.xml');
             }
@@ -107,7 +105,7 @@ function configPathVersionBuildNumberTest() {
             try {
                 await cordovaSetVersion(tempProvidedConfigFile, '2.4.9', 86);
             } catch (error) {
-                expect(error).to.exist();
+                expect(error).to.exist;
                 expect(error.message).to.not.contain('no such file or directory');
             }
         });

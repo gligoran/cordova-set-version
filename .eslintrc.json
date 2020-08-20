@@ -1,12 +1,22 @@
 {
     "env": {
-        "node": true,
         "es2020": true,
-        "mocha": true
+        "mocha": true,
+        "node": true
     },
     "extends": [
         "airbnb-base",
         "prettier"
+    ],
+    "overrides": [
+        {
+            "files": [
+                "*.test.js"
+            ],
+            "rules": {
+                "no-unused-expressions": "off"
+            }
+        }
     ],
     "parserOptions": {
         "ecmaVersion": 2020,

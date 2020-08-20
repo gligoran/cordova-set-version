@@ -1,5 +1,4 @@
 import chai, { expect } from 'chai';
-import dirtyChai from 'dirty-chai';
 import chaiFiles, { file } from 'chai-files';
 import fs from 'fs-extra';
 import { exec } from 'child-process-promise';
@@ -7,7 +6,6 @@ import { exec } from 'child-process-promise';
 import { tempConfigFile, entryConfigFiles, expectedXmlFiles } from './configs';
 
 chai.use(chaiFiles);
-chai.use(dirtyChai);
 
 describe('cli', () => {
     before(() => {

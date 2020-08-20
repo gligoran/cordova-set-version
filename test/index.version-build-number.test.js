@@ -1,5 +1,4 @@
 import chai, { expect } from 'chai';
-import dirtyChai from 'dirty-chai';
 import chaiFiles, { file } from 'chai-files';
 import fs from 'fs-extra';
 
@@ -7,7 +6,6 @@ import cordovaSetVersion from '../src';
 import { tempConfigFile, entryConfigFiles, expectedXmlFiles } from './configs';
 
 chai.use(chaiFiles);
-chai.use(dirtyChai);
 
 function versionBuildNumberTest() {
     describe('(version, buildNumber)', () => {
@@ -49,7 +47,7 @@ function versionBuildNumberTest() {
             try {
                 await cordovaSetVersion({}, 86);
             } catch (error) {
-                expect(error).to.exist();
+                expect(error).to.exist;
                 expect(error.message).to.contain('configPath');
                 expect(error.message).to.contain('must be a');
             }
@@ -61,7 +59,7 @@ function versionBuildNumberTest() {
             try {
                 await cordovaSetVersion('2.4.9', {});
             } catch (error) {
-                expect(error).to.exist();
+                expect(error).to.exist;
                 expect(error.message).to.contain('buildNumber');
                 expect(error.message).to.contain('must be a');
             }
@@ -71,7 +69,7 @@ function versionBuildNumberTest() {
             try {
                 await cordovaSetVersion('2.4.9', 86);
             } catch (error) {
-                expect(error).to.exist();
+                expect(error).to.exist;
                 expect(error.message).to.contain('no such file or directory');
                 expect(error.message).to.contain('config.xml');
             }
@@ -83,7 +81,7 @@ function versionBuildNumberTest() {
             try {
                 await cordovaSetVersion('2.4.9', 86);
             } catch (error) {
-                expect(error).to.exist();
+                expect(error).to.exist;
                 expect(error.message).to.not.contain('no such file or directory');
             }
         });

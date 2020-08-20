@@ -1,5 +1,4 @@
 import chai, { expect } from 'chai';
-import dirtyChai from 'dirty-chai';
 import chaiFiles, { file } from 'chai-files';
 import fs from 'fs-extra';
 
@@ -8,7 +7,6 @@ import { tempConfigFile, entryConfigFiles, expectedXmlFiles } from './configs';
 import { tempPackageFile, entryPackageFiles } from './packages';
 
 chai.use(chaiFiles);
-chai.use(dirtyChai);
 
 function noArgumentsTest() {
     describe('()', () => {
@@ -52,7 +50,7 @@ function noArgumentsTest() {
             try {
                 await cordovaSetVersion(tempConfigFile);
             } catch (error) {
-                expect(error).to.exist();
+                expect(error).to.exist;
                 expect(error.message).to.contain('no such file or directory');
                 expect(error.message).to.contain('config.xml');
             }
@@ -65,7 +63,7 @@ function noArgumentsTest() {
             try {
                 await cordovaSetVersion();
             } catch (error) {
-                expect(error).to.exist();
+                expect(error).to.exist;
                 expect(error.message).to.not.contain('no such file or directory');
             }
         });
@@ -76,7 +74,7 @@ function noArgumentsTest() {
             try {
                 await cordovaSetVersion();
             } catch (error) {
-                expect(error).to.exist();
+                expect(error).to.exist;
                 expect(error.message).to.contain('no such file or directory');
                 expect(error.message).to.contain('package.json');
             }
@@ -89,7 +87,7 @@ function noArgumentsTest() {
             try {
                 await cordovaSetVersion();
             } catch (error) {
-                expect(error).to.exist();
+                expect(error).to.exist;
                 expect(error.message).to.not.contain('no such file or directory');
             }
         });
