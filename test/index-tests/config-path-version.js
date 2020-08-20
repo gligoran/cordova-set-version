@@ -12,11 +12,11 @@ import {
 } from '../configs';
 
 function configPathVersionTest() {
-    describe('(configPath, version)', () => {
+    describe('({ configPath, version })', () => {
         it('should override existing version and preserve existing buildNumber', async () => {
             fs.copySync(entryConfigFiles.VERSION_AND_BUILD, tempProvidedConfigFile);
 
-            await cordovaSetVersion(tempProvidedConfigFile, '2.4.9');
+            await cordovaSetVersion({ configPath: tempProvidedConfigFile, version: '2.4.9' });
 
             expect(readFile(tempProvidedConfigFile)).toBe(readFile(expectedXmlFiles.VERSION_TO_VERSION_AND_BUILD));
         });
@@ -24,7 +24,7 @@ function configPathVersionTest() {
         it('should override existing version and not add buildNumber', async () => {
             fs.copySync(entryConfigFiles.VERSION_AND_NO_BUILD, tempProvidedConfigFile);
 
-            await cordovaSetVersion(tempProvidedConfigFile, '2.4.9');
+            await cordovaSetVersion({ configPath: tempProvidedConfigFile, version: '2.4.9' });
 
             expect(readFile(tempProvidedConfigFile)).toBe(readFile(expectedXmlFiles.VERSION_TO_VERSION_AND_NO_BUILD));
         });
@@ -32,7 +32,7 @@ function configPathVersionTest() {
         it('should add version and preserve existing buildNumber', async () => {
             fs.copySync(entryConfigFiles.NO_VERSION_AND_BUILD, tempProvidedConfigFile);
 
-            await cordovaSetVersion(tempProvidedConfigFile, '2.4.9');
+            await cordovaSetVersion({ configPath: tempProvidedConfigFile, version: '2.4.9' });
 
             expect(readFile(tempProvidedConfigFile)).toBe(readFile(expectedXmlFiles.VERSION_TO_NO_VERSION_AND_BUILD));
         });
@@ -40,7 +40,7 @@ function configPathVersionTest() {
         it('should add version and not add buildNumber', async () => {
             fs.copySync(entryConfigFiles.NO_VERSION_AND_NO_BUILD, tempProvidedConfigFile);
 
-            await cordovaSetVersion(tempProvidedConfigFile, '2.4.9');
+            await cordovaSetVersion({ configPath: tempProvidedConfigFile, version: '2.4.9' });
 
             expect(readFile(tempProvidedConfigFile)).toBe(
                 readFile(expectedXmlFiles.VERSION_TO_NO_VERSION_AND_NO_BUILD),
@@ -51,7 +51,7 @@ function configPathVersionTest() {
             fs.copySync(entryConfigFiles.VERSION_AND_BUILD, tempProvidedConfigFile);
 
             try {
-                await cordovaSetVersion({}, '2.4.9');
+                await cordovaSetVersion({ configPath: {}, version: '2.4.9' });
             } catch (error) {
                 expect(error).not.toBeNil();
                 expect(error.message).toContain('configPath');
@@ -64,7 +64,7 @@ function configPathVersionTest() {
             fs.copySync(entryConfigFiles.VERSION_AND_BUILD, tempProvidedConfigFile);
 
             try {
-                await cordovaSetVersion(tempProvidedConfigFile, {});
+                await cordovaSetVersion({ configPath: tempProvidedConfigFile, version: {} });
             } catch (error) {
                 expect(error).not.toBeNil();
                 expect(error.message).toContain('version');
@@ -74,7 +74,7 @@ function configPathVersionTest() {
 
         it('should return an error about missing config file', async () => {
             try {
-                await cordovaSetVersion(tempProvidedConfigFile, '2.4.9');
+                await cordovaSetVersion({ configPath: tempProvidedConfigFile, version: '2.4.9' });
             } catch (error) {
                 expect(error).not.toBeNil();
                 expect(error.message).toContain('no such file or directory');
@@ -86,7 +86,7 @@ function configPathVersionTest() {
             fs.copySync(entryConfigFiles.MALFORMED, tempProvidedConfigFile);
 
             try {
-                await cordovaSetVersion(tempProvidedConfigFile, '2.4.9');
+                await cordovaSetVersion({ configPath: tempProvidedConfigFile, version: '2.4.9' });
             } catch (error) {
                 expect(error).not.toBeNil();
                 expect(error.message).not.toContain('no such file or directory');
@@ -94,11 +94,11 @@ function configPathVersionTest() {
         });
     });
 
-    describe('(pluginConfigPath, version)', () => {
+    describe('({ pluginConfigPath, version })', () => {
         it('should override existing version', async () => {
             fs.copySync(entryPluginConfigFiles.VERSION, tempProvidedPluginConfigFile);
 
-            await cordovaSetVersion(tempProvidedPluginConfigFile, '2.4.9');
+            await cordovaSetVersion({ configPath: tempProvidedPluginConfigFile, version: '2.4.9' });
 
             expect(readFile(tempProvidedPluginConfigFile)).toBe(readFile(expectedPluginXmlFiles.VERSION_TO_VERSION));
         });
@@ -106,7 +106,7 @@ function configPathVersionTest() {
         it('should add version', async () => {
             fs.copySync(entryPluginConfigFiles.NO_VERSION, tempProvidedPluginConfigFile);
 
-            await cordovaSetVersion(tempProvidedPluginConfigFile, '2.4.9');
+            await cordovaSetVersion({ configPath: tempProvidedPluginConfigFile, version: '2.4.9' });
 
             expect(readFile(tempProvidedPluginConfigFile)).toBe(readFile(expectedPluginXmlFiles.VERSION_TO_NO_VERSION));
         });
@@ -115,7 +115,7 @@ function configPathVersionTest() {
             fs.copySync(entryPluginConfigFiles.VERSION, tempProvidedPluginConfigFile);
 
             try {
-                await cordovaSetVersion({}, '2.4.9');
+                await cordovaSetVersion({ configPath: {}, version: '2.4.9' });
             } catch (error) {
                 expect(error).not.toBeNil();
                 expect(error.message).toContain('configPath');
@@ -128,7 +128,7 @@ function configPathVersionTest() {
             fs.copySync(entryPluginConfigFiles.VERSION, tempProvidedPluginConfigFile);
 
             try {
-                await cordovaSetVersion(tempProvidedPluginConfigFile, {});
+                await cordovaSetVersion({ configPath: tempProvidedPluginConfigFile, version: {} });
             } catch (error) {
                 expect(error).not.toBeNil();
                 expect(error.message).toContain('version');
@@ -138,7 +138,7 @@ function configPathVersionTest() {
 
         it('should return an error about missing config file', async () => {
             try {
-                await cordovaSetVersion(tempProvidedPluginConfigFile, '2.4.9');
+                await cordovaSetVersion({ configPath: tempProvidedPluginConfigFile, version: '2.4.9' });
             } catch (error) {
                 expect(error).not.toBeNil();
                 expect(error.message).toContain('no such file or directory');
@@ -150,7 +150,7 @@ function configPathVersionTest() {
             fs.copySync(entryPluginConfigFiles.MALFORMED, tempProvidedPluginConfigFile);
 
             try {
-                await cordovaSetVersion(tempProvidedPluginConfigFile, '2.4.9');
+                await cordovaSetVersion({ configPath: tempProvidedPluginConfigFile, version: '2.4.9' });
             } catch (error) {
                 expect(error).not.toBeNil();
                 expect(error.message).not.toContain('no such file or directory');

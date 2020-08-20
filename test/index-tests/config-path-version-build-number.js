@@ -5,11 +5,11 @@ import cordovaSetVersion from '../../src';
 import { tempProvidedConfigFile, entryConfigFiles, expectedXmlFiles } from '../configs';
 
 function configPathVersionBuildNumberTest() {
-    describe('(configPath, version, buildNumber)', () => {
+    describe('({ configPath, version, buildNumber })', () => {
         it('should override both existing version and buildNumber', async () => {
             fs.copySync(entryConfigFiles.VERSION_AND_BUILD, tempProvidedConfigFile);
 
-            await cordovaSetVersion(tempProvidedConfigFile, '2.4.9', 86);
+            await cordovaSetVersion({ configPath: tempProvidedConfigFile, version: '2.4.9', buildNumber: 86 });
 
             expect(readFile(tempProvidedConfigFile)).toBe(
                 readFile(expectedXmlFiles.VERSION_AND_BUILD_TO_VERSION_AND_BUILD),
@@ -19,7 +19,7 @@ function configPathVersionBuildNumberTest() {
         it('should override existing version and add buildNumber', async () => {
             fs.copySync(entryConfigFiles.VERSION_AND_NO_BUILD, tempProvidedConfigFile);
 
-            await cordovaSetVersion(tempProvidedConfigFile, '2.4.9', 86);
+            await cordovaSetVersion({ configPath: tempProvidedConfigFile, version: '2.4.9', buildNumber: 86 });
 
             expect(readFile(tempProvidedConfigFile)).toBe(
                 readFile(expectedXmlFiles.VERSION_AND_BUILD_TO_VERSION_AND_NO_BUILD),
@@ -29,7 +29,7 @@ function configPathVersionBuildNumberTest() {
         it('should add version and override existing buildNumber', async () => {
             fs.copySync(entryConfigFiles.NO_VERSION_AND_BUILD, tempProvidedConfigFile);
 
-            await cordovaSetVersion(tempProvidedConfigFile, '2.4.9', 86);
+            await cordovaSetVersion({ configPath: tempProvidedConfigFile, version: '2.4.9', buildNumber: 86 });
 
             expect(readFile(tempProvidedConfigFile)).toBe(
                 readFile(expectedXmlFiles.VERSION_AND_BUILD_TO_NO_VERSION_AND_BUILD),
@@ -39,7 +39,7 @@ function configPathVersionBuildNumberTest() {
         it('should add version and buildNumber', async () => {
             fs.copySync(entryConfigFiles.NO_VERSION_AND_NO_BUILD, tempProvidedConfigFile);
 
-            await cordovaSetVersion(tempProvidedConfigFile, '2.4.9', 86);
+            await cordovaSetVersion({ configPath: tempProvidedConfigFile, version: '2.4.9', buildNumber: 86 });
 
             expect(readFile(tempProvidedConfigFile)).toBe(
                 readFile(expectedXmlFiles.VERSION_AND_BUILD_TO_NO_VERSION_AND_NO_BUILD),
@@ -50,7 +50,7 @@ function configPathVersionBuildNumberTest() {
             fs.copySync(entryConfigFiles.VERSION_AND_BUILD, tempProvidedConfigFile);
 
             try {
-                await cordovaSetVersion({}, '2.4.9', 86);
+                await cordovaSetVersion({ configPath: {}, version: '2.4.9', buildNumber: 86 });
             } catch (error) {
                 expect(error).not.toBeNil();
                 expect(error.message).toContain('configPath');
@@ -62,7 +62,7 @@ function configPathVersionBuildNumberTest() {
             fs.copySync(entryConfigFiles.VERSION_AND_BUILD, tempProvidedConfigFile);
 
             try {
-                await cordovaSetVersion(tempProvidedConfigFile, {}, 86);
+                await cordovaSetVersion({ configPath: tempProvidedConfigFile, version: {}, buildNumber: 86 });
             } catch (error) {
                 expect(error).not.toBeNil();
                 expect(error.message).toContain('version');
@@ -74,7 +74,7 @@ function configPathVersionBuildNumberTest() {
             fs.copySync(entryConfigFiles.VERSION_AND_BUILD, tempProvidedConfigFile);
 
             try {
-                await cordovaSetVersion(tempProvidedConfigFile, '2.4.9', {});
+                await cordovaSetVersion({ configPath: tempProvidedConfigFile, version: '2.4.9', buildNumber: {} });
             } catch (error) {
                 expect(error).not.toBeNil();
                 expect(error.message).toContain('buildNumber');
@@ -84,7 +84,7 @@ function configPathVersionBuildNumberTest() {
 
         it('should return an error about missing config file', async () => {
             try {
-                await cordovaSetVersion(tempProvidedConfigFile, '2.4.9', 86);
+                await cordovaSetVersion({ configPath: tempProvidedConfigFile, version: '2.4.9', buildNumber: 86 });
             } catch (error) {
                 expect(error).not.toBeNil();
                 expect(error.message).toContain('no such file or directory');
@@ -96,7 +96,7 @@ function configPathVersionBuildNumberTest() {
             fs.copySync(entryConfigFiles.MALFORMED, tempProvidedConfigFile);
 
             try {
-                await cordovaSetVersion(tempProvidedConfigFile, '2.4.9', 86);
+                await cordovaSetVersion({ configPath: tempProvidedConfigFile, version: '2.4.9', buildNumber: 86 });
             } catch (error) {
                 expect(error).not.toBeNil();
                 expect(error.message).not.toContain('no such file or directory');
