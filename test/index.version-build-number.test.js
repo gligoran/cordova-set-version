@@ -1,4 +1,3 @@
-import { describe, it } from 'mocha';
 import chai, { expect } from 'chai';
 import dirtyChai from 'dirty-chai';
 import chaiFiles, { file } from 'chai-files';
@@ -17,9 +16,7 @@ function versionBuildNumberTest() {
 
             await cordovaSetVersion('2.4.9', 86);
 
-            expect(file(tempConfigFile))
-                .to
-                .equal(file(expectedXmlFiles.VERSION_AND_BUILD_TO_VERSION_AND_BUILD));
+            expect(file(tempConfigFile)).to.equal(file(expectedXmlFiles.VERSION_AND_BUILD_TO_VERSION_AND_BUILD));
         });
 
         it('should override existing version and add buildNumber', async () => {
@@ -27,9 +24,7 @@ function versionBuildNumberTest() {
 
             await cordovaSetVersion('2.4.9', 86);
 
-            expect(file(tempConfigFile))
-                .to
-                .equal(file(expectedXmlFiles.VERSION_AND_BUILD_TO_VERSION_AND_NO_BUILD));
+            expect(file(tempConfigFile)).to.equal(file(expectedXmlFiles.VERSION_AND_BUILD_TO_VERSION_AND_NO_BUILD));
         });
 
         it('should add version and override existing buildNumber', async () => {
@@ -37,9 +32,7 @@ function versionBuildNumberTest() {
 
             await cordovaSetVersion('2.4.9', 86);
 
-            expect(file(tempConfigFile))
-                .to
-                .equal(file(expectedXmlFiles.VERSION_AND_BUILD_TO_NO_VERSION_AND_BUILD));
+            expect(file(tempConfigFile)).to.equal(file(expectedXmlFiles.VERSION_AND_BUILD_TO_NO_VERSION_AND_BUILD));
         });
 
         it('should add version and buildNumber', async () => {
@@ -47,9 +40,7 @@ function versionBuildNumberTest() {
 
             await cordovaSetVersion('2.4.9', 86);
 
-            expect(file(tempConfigFile))
-                .to
-                .equal(file(expectedXmlFiles.VERSION_AND_BUILD_TO_NO_VERSION_AND_NO_BUILD));
+            expect(file(tempConfigFile)).to.equal(file(expectedXmlFiles.VERSION_AND_BUILD_TO_NO_VERSION_AND_NO_BUILD));
         });
 
         it('should return an error about configPath type', async () => {

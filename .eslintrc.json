@@ -1,40 +1,21 @@
 {
-    "extends": "airbnb-base",
+    "env": {
+        "node": true,
+        "es2020": true,
+        "mocha": true
+    },
+    "extends": [
+        "airbnb-base",
+        "prettier"
+    ],
+    "parserOptions": {
+        "ecmaVersion": 2020,
+        "sourceType": "module"
+    },
+    "plugins": [
+        "prettier"
+    ],
     "rules": {
-        "arrow-parens": [
-            "error",
-            "as-needed"
-        ],
-        "comma-dangle": [
-            "error",
-            "never"
-        ],
-        "eol-last": [
-            "error",
-            "always"
-        ],
-        "indent": [
-            "error",
-            4,
-            {
-                "SwitchCase": 1
-            }
-        ],
-        "max-len": [
-            "error",
-            120
-        ],
-        "no-multiple-empty-lines": [
-            "error",
-            {
-                "max": 1,
-                "maxBOF": 0,
-                "maxEOF": 1
-            }
-        ],
-        "no-use-before-define": [
-            "error",
-            "nofunc"
-        ]
+        "prettier/prettier": "error"
     }
 }

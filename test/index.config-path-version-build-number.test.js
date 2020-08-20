@@ -1,4 +1,3 @@
-import { describe, it } from 'mocha';
 import chai, { expect } from 'chai';
 
 import dirtyChai from 'dirty-chai';
@@ -18,9 +17,9 @@ function configPathVersionBuildNumberTest() {
 
             await cordovaSetVersion(tempProvidedConfigFile, '2.4.9', 86);
 
-            expect(file(tempProvidedConfigFile))
-                .to
-                .equal(file(expectedXmlFiles.VERSION_AND_BUILD_TO_VERSION_AND_BUILD));
+            expect(file(tempProvidedConfigFile)).to.equal(
+                file(expectedXmlFiles.VERSION_AND_BUILD_TO_VERSION_AND_BUILD),
+            );
         });
 
         it('should override existing version and add buildNumber', async () => {
@@ -28,9 +27,9 @@ function configPathVersionBuildNumberTest() {
 
             await cordovaSetVersion(tempProvidedConfigFile, '2.4.9', 86);
 
-            expect(file(tempProvidedConfigFile))
-                .to
-                .equal(file(expectedXmlFiles.VERSION_AND_BUILD_TO_VERSION_AND_NO_BUILD));
+            expect(file(tempProvidedConfigFile)).to.equal(
+                file(expectedXmlFiles.VERSION_AND_BUILD_TO_VERSION_AND_NO_BUILD),
+            );
         });
 
         it('should add version and override existing buildNumber', async () => {
@@ -38,9 +37,9 @@ function configPathVersionBuildNumberTest() {
 
             await cordovaSetVersion(tempProvidedConfigFile, '2.4.9', 86);
 
-            expect(file(tempProvidedConfigFile))
-                .to
-                .equal(file(expectedXmlFiles.VERSION_AND_BUILD_TO_NO_VERSION_AND_BUILD));
+            expect(file(tempProvidedConfigFile)).to.equal(
+                file(expectedXmlFiles.VERSION_AND_BUILD_TO_NO_VERSION_AND_BUILD),
+            );
         });
 
         it('should add version and buildNumber', async () => {
@@ -48,9 +47,9 @@ function configPathVersionBuildNumberTest() {
 
             await cordovaSetVersion(tempProvidedConfigFile, '2.4.9', 86);
 
-            expect(file(tempProvidedConfigFile))
-                .to
-                .equal(file(expectedXmlFiles.VERSION_AND_BUILD_TO_NO_VERSION_AND_NO_BUILD));
+            expect(file(tempProvidedConfigFile)).to.equal(
+                file(expectedXmlFiles.VERSION_AND_BUILD_TO_NO_VERSION_AND_NO_BUILD),
+            );
         });
 
         it('should return an error about configPath type', async () => {

@@ -1,0 +1,6 @@
+*.json
+*.yml
+test/configs/**/*
+.vscode/
+.nyc_output
+dist

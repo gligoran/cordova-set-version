@@ -15,9 +15,9 @@
 
 ## Features
 
-- Writes `version` and `buildNumber` to Cordova `config.xml`
-- Can read `version` from local `package.json`
-- Has CLI
+-   Writes `version` and `buildNumber` to Cordova `config.xml`
+-   Can read `version` from local `package.json`
+-   Has CLI
 
 ## Install
 
@@ -42,21 +42,19 @@ cordovaSetVersion('./config.alt.xml', '2.4.9', 86)
 
 `cordovaSetVersion([configPath], [version], [buildNumber]): Promise`
 
-- `configPath` *(string)* - path to your `config.xml`
-- `version` *(string)* - version to be written
-- `buildNumber` *(number)* - build number to be written
+-   `configPath` _(string)_ - path to your `config.xml`
+-   `version` _(string)_ - version to be written
+-   `buildNumber` _(number)_ - build number to be written
 
 ## CLI
 
-`cordova-set-version [-v|--version <version>]
-                     [-b|--build-number <build-number>]
-                     [config.xml]`
+`cordova-set-version [-v|--version <version>] [-b|--build-number <build-number>] [config.xml]`
 
 Options:
 
-- `-v`/`--version` - version to set
-- `-b`/`--build-number` - build number to set
-- `--help` - display help
+-   `-v`/`--version` - version to set
+-   `-b`/`--build-number` - build number to set
+-   `--help` - display help
 
 Examples
 

@@ -1,4 +1,3 @@
-import { describe, it } from 'mocha';
 import chai, { expect } from 'chai';
 import dirtyChai from 'dirty-chai';
 import chaiFiles, { file } from 'chai-files';
@@ -17,9 +16,7 @@ function configPathBuildNumberTest() {
 
             await cordovaSetVersion(tempProvidedConfigFile, 86);
 
-            expect(file(tempProvidedConfigFile))
-                .to
-                .equal(file(expectedXmlFiles.BUILD_TO_VERSION_AND_BUILD));
+            expect(file(tempProvidedConfigFile)).to.equal(file(expectedXmlFiles.BUILD_TO_VERSION_AND_BUILD));
         });
 
         it('should add buildNumber and preserve existing version', async () => {
@@ -27,9 +24,7 @@ function configPathBuildNumberTest() {
 
             await cordovaSetVersion(tempProvidedConfigFile, 86);
 
-            expect(file(tempProvidedConfigFile))
-                .to
-                .equal(file(expectedXmlFiles.BUILD_TO_VERSION_AND_NO_BUILD));
+            expect(file(tempProvidedConfigFile)).to.equal(file(expectedXmlFiles.BUILD_TO_VERSION_AND_NO_BUILD));
         });
 
         it('should override existing buildNumber and not add version', async () => {
@@ -37,9 +32,7 @@ function configPathBuildNumberTest() {
 
             await cordovaSetVersion(tempProvidedConfigFile, 86);
 
-            expect(file(tempProvidedConfigFile))
-                .to
-                .equal(file(expectedXmlFiles.BUILD_TO_NO_VERSION_AND_BUILD));
+            expect(file(tempProvidedConfigFile)).to.equal(file(expectedXmlFiles.BUILD_TO_NO_VERSION_AND_BUILD));
         });
 
         it('should add buildNumber and not add version', async () => {
@@ -47,9 +40,7 @@ function configPathBuildNumberTest() {
 
             await cordovaSetVersion(tempProvidedConfigFile, 86);
 
-            expect(file(tempProvidedConfigFile))
-                .to
-                .equal(file(expectedXmlFiles.BUILD_TO_NO_VERSION_AND_NO_BUILD));
+            expect(file(tempProvidedConfigFile)).to.equal(file(expectedXmlFiles.BUILD_TO_NO_VERSION_AND_NO_BUILD));
         });
 
         it('should return an error about configPath type', async () => {

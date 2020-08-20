@@ -9,46 +9,6 @@ const writeFile = promisify(fs.writeFile);
 const xmlBuilder = new Builder();
 const DefaultConfigPath = './config.xml';
 
-/**
- * Set Version and/or Build Number of Cordova config.xml.
- * @param {string} [configPath]
- * @param {string} [version]
- * @param {number} [buildNumber]
- */
-async function cordovaSetVersion(...args) {
-    let [configPath, version, buildNumber] = parseArguments(...args);
-
-    configPath = configPath || DefaultConfigPath;
-    version = version || null;
-    buildNumber = buildNumber || null;
-
-    checkTypeErrors(configPath, version, buildNumber);
-
-    let xml = await getXml(configPath);
-
-    if (!version && !buildNumber) {
-        version = await getVersionFromPackage(version);
-    }
-
-    xml = setAttributes(xml, version, buildNumber);
-
-    const newData = xmlBuilder.buildObject(xml);
-    return writeFile(configPath, newData, { encoding: 'UTF-8' });
-}
-
-function parseArguments(...args) {
-    switch (args.length) {
-        case 0:
-            return [null, null, null];
-        case 1:
-            return parse1Argument(args[0]);
-        case 2:
-            return parse2Arguments(args[0], args[1]);
-        default:
-            return args;
-    }
-}
-
 function parse1Argument(arg) {
     if (typeof arg === 'string' && arg.indexOf('.xml') < 0) {
         return [null, arg, null];
@@ -75,6 +35,19 @@ function parse2Arguments(arg1, arg2) {
     }
 
     return [arg1, arg2, null];
+}
+
+function parseArguments(...args) {
+    switch (args.length) {
+        case 0:
+            return [null, null, null];
+        case 1:
+            return parse1Argument(args[0]);
+        case 2:
+            return parse2Arguments(args[0], args[1]);
+        default:
+            return args;
+    }
 }
 
 function checkTypeErrors(configPath, version, buildNumber) {
@@ -124,6 +97,33 @@ function setAttributes(xml, version, buildNumber) {
     }
 
     return newXml;
+}
+
+/**
+ * Set Version and/or Build Number of Cordova config.xml.
+ * @param {string} [configPath]
+ * @param {string} [version]
+ * @param {number} [buildNumber]
+ */
+async function cordovaSetVersion(...args) {
+    let [configPath, version, buildNumber] = parseArguments(...args);
+
+    configPath = configPath || DefaultConfigPath;
+    version = version || null;
+    buildNumber = buildNumber || null;
+
+    checkTypeErrors(configPath, version, buildNumber);
+
+    let xml = await getXml(configPath);
+
+    if (!version && !buildNumber) {
+        version = await getVersionFromPackage(version);
+    }
+
+    xml = setAttributes(xml, version, buildNumber);
+
+    const newData = xmlBuilder.buildObject(xml);
+    return writeFile(configPath, newData, { encoding: 'UTF-8' });
 }
 
 export default cordovaSetVersion;

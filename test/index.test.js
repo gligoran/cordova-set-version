@@ -1,16 +1,9 @@
-import {
-    afterEach, before, describe, it
-} from 'mocha';
 import chai, { expect } from 'chai';
 import dirtyChai from 'dirty-chai';
 import fs from 'fs-extra';
 
 import cordovaSetVersion from '../src';
-import {
-    tempConfigFile,
-    tempProvidedConfigFile,
-    tempProvidedPluginConfigFile
-} from './configs';
+import { tempConfigFile, tempProvidedConfigFile, tempProvidedPluginConfigFile } from './configs';
 import { tempPackageFile } from './packages';
 
 import configPathVersionBuildNumberTest from './index.config-path-version-build-number.test';

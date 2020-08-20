@@ -1,6 +1,3 @@
-import {
-    afterEach, before, describe, it
-} from 'mocha';
 import chai, { expect } from 'chai';
 import dirtyChai from 'dirty-chai';
 import chaiFiles, { file } from 'chai-files';
@@ -22,9 +19,7 @@ describe('cli', () => {
 
         await exec('../dist/cli.js -v 2.4.9 -b 86');
 
-        expect(file(tempConfigFile))
-            .to
-            .equal(file(expectedXmlFiles.VERSION_AND_BUILD_TO_VERSION_AND_BUILD));
+        expect(file(tempConfigFile)).to.equal(file(expectedXmlFiles.VERSION_AND_BUILD_TO_VERSION_AND_BUILD));
     });
 
     afterEach(() => {

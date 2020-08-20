@@ -1,4 +1,3 @@
-import { describe, it } from 'mocha';
 import chai, { expect } from 'chai';
 import dirtyChai from 'dirty-chai';
 import chaiFiles, { file } from 'chai-files';
@@ -19,9 +18,7 @@ function noArgumentsTest() {
 
             await cordovaSetVersion();
 
-            expect(file(tempConfigFile))
-                .to
-                .equal(file(expectedXmlFiles.PACKAGE_VERSION_TO_VERSION_AND_BUILD));
+            expect(file(tempConfigFile)).to.equal(file(expectedXmlFiles.PACKAGE_VERSION_TO_VERSION_AND_BUILD));
         });
 
         it('should override existing version and not add buildNumber', async () => {
@@ -30,9 +27,7 @@ function noArgumentsTest() {
 
             await cordovaSetVersion();
 
-            expect(file(tempConfigFile))
-                .to
-                .equal(file(expectedXmlFiles.PACKAGE_VERSION_TO_VERSION_AND_NO_BUILD));
+            expect(file(tempConfigFile)).to.equal(file(expectedXmlFiles.PACKAGE_VERSION_TO_VERSION_AND_NO_BUILD));
         });
 
         it('should add version and preserve existing buildNumber', async () => {
@@ -41,9 +36,7 @@ function noArgumentsTest() {
 
             await cordovaSetVersion();
 
-            expect(file(tempConfigFile))
-                .to
-                .equal(file(expectedXmlFiles.PACKAGE_VERSION_TO_NO_VERSION_AND_BUILD));
+            expect(file(tempConfigFile)).to.equal(file(expectedXmlFiles.PACKAGE_VERSION_TO_NO_VERSION_AND_BUILD));
         });
 
         it('should add version and not add buildNumber', async () => {
@@ -52,9 +45,7 @@ function noArgumentsTest() {
 
             await cordovaSetVersion();
 
-            expect(file(tempConfigFile))
-                .to
-                .equal(file(expectedXmlFiles.PACKAGE_VERSION_TO_NO_VERSION_AND_NO_BUILD));
+            expect(file(tempConfigFile)).to.equal(file(expectedXmlFiles.PACKAGE_VERSION_TO_NO_VERSION_AND_NO_BUILD));
         });
 
         it('should return an error about missing config file', async () => {

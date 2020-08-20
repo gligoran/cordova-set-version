@@ -1,4 +1,3 @@
-import { describe, it } from 'mocha';
 import chai, { expect } from 'chai';
 import dirtyChai from 'dirty-chai';
 import chaiFiles, { file } from 'chai-files';
@@ -11,7 +10,7 @@ import {
     expectedXmlFiles,
     tempProvidedPluginConfigFile,
     entryPluginConfigFiles,
-    expectedPluginXmlFiles
+    expectedPluginXmlFiles,
 } from './configs';
 
 chai.use(chaiFiles);
@@ -24,9 +23,7 @@ function configPathVersionTest() {
 
             await cordovaSetVersion(tempProvidedConfigFile, '2.4.9');
 
-            expect(file(tempProvidedConfigFile))
-                .to
-                .equal(file(expectedXmlFiles.VERSION_TO_VERSION_AND_BUILD));
+            expect(file(tempProvidedConfigFile)).to.equal(file(expectedXmlFiles.VERSION_TO_VERSION_AND_BUILD));
         });
 
         it('should override existing version and not add buildNumber', async () => {
@@ -34,9 +31,7 @@ function configPathVersionTest() {
 
             await cordovaSetVersion(tempProvidedConfigFile, '2.4.9');
 
-            expect(file(tempProvidedConfigFile))
-                .to
-                .equal(file(expectedXmlFiles.VERSION_TO_VERSION_AND_NO_BUILD));
+            expect(file(tempProvidedConfigFile)).to.equal(file(expectedXmlFiles.VERSION_TO_VERSION_AND_NO_BUILD));
         });
 
         it('should add version and preserve existing buildNumber', async () => {
@@ -44,9 +39,7 @@ function configPathVersionTest() {
 
             await cordovaSetVersion(tempProvidedConfigFile, '2.4.9');
 
-            expect(file(tempProvidedConfigFile))
-                .to
-                .equal(file(expectedXmlFiles.VERSION_TO_NO_VERSION_AND_BUILD));
+            expect(file(tempProvidedConfigFile)).to.equal(file(expectedXmlFiles.VERSION_TO_NO_VERSION_AND_BUILD));
         });
 
         it('should add version and not add buildNumber', async () => {
@@ -54,9 +47,7 @@ function configPathVersionTest() {
 
             await cordovaSetVersion(tempProvidedConfigFile, '2.4.9');
 
-            expect(file(tempProvidedConfigFile))
-                .to
-                .equal(file(expectedXmlFiles.VERSION_TO_NO_VERSION_AND_NO_BUILD));
+            expect(file(tempProvidedConfigFile)).to.equal(file(expectedXmlFiles.VERSION_TO_NO_VERSION_AND_NO_BUILD));
         });
 
         it('should return an error about configPath type', async () => {
@@ -112,9 +103,7 @@ function configPathVersionTest() {
 
             await cordovaSetVersion(tempProvidedPluginConfigFile, '2.4.9');
 
-            expect(file(tempProvidedPluginConfigFile))
-                .to
-                .equal(file(expectedPluginXmlFiles.VERSION_TO_VERSION));
+            expect(file(tempProvidedPluginConfigFile)).to.equal(file(expectedPluginXmlFiles.VERSION_TO_VERSION));
         });
 
         it('should add version', async () => {
@@ -122,9 +111,7 @@ function configPathVersionTest() {
 
             await cordovaSetVersion(tempProvidedPluginConfigFile, '2.4.9');
 
-            expect(file(tempProvidedPluginConfigFile))
-                .to
-                .equal(file(expectedPluginXmlFiles.VERSION_TO_NO_VERSION));
+            expect(file(tempProvidedPluginConfigFile)).to.equal(file(expectedPluginXmlFiles.VERSION_TO_NO_VERSION));
         });
 
         it('should return an error about pluginConfigPath type', async () => {

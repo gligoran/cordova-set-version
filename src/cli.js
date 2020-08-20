@@ -22,15 +22,15 @@ const options = {
     flags: {
         version: {
             type: 'string',
-            alias: 'v'
+            alias: 'v',
         },
         buildNumber: {
             type: 'number',
-            alias: 'b'
-        }
+            alias: 'b',
+        },
     },
     help,
-    autoVersion: false
+    autoVersion: false,
 };
 
 const cli = meow(options);
