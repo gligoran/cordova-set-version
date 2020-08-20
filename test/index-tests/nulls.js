@@ -7,117 +7,136 @@ import { tempPackageFile, entryPackageFiles } from '../packages';
 
 function nullsTest() {
     describe('nulls', () => {
-        it('(configPath, null)', async () => {
+        beforeEach(() => {
+            fs.copySync(entryConfigFiles.VERSION_AND_BUILD, tempConfigFile);
             fs.copySync(entryConfigFiles.VERSION_AND_BUILD, tempProvidedConfigFile);
             fs.copySync(entryPackageFiles.GOOD, tempPackageFile);
-
-            await cordovaSetVersion(tempProvidedConfigFile, null);
-
-            expect(readFile(tempProvidedConfigFile)).toBe(
-                readFile(expectedXmlFiles.PACKAGE_VERSION_TO_VERSION_AND_BUILD),
-            );
         });
 
-        it('(configPath, null, null)', async () => {
-            fs.copySync(entryConfigFiles.VERSION_AND_BUILD, tempProvidedConfigFile);
-            fs.copySync(entryPackageFiles.GOOD, tempPackageFile);
+        it('({})', async () => {
+            await cordovaSetVersion({});
 
-            await cordovaSetVersion(tempProvidedConfigFile, null, null);
-
-            expect(readFile(tempProvidedConfigFile)).toBe(
-                readFile(expectedXmlFiles.PACKAGE_VERSION_TO_VERSION_AND_BUILD),
-            );
+            expect(readFile(tempConfigFile)).toBe(readFile(expectedXmlFiles.PACKAGE_VERSION_TO_VERSION_AND_BUILD));
         });
 
-        it('(configPath, version, null)', async () => {
-            fs.copySync(entryConfigFiles.VERSION_AND_BUILD, tempProvidedConfigFile);
+        it('({ buildNumber: null })', async () => {
+            await cordovaSetVersion({ buildNumber: null });
 
-            await cordovaSetVersion(tempProvidedConfigFile, '2.4.9', null);
-
-            expect(readFile(tempProvidedConfigFile)).toBe(readFile(expectedXmlFiles.VERSION_TO_VERSION_AND_BUILD));
+            expect(readFile(tempConfigFile)).toBe(readFile(expectedXmlFiles.PACKAGE_VERSION_TO_VERSION_AND_BUILD));
         });
 
-        it('(configPath, null, buildNumber)', async () => {
-            fs.copySync(entryConfigFiles.VERSION_AND_BUILD, tempProvidedConfigFile);
+        it('({ version: null })', async () => {
+            await cordovaSetVersion({ buildNumber: null });
 
-            await cordovaSetVersion(tempProvidedConfigFile, null, 86);
-
-            expect(readFile(tempProvidedConfigFile)).toBe(readFile(expectedXmlFiles.BUILD_TO_VERSION_AND_BUILD));
+            expect(readFile(tempConfigFile)).toBe(readFile(expectedXmlFiles.PACKAGE_VERSION_TO_VERSION_AND_BUILD));
         });
 
-        it('(version, null)', async () => {
-            fs.copySync(entryConfigFiles.VERSION_AND_BUILD, tempConfigFile);
+        it('({ version: null, buildNumber: null })', async () => {
+            await cordovaSetVersion({ version: null, buildNumber: null });
 
-            await cordovaSetVersion('2.4.9', null);
+            expect(readFile(tempConfigFile)).toBe(readFile(expectedXmlFiles.PACKAGE_VERSION_TO_VERSION_AND_BUILD));
+        });
+
+        it('({ version: null, buildNumber: 86 })', async () => {
+            await cordovaSetVersion({ version: null, buildNumber: 86 });
+
+            expect(readFile(tempConfigFile)).toBe(readFile(expectedXmlFiles.BUILD_TO_VERSION_AND_BUILD));
+        });
+
+        it("({ version: '2.4.9', buildNumber: null })", async () => {
+            await cordovaSetVersion({ version: '2.4.9', buildNumber: null });
 
             expect(readFile(tempConfigFile)).toBe(readFile(expectedXmlFiles.VERSION_TO_VERSION_AND_BUILD));
         });
 
-        it('(null, version)', async () => {
-            fs.copySync(entryConfigFiles.VERSION_AND_BUILD, tempConfigFile);
+        it('({ configPath: null })', async () => {
+            await cordovaSetVersion({ configPath: null });
 
-            await cordovaSetVersion(null, '2.4.9');
+            expect(readFile(tempConfigFile)).toBe(readFile(expectedXmlFiles.PACKAGE_VERSION_TO_VERSION_AND_BUILD));
+        });
+
+        it('({ configPath: null, buildNumber: null })', async () => {
+            await cordovaSetVersion({ configPath: null, buildNumber: null });
+
+            expect(readFile(tempConfigFile)).toBe(readFile(expectedXmlFiles.PACKAGE_VERSION_TO_VERSION_AND_BUILD));
+        });
+
+        it('({ configPath: null, buildNumber: 86 })', async () => {
+            await cordovaSetVersion({ configPath: null, buildNumber: 86 });
+
+            expect(readFile(tempConfigFile)).toBe(readFile(expectedXmlFiles.BUILD_TO_VERSION_AND_BUILD));
+        });
+
+        it('({ configPath: null, version: null })', async () => {
+            await cordovaSetVersion({ configPath: null, version: null });
+
+            expect(readFile(tempConfigFile)).toBe(readFile(expectedXmlFiles.PACKAGE_VERSION_TO_VERSION_AND_BUILD));
+        });
+
+        it('({ configPath: null, version: null, buildNumber: null })', async () => {
+            await cordovaSetVersion({ configPath: null, version: null, buildNumber: null });
+
+            expect(readFile(tempConfigFile)).toBe(readFile(expectedXmlFiles.PACKAGE_VERSION_TO_VERSION_AND_BUILD));
+        });
+
+        it('({ configPath: null, version: null, buildNumber: 86 })', async () => {
+            await cordovaSetVersion({ configPath: null, version: null, buildNumber: 86 });
+
+            expect(readFile(tempConfigFile)).toBe(readFile(expectedXmlFiles.BUILD_TO_VERSION_AND_BUILD));
+        });
+
+        it("({ configPath: null, version: '2.4.9' })", async () => {
+            await cordovaSetVersion({ configPath: null, version: '2.4.9' });
 
             expect(readFile(tempConfigFile)).toBe(readFile(expectedXmlFiles.VERSION_TO_VERSION_AND_BUILD));
         });
 
-        it('(null, version, null)', async () => {
-            fs.copySync(entryConfigFiles.VERSION_AND_BUILD, tempConfigFile);
-
-            await cordovaSetVersion(null, '2.4.9', null);
+        it("({ configPath: null, version: '2.4.9', buildNumber: null })", async () => {
+            await cordovaSetVersion({ configPath: null, version: '2.4.9', buildNumber: null });
 
             expect(readFile(tempConfigFile)).toBe(readFile(expectedXmlFiles.VERSION_TO_VERSION_AND_BUILD));
         });
 
-        it('(null, version, buildNumber)', async () => {
-            fs.copySync(entryConfigFiles.VERSION_AND_BUILD, tempConfigFile);
-
-            await cordovaSetVersion(null, '2.4.9', 86);
+        it("({ configPath: null, version: '2.4.9', buildNumber: 86 })", async () => {
+            await cordovaSetVersion({ configPath: null, version: '2.4.9', buildNumber: 86 });
 
             expect(readFile(tempConfigFile)).toBe(readFile(expectedXmlFiles.VERSION_AND_BUILD_TO_VERSION_AND_BUILD));
         });
 
-        it('(null, buildNumber)', async () => {
-            fs.copySync(entryConfigFiles.VERSION_AND_BUILD, tempConfigFile);
+        it('({ configPath: tempProvidedConfigFile, buildNumber: null })', async () => {
+            await cordovaSetVersion({ configPath: tempProvidedConfigFile, buildNumber: null });
 
-            await cordovaSetVersion(null, 86);
-
-            expect(readFile(tempConfigFile)).toBe(readFile(expectedXmlFiles.BUILD_TO_VERSION_AND_BUILD));
+            expect(readFile(tempProvidedConfigFile)).toBe(
+                readFile(expectedXmlFiles.PACKAGE_VERSION_TO_VERSION_AND_BUILD),
+            );
         });
 
-        it('(null, null, buildNumber)', async () => {
-            fs.copySync(entryConfigFiles.VERSION_AND_BUILD, tempConfigFile);
+        it('({ configPath: tempProvidedConfigFile, version: null })', async () => {
+            await cordovaSetVersion({ configPath: tempProvidedConfigFile, version: null });
 
-            await cordovaSetVersion(null, null, 86);
-
-            expect(readFile(tempConfigFile)).toBe(readFile(expectedXmlFiles.BUILD_TO_VERSION_AND_BUILD));
+            expect(readFile(tempProvidedConfigFile)).toBe(
+                readFile(expectedXmlFiles.PACKAGE_VERSION_TO_VERSION_AND_BUILD),
+            );
         });
 
-        it('(null)', async () => {
-            fs.copySync(entryConfigFiles.VERSION_AND_BUILD, tempConfigFile);
-            fs.copySync(entryPackageFiles.GOOD, tempPackageFile);
+        it('({ configPath: tempProvidedConfigFile, version: null, buildNumber: null })', async () => {
+            await cordovaSetVersion({ configPath: tempProvidedConfigFile, version: null, buildNumber: null });
 
-            await cordovaSetVersion(null);
-
-            expect(readFile(tempConfigFile)).toBe(readFile(expectedXmlFiles.PACKAGE_VERSION_TO_VERSION_AND_BUILD));
+            expect(readFile(tempProvidedConfigFile)).toBe(
+                readFile(expectedXmlFiles.PACKAGE_VERSION_TO_VERSION_AND_BUILD),
+            );
         });
 
-        it('(null, null)', async () => {
-            fs.copySync(entryConfigFiles.VERSION_AND_BUILD, tempConfigFile);
-            fs.copySync(entryPackageFiles.GOOD, tempPackageFile);
+        it('({ configPath: tempProvidedConfigFile, version: null, buildNumber: 86 })', async () => {
+            await cordovaSetVersion({ configPath: tempProvidedConfigFile, version: null, buildNumber: 86 });
 
-            await cordovaSetVersion(null, null);
-
-            expect(readFile(tempConfigFile)).toBe(readFile(expectedXmlFiles.PACKAGE_VERSION_TO_VERSION_AND_BUILD));
+            expect(readFile(tempProvidedConfigFile)).toBe(readFile(expectedXmlFiles.BUILD_TO_VERSION_AND_BUILD));
         });
 
-        it('(null, null, null)', async () => {
-            fs.copySync(entryConfigFiles.VERSION_AND_BUILD, tempConfigFile);
-            fs.copySync(entryPackageFiles.GOOD, tempPackageFile);
+        it("({ configPath: tempProvidedConfigFile, version: '2.4.9', buildNumber: null })", async () => {
+            await cordovaSetVersion({ configPath: tempProvidedConfigFile, version: '2.4.9', buildNumber: null });
 
-            await cordovaSetVersion(null, null, null);
-
-            expect(readFile(tempConfigFile)).toBe(readFile(expectedXmlFiles.PACKAGE_VERSION_TO_VERSION_AND_BUILD));
+            expect(readFile(tempProvidedConfigFile)).toBe(readFile(expectedXmlFiles.VERSION_TO_VERSION_AND_BUILD));
         });
     });
 }

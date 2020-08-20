@@ -35,8 +35,8 @@ const options = {
 
 const cli = meow(options);
 
-const filename = cli.input[0] || null;
+const configPath = cli.input[0] || null;
 const version = cli.flags.version || null;
 const buildNumber = +cli.flags.buildNumber || null;
 
-cordovaSetVersion(filename, version, buildNumber);
+cordovaSetVersion({ configPath, version, buildNumber });
