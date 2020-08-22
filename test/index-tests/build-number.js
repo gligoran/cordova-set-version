@@ -6,7 +6,7 @@ import { tempConfigFile, entryConfigFiles, expectedXmlFiles } from '../configs';
 
 function buildNumberTest() {
     describe('({ buildNumber })', () => {
-        it('should override existing buildNumber and preserve existing version', async () => {
+        test('should override existing buildNumber and preserve existing version', async () => {
             fs.copySync(entryConfigFiles.VERSION_AND_BUILD, tempConfigFile);
 
             await cordovaSetVersion({ buildNumber: 86 });
@@ -14,7 +14,7 @@ function buildNumberTest() {
             expect(readFile(tempConfigFile)).toBe(readFile(expectedXmlFiles.BUILD_TO_VERSION_AND_BUILD));
         });
 
-        it('should add buildNumber and preserve existing version', async () => {
+        test('should add buildNumber and preserve existing version', async () => {
             fs.copySync(entryConfigFiles.VERSION_AND_NO_BUILD, tempConfigFile);
 
             await cordovaSetVersion({ buildNumber: 86 });
@@ -22,7 +22,7 @@ function buildNumberTest() {
             expect(readFile(tempConfigFile)).toBe(readFile(expectedXmlFiles.BUILD_TO_VERSION_AND_NO_BUILD));
         });
 
-        it('should override existing buildNumber and not add version', async () => {
+        test('should override existing buildNumber and not add version', async () => {
             fs.copySync(entryConfigFiles.NO_VERSION_AND_BUILD, tempConfigFile);
 
             await cordovaSetVersion({ buildNumber: 86 });
@@ -30,7 +30,7 @@ function buildNumberTest() {
             expect(readFile(tempConfigFile)).toBe(readFile(expectedXmlFiles.BUILD_TO_NO_VERSION_AND_BUILD));
         });
 
-        it('should add buildNumber and not add version', async () => {
+        test('should add buildNumber and not add version', async () => {
             fs.copySync(entryConfigFiles.NO_VERSION_AND_NO_BUILD, tempConfigFile);
 
             await cordovaSetVersion({ buildNumber: 86 });
@@ -38,7 +38,7 @@ function buildNumberTest() {
             expect(readFile(tempConfigFile)).toBe(readFile(expectedXmlFiles.BUILD_TO_NO_VERSION_AND_NO_BUILD));
         });
 
-        it('should return an error about buildNumber type', async () => {
+        test('should return an error about buildNumber type', async () => {
             fs.copySync(entryConfigFiles.VERSION_AND_BUILD, tempConfigFile);
 
             try {
@@ -50,7 +50,7 @@ function buildNumberTest() {
             }
         });
 
-        it('should return an error about buildNumber type', async () => {
+        test('should return an error about buildNumber type', async () => {
             fs.copySync(entryConfigFiles.VERSION_AND_BUILD, tempConfigFile);
 
             try {
@@ -62,7 +62,7 @@ function buildNumberTest() {
             }
         });
 
-        it('should return an error about missing config file', async () => {
+        test('should return an error about missing config file', async () => {
             try {
                 await cordovaSetVersion({ buildNumber: 86 });
             } catch (error) {
@@ -72,7 +72,7 @@ function buildNumberTest() {
             }
         });
 
-        it('should return an error about malformed config file', async () => {
+        test('should return an error about malformed config file', async () => {
             fs.copySync(entryConfigFiles.MALFORMED, tempConfigFile);
 
             try {

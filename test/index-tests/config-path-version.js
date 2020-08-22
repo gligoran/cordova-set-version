@@ -13,7 +13,7 @@ import {
 
 function configPathVersionTest() {
     describe('({ configPath, version })', () => {
-        it('should override existing version and preserve existing buildNumber', async () => {
+        test('should override existing version and preserve existing buildNumber', async () => {
             fs.copySync(entryConfigFiles.VERSION_AND_BUILD, tempProvidedConfigFile);
 
             await cordovaSetVersion({ configPath: tempProvidedConfigFile, version: '2.4.9' });
@@ -21,7 +21,7 @@ function configPathVersionTest() {
             expect(readFile(tempProvidedConfigFile)).toBe(readFile(expectedXmlFiles.VERSION_TO_VERSION_AND_BUILD));
         });
 
-        it('should override existing version and not add buildNumber', async () => {
+        test('should override existing version and not add buildNumber', async () => {
             fs.copySync(entryConfigFiles.VERSION_AND_NO_BUILD, tempProvidedConfigFile);
 
             await cordovaSetVersion({ configPath: tempProvidedConfigFile, version: '2.4.9' });
@@ -29,7 +29,7 @@ function configPathVersionTest() {
             expect(readFile(tempProvidedConfigFile)).toBe(readFile(expectedXmlFiles.VERSION_TO_VERSION_AND_NO_BUILD));
         });
 
-        it('should add version and preserve existing buildNumber', async () => {
+        test('should add version and preserve existing buildNumber', async () => {
             fs.copySync(entryConfigFiles.NO_VERSION_AND_BUILD, tempProvidedConfigFile);
 
             await cordovaSetVersion({ configPath: tempProvidedConfigFile, version: '2.4.9' });
@@ -37,7 +37,7 @@ function configPathVersionTest() {
             expect(readFile(tempProvidedConfigFile)).toBe(readFile(expectedXmlFiles.VERSION_TO_NO_VERSION_AND_BUILD));
         });
 
-        it('should add version and not add buildNumber', async () => {
+        test('should add version and not add buildNumber', async () => {
             fs.copySync(entryConfigFiles.NO_VERSION_AND_NO_BUILD, tempProvidedConfigFile);
 
             await cordovaSetVersion({ configPath: tempProvidedConfigFile, version: '2.4.9' });
@@ -47,7 +47,7 @@ function configPathVersionTest() {
             );
         });
 
-        it('should return an error about configPath type', async () => {
+        test('should return an error about configPath type', async () => {
             fs.copySync(entryConfigFiles.VERSION_AND_BUILD, tempProvidedConfigFile);
 
             try {
@@ -60,7 +60,7 @@ function configPathVersionTest() {
             }
         });
 
-        it('should return an error about version type', async () => {
+        test('should return an error about version type', async () => {
             fs.copySync(entryConfigFiles.VERSION_AND_BUILD, tempProvidedConfigFile);
 
             try {
@@ -72,7 +72,7 @@ function configPathVersionTest() {
             }
         });
 
-        it('should return an error about missing config file', async () => {
+        test('should return an error about missing config file', async () => {
             try {
                 await cordovaSetVersion({ configPath: tempProvidedConfigFile, version: '2.4.9' });
             } catch (error) {
@@ -82,7 +82,7 @@ function configPathVersionTest() {
             }
         });
 
-        it('should return an error about malformed config file', async () => {
+        test('should return an error about malformed config file', async () => {
             fs.copySync(entryConfigFiles.MALFORMED, tempProvidedConfigFile);
 
             try {
@@ -95,7 +95,7 @@ function configPathVersionTest() {
     });
 
     describe('({ pluginConfigPath, version })', () => {
-        it('should override existing version', async () => {
+        test('should override existing version', async () => {
             fs.copySync(entryPluginConfigFiles.VERSION, tempProvidedPluginConfigFile);
 
             await cordovaSetVersion({ configPath: tempProvidedPluginConfigFile, version: '2.4.9' });
@@ -103,7 +103,7 @@ function configPathVersionTest() {
             expect(readFile(tempProvidedPluginConfigFile)).toBe(readFile(expectedPluginXmlFiles.VERSION_TO_VERSION));
         });
 
-        it('should add version', async () => {
+        test('should add version', async () => {
             fs.copySync(entryPluginConfigFiles.NO_VERSION, tempProvidedPluginConfigFile);
 
             await cordovaSetVersion({ configPath: tempProvidedPluginConfigFile, version: '2.4.9' });
@@ -111,7 +111,7 @@ function configPathVersionTest() {
             expect(readFile(tempProvidedPluginConfigFile)).toBe(readFile(expectedPluginXmlFiles.VERSION_TO_NO_VERSION));
         });
 
-        it('should return an error about pluginConfigPath type', async () => {
+        test('should return an error about pluginConfigPath type', async () => {
             fs.copySync(entryPluginConfigFiles.VERSION, tempProvidedPluginConfigFile);
 
             try {
@@ -124,7 +124,7 @@ function configPathVersionTest() {
             }
         });
 
-        it('should return an error about version type', async () => {
+        test('should return an error about version type', async () => {
             fs.copySync(entryPluginConfigFiles.VERSION, tempProvidedPluginConfigFile);
 
             try {
@@ -136,7 +136,7 @@ function configPathVersionTest() {
             }
         });
 
-        it('should return an error about missing config file', async () => {
+        test('should return an error about missing config file', async () => {
             try {
                 await cordovaSetVersion({ configPath: tempProvidedPluginConfigFile, version: '2.4.9' });
             } catch (error) {
@@ -146,7 +146,7 @@ function configPathVersionTest() {
             }
         });
 
-        it('should return an error about malformed config file', async () => {
+        test('should return an error about malformed config file', async () => {
             fs.copySync(entryPluginConfigFiles.MALFORMED, tempProvidedPluginConfigFile);
 
             try {

@@ -14,7 +14,7 @@ import { tempPackageFile, entryPackageFiles } from '../packages';
 
 function configPathTest() {
     describe('({ configPath })', () => {
-        it('should override existing version and preserve existing buildNumber', async () => {
+        test('should override existing version and preserve existing buildNumber', async () => {
             fs.copySync(entryConfigFiles.VERSION_AND_BUILD, tempProvidedConfigFile);
             fs.copySync(entryPackageFiles.GOOD, tempPackageFile);
 
@@ -25,7 +25,7 @@ function configPathTest() {
             );
         });
 
-        it('should override existing version and not add buildNumber', async () => {
+        test('should override existing version and not add buildNumber', async () => {
             fs.copySync(entryConfigFiles.VERSION_AND_NO_BUILD, tempProvidedConfigFile);
             fs.copySync(entryPackageFiles.GOOD, tempPackageFile);
 
@@ -36,7 +36,7 @@ function configPathTest() {
             );
         });
 
-        it('should add version and preserve existing buildNumber', async () => {
+        test('should add version and preserve existing buildNumber', async () => {
             fs.copySync(entryConfigFiles.NO_VERSION_AND_BUILD, tempProvidedConfigFile);
             fs.copySync(entryPackageFiles.GOOD, tempPackageFile);
 
@@ -47,7 +47,7 @@ function configPathTest() {
             );
         });
 
-        it('should add version and not add buildNumber', async () => {
+        test('should add version and not add buildNumber', async () => {
             fs.copySync(entryConfigFiles.NO_VERSION_AND_NO_BUILD, tempProvidedConfigFile);
             fs.copySync(entryPackageFiles.GOOD, tempPackageFile);
 
@@ -58,7 +58,7 @@ function configPathTest() {
             );
         });
 
-        it('should return an error about configPath type', async () => {
+        test('should return an error about configPath type', async () => {
             fs.copySync(entryConfigFiles.VERSION_AND_BUILD, tempProvidedConfigFile);
 
             try {
@@ -70,7 +70,7 @@ function configPathTest() {
             }
         });
 
-        it('should return an error about missing config file', async () => {
+        test('should return an error about missing config file', async () => {
             try {
                 await cordovaSetVersion({ configPath: tempProvidedConfigFile });
             } catch (error) {
@@ -80,7 +80,7 @@ function configPathTest() {
             }
         });
 
-        it('should return an error about malformed config file', async () => {
+        test('should return an error about malformed config file', async () => {
             fs.copySync(entryConfigFiles.MALFORMED, tempProvidedConfigFile);
             fs.copySync(entryPackageFiles.GOOD, tempPackageFile);
 
@@ -92,7 +92,7 @@ function configPathTest() {
             }
         });
 
-        it('should return an error about missing package file', async () => {
+        test('should return an error about missing package file', async () => {
             fs.copySync(entryConfigFiles.VERSION_AND_BUILD, tempProvidedConfigFile);
             try {
                 await cordovaSetVersion({ configPath: tempProvidedConfigFile });
@@ -103,7 +103,7 @@ function configPathTest() {
             }
         });
 
-        it('should return an error about malformed package file', async () => {
+        test('should return an error about malformed package file', async () => {
             fs.copySync(entryConfigFiles.VERSION_AND_BUILD, tempProvidedConfigFile);
             fs.copySync(entryPackageFiles.MALFORMED, tempPackageFile);
 
@@ -117,7 +117,7 @@ function configPathTest() {
     });
 
     describe('({ pluginConfigPath })', () => {
-        it('should override existing version', async () => {
+        test('should override existing version', async () => {
             fs.copySync(entryPluginConfigFiles.VERSION, tempProvidedPluginConfigFile);
             fs.copySync(entryPackageFiles.GOOD, tempPackageFile);
 
@@ -128,7 +128,7 @@ function configPathTest() {
             );
         });
 
-        it('should add version', async () => {
+        test('should add version', async () => {
             fs.copySync(entryPluginConfigFiles.NO_VERSION, tempProvidedPluginConfigFile);
             fs.copySync(entryPackageFiles.GOOD, tempPackageFile);
 
@@ -139,7 +139,7 @@ function configPathTest() {
             );
         });
 
-        it('should return an error about pluginConfigPath type', async () => {
+        test('should return an error about pluginConfigPath type', async () => {
             fs.copySync(entryPluginConfigFiles.VERSION, tempProvidedPluginConfigFile);
 
             try {
@@ -151,7 +151,7 @@ function configPathTest() {
             }
         });
 
-        it('should return an error about missing config file', async () => {
+        test('should return an error about missing config file', async () => {
             try {
                 await cordovaSetVersion({ configPath: tempProvidedPluginConfigFile });
             } catch (error) {
@@ -161,7 +161,7 @@ function configPathTest() {
             }
         });
 
-        it('should return an error about malformed config file', async () => {
+        test('should return an error about malformed config file', async () => {
             fs.copySync(entryPluginConfigFiles.MALFORMED, tempProvidedPluginConfigFile);
             fs.copySync(entryPackageFiles.GOOD, tempPackageFile);
 
@@ -173,7 +173,7 @@ function configPathTest() {
             }
         });
 
-        it('should return an error about missing package file', async () => {
+        test('should return an error about missing package file', async () => {
             fs.copySync(entryPluginConfigFiles.VERSION, tempProvidedPluginConfigFile);
             try {
                 await cordovaSetVersion({ configPath: tempProvidedPluginConfigFile });
@@ -184,7 +184,7 @@ function configPathTest() {
             }
         });
 
-        it('should return an error about malformed package file', async () => {
+        test('should return an error about malformed package file', async () => {
             fs.copySync(entryPluginConfigFiles.VERSION, tempProvidedPluginConfigFile);
             fs.copySync(entryPackageFiles.MALFORMED, tempPackageFile);
 

@@ -19,11 +19,11 @@ describe('cordova-set-version', () => {
         process.chdir(__dirname);
     });
 
-    it('should exist', () => {
+    test('should exist', () => {
         expect(cordovaSetVersion).not.toBeNil();
     });
 
-    it('should be a function', () => {
+    test('should be a function', () => {
         expect(cordovaSetVersion).toBeFunction();
     });
 

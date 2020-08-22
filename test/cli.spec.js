@@ -9,7 +9,7 @@ describe('cli', () => {
         process.chdir(__dirname);
     });
 
-    it('should run', async () => {
+    test('should run', async () => {
         fs.copySync(entryConfigFiles.VERSION_AND_BUILD, tempConfigFile);
 
         await exec('../dist/cli.js -v 2.4.9 -b 86');
