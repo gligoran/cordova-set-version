@@ -13,6 +13,7 @@ jobs:
           - "10"
           - "12"
           - "14"
+          - "15"
     steps:
       - uses: actions/checkout@v2
       - name: use node ${{ matrix.node-version }}
