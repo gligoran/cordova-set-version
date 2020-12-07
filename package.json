@@ -60,11 +60,6 @@
         "README.md"
     ],
     "homepage": "https://github.com/gligoran/cordova-set-version#readme",
-    "husky": {
-        "hooks": {
-            "pre-commit": "npm test"
-        }
-    },
     "jest": {
         "collectCoverage": true,
         "coverageDirectory": "coverage",
