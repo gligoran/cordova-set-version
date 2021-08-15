@@ -25,7 +25,7 @@
     "dependencies": {
         "@babel/runtime": "^7.11.2",
         "meow": "^9.0.0",
-        "read-pkg": "^6.0.0",
+        "read-pkg": "^7.0.0",
         "util-promisify": "^2.1.0",
         "xml2js": "^0.4.23",
         "xml2js-es6-promise": "^1.1.1"
