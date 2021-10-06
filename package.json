@@ -33,10 +33,10 @@
     "description": "CLI and JavaScript API for setting the version in Apache Cordova config.xml",
     "devDependencies": {
         "@babel/cli": "7.15.7",
-        "@babel/core": "7.15.5",
-        "@babel/plugin-transform-runtime": "7.15.0",
+        "@babel/core": "7.15.8",
+        "@babel/plugin-transform-runtime": "7.15.8",
         "@babel/polyfill": "7.12.1",
-        "@babel/preset-env": "7.15.6",
+        "@babel/preset-env": "7.15.8",
         "@babel/register": "7.15.3",
         "babel-jest": "27.2.3",
         "babel-plugin-add-module-exports": "1.0.4",
