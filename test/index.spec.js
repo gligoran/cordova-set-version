@@ -1,4 +1,5 @@
 import fs from 'fs-extra';
+import * as matchers from 'jest-extended';
 
 import cordovaSetVersion from '../src';
 import { tempConfigFile, tempProvidedConfigFile, tempProvidedPluginConfigFile } from './configs';
@@ -13,6 +14,8 @@ import versionTest from './index-tests/version';
 import buildNumberTest from './index-tests/build-number';
 import noArgumentsTest from './index-tests/no-arguments';
 import nullsTest from './index-tests/nulls';
+
+expect.extend(matchers);
 
 describe('cordova-set-version', () => {
     beforeAll(() => {

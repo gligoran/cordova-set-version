@@ -1,8 +1,11 @@
 import fs from 'fs-extra';
 import { exec } from 'child-process-promise';
+import * as matchers from 'jest-extended';
 
 import readFile from './read-file';
 import { tempConfigFile, entryConfigFiles, expectedXmlFiles } from './configs';
+
+expect.extend(matchers);
 
 describe('cli', () => {
     beforeAll(() => {

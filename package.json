@@ -23,37 +23,39 @@
         "url": "https://github.com/gligoran/cordova-set-version/issues"
     },
     "dependencies": {
-        "@babel/runtime": "^7.11.2",
+        "@babel/runtime": "^7.17.0",
         "meow": "^9.0.0",
-        "read-pkg": "^7.0.0",
-        "util-promisify": "^2.1.0",
+        "read-pkg": "^7.1.0",
+        "util-promisify": "^3.0.0",
         "xml2js": "^0.4.23",
         "xml2js-es6-promise": "^1.1.1"
     },
     "description": "CLI and JavaScript API for setting the version in Apache Cordova config.xml",
     "devDependencies": {
-        "@babel/cli": "7.16.8",
-        "@babel/core": "7.16.12",
-        "@babel/plugin-transform-runtime": "7.16.10",
-        "@babel/polyfill": "7.12.1",
-        "@babel/preset-env": "7.16.11",
-        "@babel/register": "7.16.9",
-        "babel-jest": "27.4.6",
-        "babel-plugin-add-module-exports": "1.0.4",
-        "child-process-promise": "2.2.1",
-        "codecov": "3.8.3",
-        "eslint": "8.1.0",
-        "eslint-config-airbnb-base": "14.2.1",
-        "eslint-config-prettier": "8.3.0",
-        "eslint-plugin-import": "2.25.4",
-        "eslint-plugin-prettier": "4.0.0",
-        "fs-extra": "10.0.0",
-        "husky": "7.0.4",
-        "jest": "27.4.7",
-        "jest-extended": "0.11.5",
-        "jest-sourcemaps": "1.0.1",
-        "prettier": "2.5.1",
-        "semantic-release": "19.0.2"
+        "@babel/cli": "^7.17.0",
+        "@babel/core": "^7.17.0",
+        "@babel/plugin-transform-runtime": "^7.17.0",
+        "@babel/polyfill": "^7.12.1",
+        "@babel/preset-env": "^7.16.11",
+        "@babel/register": "^7.17.0",
+        "babel-jest": "^27.5.1",
+        "babel-plugin-add-module-exports": "^1.0.4",
+        "child-process-promise": "^2.2.1",
+        "codecov": "^3.8.3",
+        "cz-conventional-changelog": "^3.3.0",
+        "eslint": "^8.8.0",
+        "eslint-config-airbnb-base": "^15.0.0",
+        "eslint-config-prettier": "^8.3.0",
+        "eslint-plugin-import": "^2.25.4",
+        "eslint-plugin-prettier": "^4.0.0",
+        "fs-extra": "^10.0.0",
+        "husky": "^7.0.4",
+        "jest": "^27.5.1",
+        "jest-extended": "^2.0.0",
+        "jest-sourcemaps": "^1.0.1",
+        "npm-check": "^5.9.2",
+        "prettier": "^2.5.1",
+        "semantic-release": "^19.0.2"
     },
     "files": [
         "dist",
@@ -105,5 +107,14 @@
         "upload-coverage": "codecov",
         "wipe": "npm run clean && rm -rf node_modules"
     },
-    "version": "0.0.0"
+    "version": "0.0.0",
+    "volta": {
+        "node": "16.13.2",
+        "npm": "8.4.1"
+    },
+    "config": {
+        "commitizen": {
+            "path": "./node_modules/cz-conventional-changelog"
+        }
+    }
 }
