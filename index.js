@@ -1,9 +1,5 @@
 import fs from 'node:fs';
-import promisify from 'util-promisify';
 import xml2js, { Builder } from 'xml2js';
-
-const readFile = promisify(fs.readFile);
-const writeFile = promisify(fs.writeFile);
 
 const xmlBuilder = new Builder();
 
@@ -26,13 +22,13 @@ function checkTypeErrors(configPath, version, buildNumber) {
 }
 
 async function getXml(configPath) {
-  const configFile = await readFile(configPath, 'UTF-8');
+  const configFile = fs.readFileSync(configPath, 'UTF-8');
 
   return xml2js.parseStringPromise(configFile);
 }
 
-async function getVersionFromPackage() {
-  const packageFile = await readFile('./package.json', 'UTF-8');
+function getVersionFromPackage() {
+  const packageFile = fs.readFileSync('./package.json', 'UTF-8');
   const pkg = JSON.parse(packageFile);
   const { version } = pkg;
 
@@ -69,13 +65,12 @@ async function cordovaSetVersion({ configPath, version, buildNumber } = {}) {
 
   const currentConfig = await getXml(cPath);
 
-  const v =
-    !version && !buildNumber ? await getVersionFromPackage(version) : version;
+  const v = !version && !buildNumber ? getVersionFromPackage(version) : version;
 
   const newConfig = setAttributes(currentConfig, v, buildNumber);
 
   const newData = xmlBuilder.buildObject(newConfig);
-  return writeFile(cPath, newData, { encoding: 'UTF-8' });
+  return fs.writeFileSync(cPath, newData, { encoding: 'UTF-8' });
 }
 
 export default cordovaSetVersion;

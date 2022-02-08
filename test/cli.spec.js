@@ -1,8 +1,8 @@
+import { execSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import process from 'node:process';
 import path from 'node:path';
 import fs from 'fs-extra';
-import { exec } from 'child-process-promise';
 
 import readFile from './read-file.js';
 import {
@@ -16,10 +16,10 @@ describe('cli', () => {
     process.chdir(path.dirname(fileURLToPath(import.meta.url)));
   });
 
-  test('should run', async () => {
+  test('should run', () => {
     fs.copySync(entryConfigFiles.VERSION_AND_BUILD, temporaryConfigFile);
 
-    await exec('../cli.js -v 2.4.9 -b 86');
+    execSync('../cli.js -v 2.4.9 -b 86');
 
     expect(readFile(temporaryConfigFile)).toBe(
       readFile(expectedXmlFiles.VERSION_AND_BUILD_TO_VERSION_AND_BUILD),
