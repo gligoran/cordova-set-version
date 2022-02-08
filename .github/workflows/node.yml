@@ -10,6 +10,7 @@ jobs:
     strategy:
       matrix:
         node-version:
+          - '17'
           - '16'
           - '14'
           - '12'
