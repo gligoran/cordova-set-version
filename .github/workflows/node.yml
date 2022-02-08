@@ -15,8 +15,7 @@ jobs:
           - '12'
     steps:
       - uses: actions/checkout@v2
-      - name: use node ${{ matrix.node-version }}
-        uses: actions/setup-node@v2
+      - uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
       - uses: actions/cache@v2
@@ -25,14 +24,11 @@ jobs:
           key: ${{ runner.os }}-node-${{ matrix.node-version }}-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-${{ matrix.node-version }}
-      - name: install dependencies
-        run: npm ci
-      - name: test
-        run: npm test
-      - name: upload coverage
-        env:
-          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
-        run: npm run upload-coverage
+      - run: npm ci
+      - run: npm test
+      - uses: codecov/codecov-action@v2
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
 
   release:
     runs-on: ubuntu-latest
@@ -43,8 +39,7 @@ jobs:
           - '16'
     steps:
       - uses: actions/checkout@v2
-      - name: use node ${{ matrix.node-version }}
-        uses: actions/setup-node@v2
+      - uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
       - uses: actions/cache@v2
@@ -53,8 +48,7 @@ jobs:
           key: ${{ runner.os }}-node-${{ matrix.node-version }}-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-${{ matrix.node-version }}
-      - name: install dependencies
-        run: npm ci
+      - run: npm ci
       - name: release to npm
         env:
           GITHUB_TOKEN: ${{ secrets.SR_PAT }}
