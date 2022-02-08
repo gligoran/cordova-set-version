@@ -7,9 +7,6 @@
 [![npm downloads](https://img.shields.io/npm/dt/cordova-set-version.svg?style=flat)](http://npm-stat.com/charts.html?package=cordova-set-version&from=2017-02-08)
 [![build](https://img.shields.io/github/workflow/status/gligoran/cordova-set-version/node/master?style=flat)](https://github.com/gligoran/cordova-set-version/actions?query=branch%3Amaster+workflow%3Anode)
 [![codecov](https://img.shields.io/codecov/c/github/gligoran/cordova-set-version.svg?style=flat)](https://codecov.io/gh/gligoran/cordova-set-version)
-[![maintainability](https://img.shields.io/codeclimate/maintainability/gligoran/cordova-set-version?style=flat)](https://codeclimate.com/github/gligoran/cordova-set-version/maintainability)
-[![dependencies](https://img.shields.io/david/gligoran/cordova-set-version.svg?style=flat)](https://david-dm.org/gligoran/cordova-set-version)
-[![devDependencies](https://img.shields.io/david/dev/gligoran/cordova-set-version.svg?style=flat)](https://david-dm.org/gligoran/cordova-set-version?type=dev)
 [![known vulnerabilities](https://snyk.io/test/github/gligoran/cordova-set-version/badge.svg?targetFile=package.json)](https://snyk.io/test/github/gligoran/cordova-set-version?targetFile=package.json)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=flat)](https://github.com/semantic-release/semantic-release)
 
