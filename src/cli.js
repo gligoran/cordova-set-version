@@ -19,18 +19,18 @@ const help = `
 `;
 
 const options = {
-    flags: {
-        version: {
-            type: 'string',
-            alias: 'v',
-        },
-        buildNumber: {
-            type: 'number',
-            alias: 'b',
-        },
+  flags: {
+    version: {
+      type: 'string',
+      alias: 'v',
     },
-    help,
-    autoVersion: false,
+    buildNumber: {
+      type: 'number',
+      alias: 'b',
+    },
+  },
+  help,
+  autoVersion: false,
 };
 
 const cli = meow(options);

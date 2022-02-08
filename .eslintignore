@@ -1,6 +1,0 @@
-.vscode/
-*.json
-*.yml
-coverage/
-dist/
-test/configs/**/*

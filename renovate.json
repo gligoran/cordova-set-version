@@ -1,12 +1,10 @@
 {
-    "automerge": true,
-    "extends": [
-        "config:base"
-    ],
-    "major": {
-        "automerge": false
-    },
-    "devDependencies": {
-        "automerge": true
-    }
+  "automerge": true,
+  "extends": ["config:base"],
+  "major": {
+    "automerge": false
+  },
+  "devDependencies": {
+    "automerge": true
+  }
 }

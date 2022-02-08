@@ -2,7 +2,11 @@ import fs from 'fs-extra';
 import * as matchers from 'jest-extended';
 
 import cordovaSetVersion from '../src';
-import { tempConfigFile, tempProvidedConfigFile, tempProvidedPluginConfigFile } from './configs';
+import {
+  tempConfigFile,
+  tempProvidedConfigFile,
+  tempProvidedPluginConfigFile,
+} from './configs';
 import { tempPackageFile } from './packages';
 
 import configPathVersionBuildNumberTest from './index-tests/config-path-version-build-number';
@@ -18,43 +22,43 @@ import nullsTest from './index-tests/nulls';
 expect.extend(matchers);
 
 describe('cordova-set-version', () => {
-    beforeAll(() => {
-        process.chdir(__dirname);
-    });
+  beforeAll(() => {
+    process.chdir(__dirname);
+  });
 
-    test('should exist', () => {
-        expect(cordovaSetVersion).not.toBeNil();
-    });
+  test('should exist', () => {
+    expect(cordovaSetVersion).not.toBeNil();
+  });
 
-    test('should be a function', () => {
-        expect(cordovaSetVersion).toBeFunction();
-    });
+  test('should be a function', () => {
+    expect(cordovaSetVersion).toBeFunction();
+  });
 
-    configPathVersionBuildNumberTest();
-    configPathVersionTest();
-    configPathBuildNumberTest();
-    configPathTest();
-    versionBuildNumberTest();
-    versionTest();
-    buildNumberTest();
-    noArgumentsTest();
-    nullsTest();
+  configPathVersionBuildNumberTest();
+  configPathVersionTest();
+  configPathBuildNumberTest();
+  configPathTest();
+  versionBuildNumberTest();
+  versionTest();
+  buildNumberTest();
+  noArgumentsTest();
+  nullsTest();
 
-    afterEach(() => {
-        if (fs.existsSync(tempConfigFile)) {
-            fs.removeSync(tempConfigFile);
-        }
+  afterEach(() => {
+    if (fs.existsSync(tempConfigFile)) {
+      fs.removeSync(tempConfigFile);
+    }
 
-        if (fs.existsSync(tempProvidedConfigFile)) {
-            fs.removeSync(tempProvidedConfigFile);
-        }
+    if (fs.existsSync(tempProvidedConfigFile)) {
+      fs.removeSync(tempProvidedConfigFile);
+    }
 
-        if (fs.existsSync(tempProvidedPluginConfigFile)) {
-            fs.removeSync(tempProvidedPluginConfigFile);
-        }
+    if (fs.existsSync(tempProvidedPluginConfigFile)) {
+      fs.removeSync(tempProvidedPluginConfigFile);
+    }
 
-        if (fs.existsSync(tempPackageFile)) {
-            fs.removeSync(tempPackageFile);
-        }
-    });
+    if (fs.existsSync(tempPackageFile)) {
+      fs.removeSync(tempPackageFile);
+    }
+  });
 });

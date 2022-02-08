@@ -1,6 +1,5 @@
-.vscode/
-*.json
-*.yml
 coverage/
 dist/
-test/configs/**/*
+test/configs/**/*.xml
+test/packages/**/*.json
+package-lock.json
