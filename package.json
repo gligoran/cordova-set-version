@@ -18,7 +18,6 @@
   },
   "description": "CLI and JavaScript API for setting the version in Apache Cordova config.xml",
   "devDependencies": {
-    "codecov": "3.8.3",
     "cz-conventional-changelog": "3.3.0",
     "fs-extra": "10.0.0",
     "husky": "7.0.4",
@@ -74,7 +73,6 @@
     "lint:fix": "npm run lint -- --fix",
     "test": "npm run lint && NODE_OPTIONS=--experimental-vm-modules jest --run-in-band",
     "test:watch": "npm test -- --watch",
-    "upload-coverage": "codecov",
     "wipe": "npm run clean && rm -rf node_modules"
   },
   "type": "module",
