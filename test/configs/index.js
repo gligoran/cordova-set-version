@@ -1,7 +1,7 @@
-export const tempConfigFile = './config.xml';
+export const temporaryConfigFile = './config.xml';
 
-export const tempProvidedConfigFile = './config.provided.xml';
-export const tempProvidedPluginConfigFile = './plugin.provided.xml';
+export const temporaryProvidedConfigFile = './config.provided.xml';
+export const temporaryProvidedPluginConfigFile = './plugin.provided.xml';
 
 export const entryConfigFiles = {
   VERSION_AND_BUILD: './configs/entry/config.version-and-build.xml',

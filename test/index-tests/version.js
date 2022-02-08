@@ -1,53 +1,60 @@
 import fs from 'fs-extra';
 
-import readFile from '../read-file';
-import cordovaSetVersion from '../../src';
-import { tempConfigFile, entryConfigFiles, expectedXmlFiles } from '../configs';
+import readFile from '../read-file.js';
+import cordovaSetVersion from '../../index.js';
+import {
+  temporaryConfigFile,
+  entryConfigFiles,
+  expectedXmlFiles,
+} from '../configs/index.js';
 
 function versionTest() {
   describe('({ version })', () => {
     test('should override existing version and preserve existing buildNumber', async () => {
-      fs.copySync(entryConfigFiles.VERSION_AND_BUILD, tempConfigFile);
+      fs.copySync(entryConfigFiles.VERSION_AND_BUILD, temporaryConfigFile);
 
       await cordovaSetVersion({ version: '2.4.9' });
 
-      expect(readFile(tempConfigFile)).toBe(
+      expect(readFile(temporaryConfigFile)).toBe(
         readFile(expectedXmlFiles.VERSION_TO_VERSION_AND_BUILD),
       );
     });
 
     test('should override existing version and not add buildNumber', async () => {
-      fs.copySync(entryConfigFiles.VERSION_AND_NO_BUILD, tempConfigFile);
+      fs.copySync(entryConfigFiles.VERSION_AND_NO_BUILD, temporaryConfigFile);
 
       await cordovaSetVersion({ version: '2.4.9' });
 
-      expect(readFile(tempConfigFile)).toBe(
+      expect(readFile(temporaryConfigFile)).toBe(
         readFile(expectedXmlFiles.VERSION_TO_VERSION_AND_NO_BUILD),
       );
     });
 
     test('should add version and preserve existing buildNumber', async () => {
-      fs.copySync(entryConfigFiles.NO_VERSION_AND_BUILD, tempConfigFile);
+      fs.copySync(entryConfigFiles.NO_VERSION_AND_BUILD, temporaryConfigFile);
 
       await cordovaSetVersion({ version: '2.4.9' });
 
-      expect(readFile(tempConfigFile)).toBe(
+      expect(readFile(temporaryConfigFile)).toBe(
         readFile(expectedXmlFiles.VERSION_TO_NO_VERSION_AND_BUILD),
       );
     });
 
     test('should add version and not add buildNumber', async () => {
-      fs.copySync(entryConfigFiles.NO_VERSION_AND_NO_BUILD, tempConfigFile);
+      fs.copySync(
+        entryConfigFiles.NO_VERSION_AND_NO_BUILD,
+        temporaryConfigFile,
+      );
 
       await cordovaSetVersion({ version: '2.4.9' });
 
-      expect(readFile(tempConfigFile)).toBe(
+      expect(readFile(temporaryConfigFile)).toBe(
         readFile(expectedXmlFiles.VERSION_TO_NO_VERSION_AND_NO_BUILD),
       );
     });
 
     test('should return an error about version type', async () => {
-      fs.copySync(entryConfigFiles.VERSION_AND_BUILD, tempConfigFile);
+      fs.copySync(entryConfigFiles.VERSION_AND_BUILD, temporaryConfigFile);
 
       try {
         await cordovaSetVersion({ version: {} });
@@ -69,7 +76,7 @@ function versionTest() {
     });
 
     test('should return an error about malformed config file', async () => {
-      fs.copySync(entryConfigFiles.MALFORMED, tempConfigFile);
+      fs.copySync(entryConfigFiles.MALFORMED, temporaryConfigFile);
 
       try {
         await cordovaSetVersion({ version: '2.4.9' });
