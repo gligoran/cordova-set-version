@@ -1,7 +1,6 @@
 import fs from 'node:fs';
 import promisify from 'util-promisify';
-import xml2js from 'xml2js-es6-promise';
-import { Builder } from 'xml2js';
+import xml2js, { Builder } from 'xml2js';
 
 const readFile = promisify(fs.readFile);
 const writeFile = promisify(fs.writeFile);
@@ -29,7 +28,7 @@ function checkTypeErrors(configPath, version, buildNumber) {
 async function getXml(configPath) {
   const configFile = await readFile(configPath, 'UTF-8');
 
-  return xml2js(configFile);
+  return xml2js.parseStringPromise(configFile);
 }
 
 async function getVersionFromPackage() {
