@@ -2,7 +2,7 @@
 
 import meow from 'meow';
 
-import cordovaSetVersion from '.';
+import cordovaSetVersion from './index.js';
 
 const help = `
     Usage
@@ -19,6 +19,7 @@ const help = `
 `;
 
 const options = {
+  importMeta: import.meta,
   flags: {
     version: {
       type: 'string',
@@ -37,6 +38,6 @@ const cli = meow(options);
 
 const configPath = cli.input[0] || null;
 const version = cli.flags.version || null;
-const buildNumber = +cli.flags.buildNumber || null;
+const buildNumber = Number(cli.flags.buildNumber) || null;
 
 cordovaSetVersion({ configPath, version, buildNumber });

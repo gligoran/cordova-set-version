@@ -1,4 +1,4 @@
-import fs from 'fs';
+import fs from 'node:fs';
 import promisify from 'util-promisify';
 import xml2js from 'xml2js-es6-promise';
 import { Builder } from 'xml2js';
@@ -10,19 +10,19 @@ const xmlBuilder = new Builder();
 
 function checkTypeErrors(configPath, version, buildNumber) {
   if (typeof configPath !== 'string') {
-    throw TypeError('"configPath" argument must be a string');
+    throw new TypeError('"configPath" argument must be a string');
   }
 
   if (version && typeof version !== 'string') {
-    throw TypeError('"version" argument must be a string');
+    throw new TypeError('"version" argument must be a string');
   }
 
   if (buildNumber && typeof buildNumber !== 'number') {
-    throw TypeError('"buildNumber" argument must be an integer');
+    throw new TypeError('"buildNumber" argument must be an integer');
   }
 
-  if (buildNumber && buildNumber !== parseInt(buildNumber, 10)) {
-    throw TypeError('"buildNumber" argument must be an integer');
+  if (buildNumber && buildNumber !== Number.parseInt(buildNumber, 10)) {
+    throw new TypeError('"buildNumber" argument must be an integer');
   }
 }
 
@@ -42,13 +42,13 @@ async function getVersionFromPackage() {
 
 function setAttributes(xml, version, buildNumber) {
   const newXml = xml;
-  const el = newXml.plugin ? 'plugin' : 'widget';
+  const element = newXml.plugin ? 'plugin' : 'widget';
 
   if (version) {
-    newXml[el].$.version = version;
+    newXml[element].$.version = version;
   }
 
-  if (el === 'widget' && buildNumber) {
+  if (element === 'widget' && buildNumber) {
     newXml.widget.$['android-versionCode'] = buildNumber;
     newXml.widget.$['ios-CFBundleVersion'] = buildNumber;
     newXml.widget.$['osx-CFBundleVersion'] = buildNumber;
@@ -58,7 +58,7 @@ function setAttributes(xml, version, buildNumber) {
 }
 
 /**
- * Set Version and/or Build Number of Cordova config.xml.
+ * set Version and/or Build Number of Cordova config.xml.
  * @param {string} [configPath]
  * @param {string} [version]
  * @param {number} [buildNumber]

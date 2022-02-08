@@ -1,4 +1,4 @@
-export const tempPackageFile = './package.json';
+export const temporaryPackageFile = './package.json';
 
 export const entryPackageFiles = {
   GOOD: './packages/package.good.json',

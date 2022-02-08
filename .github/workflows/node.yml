@@ -10,9 +10,9 @@ jobs:
     strategy:
       matrix:
         node-version:
-          - '12'
-          - '14'
           - '16'
+          - '14'
+          - '12'
     steps:
       - uses: actions/checkout@v2
       - name: use node ${{ matrix.node-version }}
@@ -40,7 +40,7 @@ jobs:
     strategy:
       matrix:
         node-version:
-          - '14'
+          - '16'
     steps:
       - uses: actions/checkout@v2
       - name: use node ${{ matrix.node-version }}
@@ -55,8 +55,6 @@ jobs:
             ${{ runner.os }}-node-${{ matrix.node-version }}
       - name: install dependencies
         run: npm ci
-      - name: build
-        run: npm run build
       - name: release to npm
         env:
           GITHUB_TOKEN: ${{ secrets.SR_PAT }}
