@@ -28,7 +28,7 @@ async function getXml(configPath) {
 }
 
 function getVersionFromPackage() {
-  const packageFile = fs.readFileSync('./package.json', 'UTF-8');
+  const packageFile = fs.readFileSync('./package.json');
   const pkg = JSON.parse(packageFile);
   const { version } = pkg;
 
