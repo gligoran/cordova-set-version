@@ -20,7 +20,7 @@
   "devDependencies": {
     "cz-conventional-changelog": "3.3.0",
     "fs-extra": "10.1.0",
-    "husky": "7.0.4",
+    "husky": "8.0.0",
     "jest": "28.1.0",
     "jest-extended": "2.0.0",
     "npm-check": "5.9.2",
