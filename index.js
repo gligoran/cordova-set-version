@@ -22,7 +22,7 @@ function checkTypeErrors(configPath, version, buildNumber) {
 }
 
 async function getXml(configPath) {
-  const configFile = fs.readFileSync(configPath, 'UTF-8');
+  const configFile = fs.readFileSync(configPath, 'utf8');
 
   return xml2js.parseStringPromise(configFile);
 }
@@ -70,7 +70,7 @@ async function cordovaSetVersion({ configPath, version, buildNumber } = {}) {
   const newConfig = setAttributes(currentConfig, v, buildNumber);
 
   const newData = xmlBuilder.buildObject(newConfig);
-  return fs.writeFileSync(cPath, newData, { encoding: 'UTF-8' });
+  return fs.writeFileSync(cPath, newData, { encoding: 'utf8' });
 }
 
 export default cordovaSetVersion;

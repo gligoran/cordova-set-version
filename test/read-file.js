@@ -1,5 +1,5 @@
 import fs from 'fs-extra';
 
 export default function readFile(filePath) {
-  return fs.readFileSync(filePath, { encoding: 'utf-8' });
+  return fs.readFileSync(filePath, { encoding: 'utf8' });
 }
