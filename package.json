@@ -25,7 +25,7 @@
     "jest-extended": "3.0.2",
     "npm-check": "6.0.1",
     "semantic-release": "19.0.5",
-    "xo": "0.52.0"
+    "xo": "0.52.1"
   },
   "exports": "./index.js",
   "files": [
