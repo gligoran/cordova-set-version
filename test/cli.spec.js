@@ -19,7 +19,8 @@ describe('cli', () => {
   test('should run', () => {
     fs.copySync(entryConfigFiles.VERSION_AND_BUILD, temporaryConfigFile);
 
-    execSync('../cli.js -v 2.4.9 -b 86');
+    const cliScriptFile = path.resolve(process.cwd(), '..', 'cli.js');
+    execSync(`${process.execPath} ${cliScriptFile} -v 2.4.9 -b 86`);
 
     expect(readFile(temporaryConfigFile)).toBe(
       readFile(expectedXmlFiles.VERSION_AND_BUILD_TO_VERSION_AND_BUILD),
