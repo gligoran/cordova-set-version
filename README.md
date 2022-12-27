@@ -25,23 +25,38 @@ $ npm install cordova-set-version
 ## Usage
 
 ```js
-const cordovaSetVersion = require('cordova-set-version');
+import cordovaSetVersion from 'cordova-set-version';
 
-cordovaSetVersion(); // reads version from package.json
-cordovaSetVersion('2.4.9');
-cordovaSetVersion('./config.alt.xml', '2.4.9');
-cordovaSetVersion('./config.alt.xml', 86);
-cordovaSetVersion('./config.alt.xml', '2.4.9', 86)
-    .catch(error => { ... });
+// set version to value from package.json
+await cordovaSetVersion({
+    configPath: '/path/to/config.xml'
+});
+
+// set version to 1.2.3
+await cordovaSetVersion({
+    configPath: '/path/to/config.xml',
+    version:'1.2.3'
+});
+
+// set version to 1.2.3 and set ios-CFBundleVersion, osx-CFBundleVersion, android-versionCode to 99
+await cordovaSetVersion({
+    configPath: '/path/to/config.xml',
+    version:'1.2.3',
+    buildNumber: 99
+});
 ```
 
 ## API
 
-`cordovaSetVersion([configPath], [version], [buildNumber]): Promise`
+`cordovaSetVersion(options): Promise`
 
-- `configPath` _(string)_ - path to your `config.xml`
-- `version` _(string)_ - version to be written
-- `buildNumber` _(number)_ - build number to be written
+```
+options: {
+    configPath - path to your config.xml file (string)
+    version - version to be written (string)
+    buildNumber - build number to be written (number)
+}
+```
 
 ## CLI
 
