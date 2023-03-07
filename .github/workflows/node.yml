@@ -2,7 +2,6 @@ name: node
 
 on:
   - push
-  - pull_request
 
 jobs:
   test:
@@ -10,10 +9,10 @@ jobs:
     strategy:
       matrix:
         node-version:
-          - '17'
+          - 'lts/*'
+          - '19'
           - '16'
           - '14'
-          - '12'
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -27,31 +26,26 @@ jobs:
             ${{ runner.os }}-node-${{ matrix.node-version }}
       - run: npm ci
       - run: npm test
-      - uses: codecov/codecov-action@v2
+      - uses: codecov/codecov-action@v3
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
 
   release:
     runs-on: ubuntu-latest
     needs: test
-    strategy:
-      matrix:
-        node-version:
-          - '16'
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: 'lts/*'
       - uses: actions/cache@v3
         with:
           path: ~/.npm
-          key: ${{ runner.os }}-node-${{ matrix.node-version }}-${{ hashFiles('**/package-lock.json') }}
+          key: ${{ runner.os }}-node-lts/*-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
-            ${{ runner.os }}-node-${{ matrix.node-version }}
+            ${{ runner.os }}-node-lts/*
       - run: npm ci
-      - name: release to npm
+      - run: npx semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.SR_PAT }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npx semantic-release
