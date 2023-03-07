@@ -78,8 +78,8 @@
   "type": "module",
   "version": "0.0.0",
   "volta": {
-    "node": "16.19.0",
-    "npm": "8.19.4"
+    "node": "18.15.0",
+    "npm": "9.6.0"
   },
   "xo": {
     "envs": [
