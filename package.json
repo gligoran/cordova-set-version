@@ -78,7 +78,7 @@
   "type": "module",
   "version": "0.0.0",
   "volta": {
-    "node": "16.19.0",
+    "node": "16.19.1",
     "npm": "8.19.4"
   },
   "xo": {
