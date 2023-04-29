@@ -24,7 +24,7 @@
     "jest": "29.5.0",
     "jest-extended": "3.2.4",
     "npm-check": "6.0.1",
-    "semantic-release": "21.0.1",
+    "semantic-release": "21.0.2",
     "xo": "0.53.1"
   },
   "exports": "./index.js",
