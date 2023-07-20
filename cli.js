@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 
 import meow from 'meow';
-
 import cordovaSetVersion from './index.js';
 
 const help = `
@@ -23,11 +22,11 @@ const options = {
   flags: {
     version: {
       type: 'string',
-      alias: 'v',
+      shortFlag: 'v',
     },
     buildNumber: {
       type: 'number',
-      alias: 'b',
+      shortFlag: 'b',
     },
   },
   help,

@@ -2,7 +2,6 @@ import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 import process from 'node:process';
 import fs from 'fs-extra';
-
 import cordovaSetVersion from '../index.js';
 import {
   temporaryConfigFile,
@@ -10,7 +9,6 @@ import {
   temporaryProvidedPluginConfigFile,
 } from './configs/index.js';
 import { temporaryPackageFile } from './packages/index.js';
-
 import configPathVersionBuildNumberTest from './index-tests/config-path-version-build-number.js';
 import configPathVersionTest from './index-tests/config-path-version.js';
 import configPathBuildNumberTest from './index-tests/config-path-build-number.js';
