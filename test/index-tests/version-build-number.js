@@ -1,5 +1,4 @@
 import fs from 'fs-extra';
-
 import readFile from '../read-file.js';
 import cordovaSetVersion from '../../index.js';
 import {
