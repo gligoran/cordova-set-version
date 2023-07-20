@@ -22,11 +22,11 @@ const options = {
   flags: {
     version: {
       type: 'string',
-      alias: 'v',
+      shortFlag: 'v',
     },
     buildNumber: {
       type: 'number',
-      alias: 'b',
+      shortFlag: 'b',
     },
   },
   help,
