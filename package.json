@@ -19,7 +19,7 @@
   "description": "CLI and JavaScript API for setting the version in Apache Cordova config.xml",
   "devDependencies": {
     "cz-conventional-changelog": "3.3.0",
-    "fs-extra": "11.2.0",
+    "fs-extra": "11.3.0",
     "husky": "9.1.7",
     "jest": "29.7.0",
     "jest-extended": "4.0.2",
